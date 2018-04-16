@@ -20,7 +20,7 @@
 def datosextract():
     from settings import my_url, coduapa, codhermes, codcolciencias, nombregi, dnilider, my_url
     import bs4, logging, sys, re
-    global conteventos
+    global contdatoss
     LOG_FILENAME = './Logs/Registros.log'
     logging.basicConfig(filename=LOG_FILENAME,level=logging.DEBUG,
         format = "%(asctime)s:%(levelname)s:%(message)s")
@@ -45,15 +45,28 @@ def datosextract():
     page_soup = soup(page_html,"html.parser")
     containers = page_soup.findAll("table")
     for a in range(0,len(containers)):
-        buscaeventos = containers[a].td
-        #print(buscaeventos)
+        buscadatoss = containers[a].td
+        #print(buscadatoss)
         try:
-            if buscaeventos.text == "Datos básicos":
+            if buscadatoss.text == "Datos básicos":
                 all = a
                 #print(all)
                 break
         except AttributeError:
             pass
+    if all != 0:
+        containerb = containers[all]
+        container = containerb.findAll("tr")
+        cont = container[1]
+        info_datos = cont.text
+        #Año de Inicio
+        index1 = info_datos.find("Año y mes de formación") + 22
+        index2 = info_datos.find(" -")
+        anoinidatos = re.sub(r'[^A-Za-z0-9éèáàéñèíìúùó ò]',r'',re.sub(' +',' ',info_datos[index1:index2].replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
+        index1 = index2 + 2
+        index2 = len(info_datos)
+        mesinidatos = re.sub(r'[^A-Za-z0-9éèáàéñèíìúùó ò]',r'',re.sub(' +',' ',info_datos[index1:index2].replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
 
-
-    print(all)
+    else:
+        logging.info(' El Docente ' + name + ' ' + last + 'no tiene datoss Asociados')
+    contdatoss = [COD_PRODUCTO]
