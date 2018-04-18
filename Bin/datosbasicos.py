@@ -49,13 +49,13 @@ def datosextract():
         #print(buscadatoss)
         try:
             if buscadatoss.text == "Datos básicos":
-                all = a
+                all = a + 1
                 #print(all)
                 break
         except AttributeError:
             pass
     if all != 0:
-        containerb = containers[all]
+        containerb = containers[all - 1]
         container = containerb.findAll("tr")
         cont = container[1]
         info_datos = cont.text
@@ -66,7 +66,9 @@ def datosextract():
         index1 = index2 + 2
         index2 = len(info_datos)
         mesinidatos = re.sub(r'[^A-Za-z0-9éèáàéñèíìúùó ò]',r'',re.sub(' +',' ',info_datos[index1:index2].replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
-
+        print(anoinidatos+nombregi)
+        print(mesinidatos+nombregi)
     else:
-        logging.info(' El Docente ' + name + ' ' + last + 'no tiene datoss Asociados')
-    contdatoss = [COD_PRODUCTO]
+        print(' El Grupo de Investigación ' + nombregi + ' no tiene datos Asociados')
+        # logging.info(' El Grupo de Investigación ' + nombregi + ' no tiene datos Asociados')
+    # contdatoss = [COD_PRODUCTO]
