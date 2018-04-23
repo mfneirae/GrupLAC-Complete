@@ -22,6 +22,7 @@ start_time = time.time()
 Dir = os.getcwd()
 os.chdir(Dir+"/Bin")
 sys.path.append('../Bin/')
+import init
 import datosbasicos
 os.chdir(Dir)
 condition = 0;
@@ -44,6 +45,7 @@ wb = openpyxl.load_workbook('./Input/Base.xlsx')
 sheet = wb['Sheet1']
 total = sheet.max_row +1
 COD_PRODUCTO = 1;
+init.inicio()
 LOG_FILENAME = './Logs/Registros.log'
 logging.basicConfig(filename=LOG_FILENAME,level=logging.DEBUG,
                         format = '%(asctime)s:%(levelname)s:%(message)s')
@@ -70,13 +72,13 @@ for q in range(2,total):
     if q==total-1:
         logging.shutdown()
         print ("------> Escribiendo las bases de datos.")
-        # if mode == 1:
-        #     # import printcsv
-        #     # import printinsert
-        # elif mode == 2:
-        #     # import printinsert
-        # else:
-        #     # import printcsv
+        if mode == 1:
+            import printcsv
+            import printinsert
+        elif mode == 2:
+            import printinsert
+        else:
+             import printcsv
         print ("-----------------------------------------------------------------------------------------------")
         print ("")
         print ("------> ¡Extracción Exitosa!")

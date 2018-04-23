@@ -19,7 +19,7 @@
 #
 def datosextract():
     from settings import my_url, coduapa, codhermes, codcolciencias, nombregi, dnilider, my_url
-    import bs4, logging, sys, re
+    import bs4, logging, sys, re, init
     global contdatoss
     LOG_FILENAME = './Logs/Registros.log'
     logging.basicConfig(filename=LOG_FILENAME,level=logging.DEBUG,
@@ -59,16 +59,159 @@ def datosextract():
         container = containerb.findAll("tr")
         cont = container[1]
         info_datos = cont.text
-        #Año de Inicio
+    #Año de Inicio
         index1 = info_datos.find("Año y mes de formación") + 22
         index2 = info_datos.find(" -")
-        anoinidatos = re.sub(r'[^A-Za-z0-9éèáàéñèíìúùó ò]',r'',re.sub(' +',' ',info_datos[index1:index2].replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
+        anoinidatos = re.sub(r'[^A-Za-z0-9ÁÀÉÈÍÌÓÒÚÙéèáàéñèíìúùóò .\-/]',r'',re.sub(' +',' ',info_datos[index1:index2].replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
+    #Mes Inicio
         index1 = index2 + 2
         index2 = len(info_datos)
-        mesinidatos = re.sub(r'[^A-Za-z0-9éèáàéñèíìúùó ò]',r'',re.sub(' +',' ',info_datos[index1:index2].replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
-        print(anoinidatos+nombregi)
-        print(mesinidatos+nombregi)
+        mesinidatos = re.sub(r'[^A-Za-z0-9ÁÀÉÈÍÌÓÒÚÙéèáàéñèíìúùóò .\-/]',r'',re.sub(' +',' ',info_datos[index1:index2].replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
+        cont = container[2]
+        info_datos = cont.text
+    #Lugar
+        index1 = info_datos.find("Departamento - Ciudad") + 22
+        index2 = len(info_datos)
+        Lugar = re.sub(r'[^A-Za-z0-9ÁÀÉÈÍÌÓÒÚÙéèáàéñèíìúùóò .\-/]',r'',re.sub(' +',' ',info_datos[index1:index2].replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
+    #Lider
+        cont = container[3]
+        info_datos = cont.text
+        index1 = info_datos.find("Líder ") + 7
+        index2 = len(info_datos)
+        Lider = re.sub(r'[^A-Za-z0-9ÁÀÉÈÍÌÓÒÚÙéèáàéñèíìúùóò .\-/]',r'',re.sub(' +',' ',info_datos[index1:index2].replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
+    #Info Certificada
+        cont = container[4]
+        info_datos = cont.text
+        index1 = info_datos.find("¿La información de este grupo se ha certificado?") + 48
+        index2 = len(info_datos)
+        InfoCer = re.sub(r'[^A-Za-z0-9ÁÀÉÈÍÌÓÒÚÙéèáàéñèíìúùóò .\-/]',r'',re.sub(' +',' ',info_datos[index1:index2].replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
+    #Página web
+        cont = container[5]
+        info_datos = cont.text
+        index1 = info_datos.find("Página web") + 10
+        index2 = len(info_datos)
+        Paginaweb = re.sub(r'[^A-Za-z0-9ÁÀÉÈÍÌÓÒÚÙéèáàéñèíìúùóò .\-/]',r'',re.sub(' +',' ',info_datos[index1:index2].replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
+    #Email
+        cont = container[6]
+        info_datos = cont.text
+        index1 = info_datos.find("E-mail") + 6
+        index2 = len(info_datos)
+        Email = re.sub(r'[^A-Za-z0-9ÁÀÉÈÍÌÓÒÚÙéèáàéñèíìúùóò .\-/]',r'',re.sub(' +',' ',info_datos[index1:index2].replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
+    #Clasificación
+        cont = container[7]
+        info_datos = cont.text
+        index1 = info_datos.find("Clasificación") + 13
+        index2 = len(info_datos)
+        Clasisfica = re.sub(r'[^A-Za-z0-9ÁÀÉÈÍÌÓÒÚÙéèáàéñèíìúùóò .\-/]',r'',re.sub(' +',' ',info_datos[index1:index2].replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
+    #Área del conocimiento
+        cont = container[8]
+        info_datos = cont.text
+        index1 = info_datos.find("Área de conocimiento") + 20
+        index2 = len(info_datos)
+        Area = re.sub(r'[^A-Za-z0-9ÁÀÉÈÍÌÓÒÚÙéèáàéñèíìúùóò .\-/]',r'',re.sub(' +',' ',info_datos[index1:index2].replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
+    #Programa Nacional de Ciencia y Tecnología
+        cont = container[9]
+        info_datos = cont.text
+        index1 = info_datos.find("Programa nacional de ciencia y tecnología") + 41
+        index2 = len(info_datos)
+        ProgramaNacional = re.sub(r'[^A-Za-z0-9ÁÀÉÈÍÌÓÒÚÙéèáàéñèíìúùóò .\-/]',r'',re.sub(' +',' ',info_datos[index1:index2].replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
+    #Programa Nacional de Ciencia y Tecnología2
+        cont = container[10]
+        info_datos = cont.text
+        index1 = info_datos.find("Programa nacional de ciencia y tecnología (secundario)") + 54
+        index2 = len(info_datos)
+        ProgramaNacional2 = re.sub(r'[^A-Za-z0-9ÁÀÉÈÍÌÓÒÚÙéèáàéñèíìúùóò .\-/]',r'',re.sub(' +',' ',info_datos[index1:index2].replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
     else:
         print(' El Grupo de Investigación ' + nombregi + ' no tiene datos Asociados')
-        # logging.info(' El Grupo de Investigación ' + nombregi + ' no tiene datos Asociados')
-    # contdatoss = [COD_PRODUCTO]
+        anoinidatos = 0000
+        mesinidatos = 00
+        Lugar = ""
+        Lider = ""
+        InfoCer = ""
+        Paginaweb = ""
+        Email = ""
+        Clasisfica = ""
+        Area = ""
+        ProgramaNacional = ""
+        ProgramaNacional2 = ""
+        logging.info(' El Grupo de Investigación ' + nombregi + ' no tiene datos Asociados')
+    for a in range(0,len(containers)):
+        buscadatoss = containers[a].td
+        #print(buscadatoss)
+        try:
+            if buscadatoss.text == "Plan Estratégico":
+                all = a + 1
+                #print(all)
+                break
+        except AttributeError:
+            pass
+    if all != 0:
+        containerb = containers[all - 1]
+    #Plan Trabajo
+        info_datos = containerb.text
+        index1 = info_datos.find("Plan de trabajo:") + 16
+        index2 = info_datos.find("                    Estado del arte: ")
+        PlanTrabajo = re.sub(r'[^A-Za-z0-9ÁÀÉÈÍÌÓÒÚÙéèáàéñèíìúùóò .\-/]',r'',re.sub(' +',' ',info_datos[index1:index2].replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
+    #Estado del arte
+        index1 = index2 + 37
+        index2 = info_datos.find("                    Objetivos: ")
+        EstadoArte = re.sub(r'[^A-Za-z0-9ÁÀÉÈÍÌÓÒÚÙéèáàéñèíìúùóò .\-/]',r'',re.sub(' +',' ',info_datos[index1:index2].replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
+    #Objetivos
+        index1 = index2 + 31
+        index2 = info_datos.find("                    Retos: ")
+        Objetivos = re.sub(r'[^A-Za-z0-9ÁÀÉÈÍÌÓÒÚÙéèáàéñèíìúùóò .\-/]',r'',re.sub(' +',' ',info_datos[index1:index2].replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
+    #Retos
+        index1 = index2 + 27
+        index2 = info_datos.find("                    Visión: ")
+        Retos = re.sub(r'[^A-Za-z0-9ÁÀÉÈÍÌÓÒÚÙéèáàéñèíìúùóò .\-/]',r'',re.sub(' +',' ',info_datos[index1:index2].replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
+    #Vision
+        index1 = index2 + 28
+        index2 = len(info_datos)
+        Vision = re.sub(r'[^A-Za-z0-9ÁÀÉÈÍÌÓÒÚÙéèáàéñèíìúùóò .\-/]',r'',re.sub(' +',' ',info_datos[index1:index2].replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
+    else:
+        print(' El Grupo de Investigación ' + nombregi + ' no tiene plan estratégico asociado')
+        PlanTrabajo = ""
+        EstadoArte = ""
+        Objetivos = ""
+        Retos = ""
+        Vision = ""
+        logging.info(' El Grupo de Investigación ' + nombregi + ' no tiene datos Asociados')
+    #csv
+    init.GP_DATOS_BASE_CSV.append(str(codcolciencias) + ";"\
+    + anoinidatos + ";" \
+    + mesinidatos + ";" \
+    + Lugar + ";" \
+    + Lider + ";" \
+    + InfoCer + ";" \
+    + Paginaweb + ";" \
+    + Email + ";" \
+    + Clasisfica + ";" \
+    + Area + ";" \
+    + ProgramaNacional + ";" \
+    + ProgramaNacional2 + ";" \
+    + PlanTrabajo + ";" \
+    + EstadoArte + ";" \
+    + Objetivos + ";" \
+    + Retos + ";" \
+    + Vision + "\n")
+    #Insert
+    init.GP_DATOS_BASE.append( \
+    "REPLACE INTO `uapa_db`.`GP_DATOS_BASE`(`CODGP`,`Año Formación`,`Mes Formación`,`Lugar`,`Nombre Lider`,`Información Certificada`,`Página Web`,`Correo`,`Clasificación`,`Área del Conocimiento`,`Programa Nacional`,`Programa Nacional 2`,`Plan de trabajo`,`Estado del Arte`,`Objetivos`,`Retos`,`Visión`) VALUES"
+    + "('" + str(codcolciencias) + "',"\
+    + anoinidatos + "," \
+    + mesinidatos + "," \
+    + "'" + Lugar + "'," \
+    + "'" + Lider + "'," \
+    + "'" + InfoCer + "'," \
+    + "'" + Paginaweb + "'," \
+    + "'" + Email + "'," \
+    + "'" + Clasisfica + "'," \
+    + "'" + Area + "'," \
+    + "'" + ProgramaNacional + "'," \
+    + "'" + ProgramaNacional2 + "'," \
+    + "'" + PlanTrabajo + "'," \
+    + "'" + EstadoArte + "'," \
+    + "'" + Objetivos + "'," \
+    + "'" + Retos + "'," \
+    + "'" + Vision + "'" \
+    + ");\n")

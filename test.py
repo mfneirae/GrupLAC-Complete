@@ -1,6 +1,6 @@
 import bs4, logging, sys, re
 global contdatoss
-my_url = "http://scienti.colciencias.gov.co:8085/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000002066"
+my_url = "http://scienti.colciencias.gov.co:8085/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000004188"
 from urllib.request import urlopen as uReq
 from bs4 import BeautifulSoup as soup
 uClient = uReq(my_url)
@@ -21,7 +21,7 @@ for a in range(0,len(containers)):
     buscadatoss = containers[a].td
     #print(buscadatoss)
     try:
-        if buscadatoss.text == "Datos básicos":
+        if buscadatoss.text == "Plan Estratégico":
             all = a
             #print(all)
             break
@@ -41,3 +41,8 @@ anoinidatos = re.sub(r'[^A-Za-z0-9éèáàéñèíìúùó ò]',r'',re.sub(' +',
 index1 = index2 + 2
 index2 = len(info_datos)
 mesinidatos = re.sub(r'[^A-Za-z0-9éèáàéñèíìúùó ò]',r'',re.sub(' +',' ',info_datos[index1:index2].replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
+index1 = info_datos.find("Departamento - Ciudad") + 22
+index2 = len(info_datos)
+index2 = len(info_datos)
+Lugar = re.sub(r'[^A-Za-z0-9éèáàéñèíìúùó ò]',r'',re.sub(' +',' ',info_datos[index1:index2].replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
+Lugar = re.sub(r'[^A-Za-z0-9ÁÀÉÈÍÌÓÒÚÙéèáàéñèíìúùóò .]',r'',re.sub(' +',' ',info_datos[index1:index2].replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
