@@ -25,3 +25,27 @@ for item in init.GP_DATOS_BASE_CSV:
     except UnicodeEncodeError:
         pass
 f.close()
+
+f = open ("./Resultados/GP_DATOS_INSTITUCIONES.csv", "w")
+for item in init.GP_DATOS_INSTITUCIONES_CSV:
+    try:
+        f.write(item)
+    except UnicodeEncodeError:
+        pass
+f.close()
+
+f = open ("./Resultados/GP_DATOS_LINEAS.csv", "w")
+for item in init.GP_DATOS_LINEAS_CSV:
+    try:
+        f.write(item)
+    except UnicodeEncodeError:
+        pass
+f.close()
+
+f = open ("./Resultados/GP_DATOS_SECTORES.csv", "w")
+for item in init.GP_DATOS_SECTORES_CSV:
+    try:
+        f.write(item)
+    except UnicodeEncodeError:
+        pass
+f.close()

@@ -20,7 +20,18 @@
 def inicio():
     global GP_DATOS_BASE
     global GP_DATOS_BASE_CSV
+    global GP_DATOS_INSTITUCIONES
+    global GP_DATOS_INSTITUCIONES_CSV
+    global GP_DATOS_LINEAS
+    global GP_DATOS_LINEAS_CSV
+    global GP_DATOS_SECTORES
+    global GP_DATOS_SECTORES_CSV
+
     GP_DATOS_BASE = []
+    GP_DATOS_INSTITUCIONES = []
+    GP_DATOS_LINEAS = []
+    GP_DATOS_SECTORES = []
+
     GP_DATOS_BASE_CSV = ["CODGP;\
 Año Formación;\
 Mes Formación;\
@@ -38,3 +49,15 @@ Estado del Arte;\
 Objetivos;\
 Retos;\
 Visión\n"]
+
+    GP_DATOS_INSTITUCIONES_CSV = ["CODGP_INSTI;\
+CODGP;\
+Nombre Institución\n"]
+
+    GP_DATOS_LINEAS_CSV = ["CODGP_INSTI;\
+CODGP;\
+Línea de Investigación\n"]
+
+    GP_DATOS_SECTORES_CSV = ["CODGP_INSTI;\
+CODGP;\
+Sector\n"]

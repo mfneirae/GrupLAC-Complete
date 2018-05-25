@@ -17,36 +17,4 @@
 # #############################################################################
 #
 #
-import init
-
-f = open ("./Resultados/GP_DATOS_BASE.sql", "w")
-for item in init.GP_DATOS_BASE:
-    try:
-        f.write(item)
-    except UnicodeEncodeError:
-        pass
-f.close()
-
-f = open ("./Resultados/GP_DATOS_INSTITUCIONES.sql", "w")
-for item in init.GP_DATOS_INSTITUCIONES:
-    try:
-        f.write(item)
-    except UnicodeEncodeError:
-        pass
-f.close()
-
-f = open ("./Resultados/GP_DATOS_LINEAS.sql", "w")
-for item in init.GP_DATOS_LINEAS:
-    try:
-        f.write(item)
-    except UnicodeEncodeError:
-        pass
-f.close()
-
-f = open ("./Resultados/GP_DATOS_SECTORES.sql", "w")
-for item in init.GP_DATOS_SECTORES:
-    try:
-        f.write(item)
-    except UnicodeEncodeError:
-        pass
-f.close()
+def clc
