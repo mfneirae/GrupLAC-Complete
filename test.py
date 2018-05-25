@@ -21,7 +21,7 @@ for a in range(0,len(containers)):
     buscadatoss = containers[a].td
     #print(buscadatoss)
     try:
-        if buscadatoss.text == "Sectores de aplicación":
+        if buscadatoss.text == "Integrantes del grupo":
             all = a
             #print(all)
             break
@@ -34,7 +34,7 @@ print(all)
 containerb = containers[all]
 container = containerb.findAll("tr")
 cont = container[x]
-info_sectores = cont.text
-index1 = info_sectores.find('-') + 1
-index2 = len(info_sectores)
-institucion = re.sub(r'[^A-Za-z0-9ÁÀÉÈÍÌÓÒÚÙéèáàéñèíìúùóò .\-/+]',r'',re.sub(' +',' ',info_sectores[index1:index2].replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
+
+index1 = info_integrantes.find('href="') + 6
+index2 = info_integrantes.find('"',index1,len(info_integrantes))
+linkcv = clc(info_integrantes[index1:index2])

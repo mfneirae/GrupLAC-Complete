@@ -19,7 +19,7 @@
 #
 def clc(str):
     import re
-    str = re.sub(r'[^A-Za-z0-9ÁÀÉÈÍÌÓÒÚÙéèáàéñèíìúùóò .\-/+]',r'',re.sub(' +',' ',str.replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
+    str = re.sub(r'[^A-Za-z0-9:=_?ÁÀÉÈÍÌÓÒÚÙéèáàéñèíìúùóò .\-/+]',r'',re.sub(' +',' ',str.replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
     return str;
 
 def datosextract():
@@ -450,10 +450,10 @@ def integrantesextract():
         container = containerb.findAll("tr")
         for x in range(2, len(container)):
             cont = container[x]
-            info_integrantes = cont.text
-            index1 = info_integrantes.find('-') + 1
-            index2 = len(info_integrantes)
-            institucion = clc(info_integrantes[index1:index2])
+            info_integrantes = str(cont)
+            index1 = info_integrantes.find('href="') + 6
+            index2 = info_integrantes.find('"',index1,len(info_integrantes))
+            linkcv = clc(info_integrantes[index1:index2])
             #csv
             init.GP_DATOS_INTEGRANTES_CSV.append(str(codcolciencias) + str(COD_INTEGRANTES) + ";"\
             + str(codcolciencias) + ";" \
