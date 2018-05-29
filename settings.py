@@ -22,8 +22,11 @@ start_time = time.time()
 Dir = os.getcwd()
 os.chdir(Dir+"/Bin")
 sys.path.append('../Bin/')
+#List of /bin files
 import init
 import datosbasicos
+import prodbibliografica
+#end of /bin files
 os.chdir(Dir)
 condition = 0;
 while condition != 1:
@@ -71,6 +74,7 @@ for q in range(2,total):
     datosbasicos.lineasextract()
     datosbasicos.sectoresextract()
     datosbasicos.integrantesextract()
+    prodbibliografica.articulosextract()
     print("El grupo: " + nombregi + " ha sido  procesado, Estado: " + str(q/(total-1)*100) + "%")
     # from datosbasicos import conteventos
     # COD_PRODUCTO = int("".join(str(x) for x in conteventos))

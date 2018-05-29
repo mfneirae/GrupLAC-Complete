@@ -21,7 +21,7 @@ for a in range(0,len(containers)):
     buscadatoss = containers[a].td
     #print(buscadatoss)
     try:
-        if buscadatoss.text == "Integrantes del grupo":
+        if buscadatoss.text == "Artículos publicados":
             all = a
             #print(all)
             break
@@ -39,40 +39,3 @@ containerb = containers[all]
 container = containerb.findAll("tr")
 cont = container[2]
 info_integrantes = str(cont)
-
-cont = container[2]
-info_integrantes = str(cont)
-#RH
-index1 = info_integrantes.find('cod_rh=') + 7
-index2 = info_integrantes.find('"',index1,len(info_integrantes))
-cod_rh = clc(info_integrantes[index1:index2])
-#csvs
-index1 = info_integrantes.find('href="') + 6
-index2 = info_integrantes.find('"',index1,len(info_integrantes))
-linkcv = clc(info_integrantes[index1:index2])
-#Nombre
-index = index2
-index1 = info_integrantes.find('blank">',index,len(info_integrantes)) + 7
-index2 = info_integrantes.find('</a>',index1,len(info_integrantes))
-nombre = clc(info_integrantes[index1:index2])
-#Vinculación
-index = index2
-index1 = info_integrantes.find('">',index,len(info_integrantes)) + 2
-index2 = info_integrantes.find('</td>',index1,len(info_integrantes))
-tipvincula = clc(info_integrantes[index1:index2])
-#HorasDedicación
-index = index2
-index1 = info_integrantes.find('">',index,len(info_integrantes)) + 2
-index2 = info_integrantes.find('</td>',index1,len(info_integrantes))
-horasdedic = clc(info_integrantes[index1:index2])
-#Duración Vincula
-index = index2
-index1 = info_integrantes.find('">',index,len(info_integrantes)) + 2
-index2 = info_integrantes.find('</td>',index1,len(info_integrantes))
-index = index2
-duravincula = clc(info_integrantes[index1:index2])
-index2 = info_integrantes.find('-',index1,len(info_integrantes))
-duravinculaini = clc(info_integrantes[index1:index2])
-index1 = index2 + 2
-index2 = index
-duravinculafin = clc(info_integrantes[index1:index2])
