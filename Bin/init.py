@@ -26,11 +26,14 @@ def inicio():
     global GP_DATOS_LINEAS_CSV
     global GP_DATOS_SECTORES
     global GP_DATOS_SECTORES_CSV
+    global GP_DATOS_INTEGRANTES
+    global GP_DATOS_INTEGRANTES_CSV
 
     GP_DATOS_BASE = []
     GP_DATOS_INSTITUCIONES = []
     GP_DATOS_LINEAS = []
     GP_DATOS_SECTORES = []
+    GP_DATOS_INTEGRANTES = []
 
     GP_DATOS_BASE_CSV = ["CODGP;\
 Año Formación;\
@@ -54,10 +57,22 @@ Visión\n"]
 CODGP;\
 Nombre Institución\n"]
 
-    GP_DATOS_LINEAS_CSV = ["CODGP_INSTI;\
+    GP_DATOS_LINEAS_CSV = ["CODGP_LINEA;\
 CODGP;\
 Línea de Investigación\n"]
 
-    GP_DATOS_SECTORES_CSV = ["CODGP_INSTI;\
+    GP_DATOS_SECTORES_CSV = ["CODGP_SECTOR;\
 CODGP;\
 Sector\n"]
+
+GP_DATOS_INTEGRANTES_CSV = ["CODGP_INTEGRANTE;\
+CODGP;\
+COD_RG;\
+CVLAC;\
+NOMBRE COMPLETO;\
+Tipo Vinculación;\
+Horas de Dedicación;\
+Duración Vinculación;\
+Inicio Vinculación;\
+Fin Vinculación;\
+Fin Vinculación\n"]

@@ -70,6 +70,7 @@ for q in range(2,total):
     datosbasicos.institucionesextract()
     datosbasicos.lineasextract()
     datosbasicos.sectoresextract()
+    datosbasicos.integrantesextract()
     print("El grupo: " + nombregi + " ha sido  procesado, Estado: " + str(q/(total-1)*100) + "%")
     # from datosbasicos import conteventos
     # COD_PRODUCTO = int("".join(str(x) for x in conteventos))

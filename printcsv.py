@@ -49,3 +49,11 @@ for item in init.GP_DATOS_SECTORES_CSV:
     except UnicodeEncodeError:
         pass
 f.close()
+
+f = open ("./Resultados/GP_DATOS_INTEGRANTES.csv", "w")
+for item in init.GP_DATOS_INTEGRANTES_CSV:
+    try:
+        f.write(item)
+    except UnicodeEncodeError:
+        pass
+f.close()

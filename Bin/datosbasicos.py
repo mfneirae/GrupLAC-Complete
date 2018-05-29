@@ -17,6 +17,7 @@
 # #############################################################################
 #
 #
+
 def clc(str):
     import re
     str = re.sub(r'[^A-Za-z0-9:=_?ÁÀÉÈÍÌÓÒÚÙéèáàéñèíìúùóò .\-/+]',r'',re.sub(' +',' ',str.replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
@@ -276,7 +277,7 @@ def institucionesextract():
             init.GP_DATOS_INSTITUCIONES.append( \
             "REPLACE INTO `uapa_db`.`GP_DATOS_INSTITUCIONES`(`CODGP_INSTI`,`CODGP`,`INSTITUCIÓN`) VALUES"
             + "('" + str(codcolciencias) + str(COD_INSTI) + "',"\
-            + "'" + str(codcolciencias) + "',"\
+            + str(codcolciencias) + ","\
             + "'" + institucion + "'" \
             + ");\n")
             COD_INSTI = COD_INSTI + 1
@@ -338,7 +339,7 @@ def lineasextract():
             init.GP_DATOS_LINEAS.append( \
             "REPLACE INTO `uapa_db`.`GP_DATOS_LINEAS`(`CODGP_LINEA`,`CODGP`,`Nombre Línea Inv`) VALUES"
             + "('" + str(codcolciencias) + str(COD_LINEA) + "',"\
-            + "'" + str(codcolciencias) + "',"\
+            + str(codcolciencias) + ","\
             + "'" + institucion + "'" \
             + ");\n")
             COD_LINEA = COD_LINEA + 1
@@ -400,7 +401,7 @@ def sectoresextract():
             init.GP_DATOS_SECTORES.append( \
             "REPLACE INTO `uapa_db`.`GP_DATOS_SECTORES`(`CODGP_SECTOR`,`CODGP`,`Sector de Aplicación`) VALUES"
             + "('" + str(codcolciencias) + str(COD_SECTOR) + "',"\
-            + "'" + str(codcolciencias) + "',"\
+            + str(codcolciencias) + ","\
             + "'" + institucion + "'" \
             + ");\n")
             COD_SECTOR = COD_SECTOR + 1
@@ -451,20 +452,65 @@ def integrantesextract():
         for x in range(2, len(container)):
             cont = container[x]
             info_integrantes = str(cont)
+            #RH
+            index1 = info_integrantes.find('cod_rh=') + 7
+            index2 = info_integrantes.find('"',index1,len(info_integrantes))
+            cod_rh = clc(info_integrantes[index1:index2])
+            #csvs
             index1 = info_integrantes.find('href="') + 6
             index2 = info_integrantes.find('"',index1,len(info_integrantes))
             linkcv = clc(info_integrantes[index1:index2])
-            #csv
+            #Nombre
+            index = index2
+            index1 = info_integrantes.find('blank">',index,len(info_integrantes)) + 7
+            index2 = info_integrantes.find('</a>',index1,len(info_integrantes))
+            nombre = clc(info_integrantes[index1:index2])
+            #Vinculación
+            index = index2
+            index1 = info_integrantes.find('">',index,len(info_integrantes)) + 2
+            index2 = info_integrantes.find('</td>',index1,len(info_integrantes))
+            tipvincula = clc(info_integrantes[index1:index2])
+            #HorasDedicación
+            index = index2
+            index1 = info_integrantes.find('">',index,len(info_integrantes)) + 2
+            index2 = info_integrantes.find('</td>',index1,len(info_integrantes))
+            horasdedic = clc(info_integrantes[index1:index2])
+            #Duración Vincula
+            index = index2
+            index1 = info_integrantes.find('">',index,len(info_integrantes)) + 2
+            index2 = info_integrantes.find('</td>',index1,len(info_integrantes))
+            index = index2
+            duravincula = clc(info_integrantes[index1:index2])
+            index2 = info_integrantes.find('-',index1,len(info_integrantes))
+            duravinculaini = clc(info_integrantes[index1:index2])
+            index1 = index2 + 2
+            index2 = index
+            duravinculafin = clc(info_integrantes[index1:index2])
+
             init.GP_DATOS_INTEGRANTES_CSV.append(str(codcolciencias) + str(COD_INTEGRANTES) + ";"\
             + str(codcolciencias) + ";" \
-            + institucion + "\n")
+            + str(cod_rh) + ";" \
+            + str(linkcv) + ";" \
+            + nombre + ";" \
+            + tipvincula + ";" \
+            + str(horasdedic) + ";" \
+            + str(duravincula) + ";" \
+            + str(duravinculaini) + ";" \
+            + str(duravinculafin) + "\n")
             #Insert
             init.GP_DATOS_INTEGRANTES.append( \
-            "REPLACE INTO `uapa_db`.`GP_DATOS_INTEGRANTES`(`CODGP_SECTOR`,`CODGP`,`Sector de Aplicación`) VALUES"
+            "REPLACE INTO `uapa_db`.`GP_DATOS_INTEGRANTES`('CODGP_INTEGRANTE','CODGP','COD_RG','CVLAC','NOMBRE COMPLETO','Tipo Vinculación','Horas de Dedicación','Duración Vinculación','Inicio Vinculación','Fin Vinculación','Fin Vinculación') VALUES"
             + "('" + str(codcolciencias) + str(COD_INTEGRANTES) + "',"\
-            + "'" + str(codcolciencias) + "',"\
-            + "'" + institucion + "'" \
+            + str(codcolciencias) + ","\
+            + str(cod_rh) + ","\
+            + "'" + linkcv + "'," \
+            + "'" + nombre + "'," \
+            + "'" + tipvincula + "'," \
+            + str(horasdedic) + ","\
+            + "'" + duravincula + "'," \
+            + "'" + duravinculaini + "'," \
+            + "'" + duravinculafin + "'" \
             + ");\n")
             COD_INTEGRANTES = COD_INTEGRANTES + 1
     else:
-        logging.info(' El Grupo de investigación no tiene integrantes Asociadas')
+        logging.info(' El Grupo de investigación no tiene integrantes Asociados')

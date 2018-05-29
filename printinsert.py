@@ -50,3 +50,11 @@ for item in init.GP_DATOS_SECTORES:
     except UnicodeEncodeError:
         pass
 f.close()
+
+f = open ("./Resultados/GP_DATOS_INTEGRANTES.sql", "w")
+for item in init.GP_DATOS_INTEGRANTES:
+    try:
+        f.write(item)
+    except UnicodeEncodeError:
+        pass
+f.close()
