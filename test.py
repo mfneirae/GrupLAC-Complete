@@ -37,8 +37,9 @@ def clc(str):
 
 containerb = containers[all]
 container = containerb.findAll("tr")
+
 cont = container[2]
-info_integrantes = str(cont)
+info_articulo = str(cont)
 index1 = info_articulo.find("- ") + 2
 index2 = info_articulo.find(':')
 tipo = clc(info_articulo[index1:index2])
@@ -68,3 +69,9 @@ index2 = info_articulo.find(', DOI:', index1, len(info_articulo))
 pags = clc(info_articulo[index1:index2])
 index = pags.find("-")
 pagsini = clc(pags[0:index])
+index1 = index2 + 7
+index2 = info_articulo.find('Autores:', index1, len(info_articulo))
+DOI = clc(info_articulo[index1:index2])
+index1 = index2 + 9
+index2 = len(info_articulo)
+autores = clc(info_articulo[index1:index2])

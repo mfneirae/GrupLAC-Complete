@@ -114,3 +114,22 @@ if all != 0:
         index1 = index2 + 9
         index2 = len(info_articulo)
         autores = clc(info_articulo[index1:index2])
+        "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo Vincula Institu`,`Autores`) VALUES"
+        + "('" + str(codcolciencias) + "',"\
+        + anoinidatos + "," \
+        + mesinidatos + "," \
+        + "'" + Lugar + "'," \
+        + "'" + Lider + "'," \
+        + "'" + InfoCer + "'," \
+        + "'" + Paginaweb + "'," \
+        + "'" + Email + "'," \
+        + "'" + Clasisfica + "'," \
+        + "'" + Area + "'," \
+        + "'" + ProgramaNacional + "'," \
+        + "'" + ProgramaNacional2 + "'," \
+        + "'" + PlanTrabajo + "'," \
+        + "'" + EstadoArte + "'," \
+        + "'" + Objetivos + "'," \
+        + "'" + Retos + "'," \
+        + "'" + Vision + "'" \
+        + ");\n")
