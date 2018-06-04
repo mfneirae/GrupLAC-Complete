@@ -150,6 +150,38 @@ def articulosextract():
             + "" +";" \
             + autores +";" \
             + "\n")
+            init.GP_PROD_BIB.append( \
+            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD`,`Revista`,`Autor Original`,`Nombre Libro`,`ISBN/ISSN`,`Medio de Divulgación`,`URL`,`Fasciculos`,`Idioma Original`,`Idioma Traduccion`,`Edición`,`Serie`,`Página Inicial`,`Página Final`) VALUES"
+            + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
+            + "'" + revista + "'," \
+            + "null" + "," \
+            + "null" + "," \
+            + "'" + ISSN + "'," \
+            + "null" + "," \
+            + "null" + "," \
+            + "'" + fasc + "'," \
+            + "null" + "," \
+            + "null" + "," \
+            + "null" + "," \
+            + "null" + "," \
+            + pagsini + "," \
+            + pagsfin + "," \
+            + ");\n")
+            init.GP_PROD_BIB_CSV.append(str(codcolciencias) + str(COD_PRODUCTO) +";" \
+            + revista +";" \
+            + "" +";" \
+            + "" +";" \
+            + ISSN +";" \
+            + "" +";" \
+            + "" +";" \
+            + fasc +";" \
+            + "" +";" \
+            + "" +";" \
+            + "" +";" \
+            + "" +";" \
+            + pagsini +";" \
+            + pagsfin +";" \
+            + "\n")
             COD_PRODUCTO += 1
     else:
         logging.info(' El Grupo: ' + nombregi + 'no tiene Artículos Asociados')

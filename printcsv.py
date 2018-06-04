@@ -65,3 +65,43 @@ for item in init.REL_GRUPO_PRODUCTO_CSV:
     except UnicodeEncodeError:
         pass
 f.close()
+
+f = open ("./Resultados/GP_PROD_BIB.csv", "w")
+for item in init.GP_PROD_BIB_CSV:
+    try:
+        f.write(item)
+    except UnicodeEncodeError:
+        pass
+f.close()
+
+f = open ("./Resultados/GP_PROD_TEC.csv", "w")
+for item in init.GP_PROD_TEC_CSV:
+    try:
+        f.write(item)
+    except UnicodeEncodeError:
+        pass
+f.close()
+
+f = open ("./Resultados/GP_APROPIACION.csv", "w")
+for item in init.GP_APROPIACION_CSV:
+    try:
+        f.write(item)
+    except UnicodeEncodeError:
+        pass
+f.close()
+
+f = open ("./Resultados/GP_OBRAS.csv", "w")
+for item in init.GP_OBRAS_CSV:
+    try:
+        f.write(item)
+    except UnicodeEncodeError:
+        pass
+f.close()
+
+f = open ("./Resultados/GP_ACTIVIDADES_FORM.csv", "w")
+for item in init.GP_ACTIVIDADES_FORM_CSV:
+    try:
+        f.write(item)
+    except UnicodeEncodeError:
+        pass
+f.close()

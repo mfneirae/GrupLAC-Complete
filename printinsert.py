@@ -78,3 +78,53 @@ for item in init.REL_GRUPO_PRODUCTO:
     except UnicodeEncodeError:
         pass
 f.close()
+
+f = open ("./Resultados/GP_PROD_BIB.sql", "w")
+init.GP_PROD_BIB = [w.replace("''", 'null') for w in init.GP_PROD_BIB]
+init.GP_PROD_BIB = [w.replace(",,", ',null,') for w in init.GP_PROD_BIB]
+for item in init.GP_PROD_BIB:
+    try:
+        f.write(item)
+    except UnicodeEncodeError:
+        pass
+f.close()
+
+f = open ("./Resultados/GP_PROD_TEC.sql", "w")
+init.GP_PROD_TEC = [w.replace("''", 'null') for w in init.GP_PROD_TEC]
+init.GP_PROD_TEC = [w.replace(",,", ',null,') for w in init.GP_PROD_TEC]
+for item in init.GP_PROD_TEC:
+    try:
+        f.write(item)
+    except UnicodeEncodeError:
+        pass
+f.close()
+
+f = open ("./Resultados/GP_APROPIACION.sql", "w")
+init.GP_APROPIACION = [w.replace("''", 'null') for w in init.GP_APROPIACION]
+init.GP_APROPIACION = [w.replace(",,", ',null,') for w in init.GP_APROPIACION]
+for item in init.GP_APROPIACION:
+    try:
+        f.write(item)
+    except UnicodeEncodeError:
+        pass
+f.close()
+
+f = open ("./Resultados/GP_OBRAS.sql", "w")
+init.GP_OBRAS = [w.replace("''", 'null') for w in init.GP_OBRAS]
+init.GP_OBRAS = [w.replace(",,", ',null,') for w in init.GP_OBRAS]
+for item in init.GP_OBRAS:
+    try:
+        f.write(item)
+    except UnicodeEncodeError:
+        pass
+f.close()
+
+f = open ("./Resultados/GP_ACTIVIDADES_FORM.sql", "w")
+init.GP_ACTIVIDADES_FORM = [w.replace("''", 'null') for w in init.GP_ACTIVIDADES_FORM]
+init.GP_ACTIVIDADES_FORM = [w.replace(",,", ',null,') for w in init.GP_ACTIVIDADES_FORM]
+for item in init.GP_ACTIVIDADES_FORM:
+    try:
+        f.write(item)
+    except UnicodeEncodeError:
+        pass
+f.close()

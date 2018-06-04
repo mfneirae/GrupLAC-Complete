@@ -30,6 +30,16 @@ def inicio():
     global GP_DATOS_INTEGRANTES_CSV
     global REL_GRUPO_PRODUCTO
     global REL_GRUPO_PRODUCTO_CSV
+    global GP_PROD_BIB
+    global GP_PROD_BIB_CSV
+    global GP_PROD_TEC
+    global GP_PROD_TEC_CSV
+    global GP_APROPIACION
+    global GP_APROPIACION_CSV
+    global GP_OBRAS
+    global GP_OBRAS_CSV
+    global GP_ACTIVIDADES_FORM
+    global GP_ACTIVIDADES_FORM_CSV
 
     GP_DATOS_BASE = []
     GP_DATOS_INSTITUCIONES = []
@@ -37,6 +47,75 @@ def inicio():
     GP_DATOS_SECTORES = []
     GP_DATOS_INTEGRANTES = []
     REL_GRUPO_PRODUCTO = []
+    GP_PROD_BIB = []
+    GP_PROD_TEC = []
+    GP_APROPIACION = []
+    GP_OBRAS = []
+    GP_ACTIVIDADES_FORM = []
+
+    GP_PROD_BIB_CSV=["CODGP_PROD; \
+Revista; \
+Autor Original; \
+Nombre Libro; \
+ISBN/ISSN; \
+Medio de Divulgación; \
+URL; \
+Fasciculos; \
+Idioma Original; \
+Idioma Traduccion; \
+Edición; \
+Serie; \
+Página Inicial; \
+Página Final    ; \
+\n"]
+
+    GP_PROD_TEC_CSV=["CODGP_PROD; \
+Tema; \
+Nombre Comerial; \
+Nombre Proyecto; \
+Tipo de Ciclo; \
+NIT; \
+Fecha de Registro; \
+Tiene Productos; \
+Disponibilidad; \
+Objeto; \
+Fecha Publicación; \
+Número de Contrato; \
+Acto Administrativo; \
+\n"]
+
+    GP_APROPIACION_CSV=["CODGP_PROD; \
+Tipos de Participación; \
+Fecha Inicio; \
+Fecha Fin; \
+Proyecto de Inv; \
+Medio de publicación; \
+Emisora; \
+Número de Participantes; \
+\n"]
+
+    GP_OBRAS_CSV=["CODGP_PROD; \
+Fecha Creación; \
+Disiplina de origen; \
+Institución Licencia; \
+Fecha Licencia; \
+Distinciones; \
+Selección Distinción; \
+Productos Asociados; \
+Número Derechos Autor/NIT; \
+\n"]
+
+    GP_ACTIVIDADES_FORM_CSV=["CODGP_PROD; \
+Nombre de Ferias; \
+Fecha Inicio Curso; \
+Tipo Orientación; \
+Nombre Estudiante; \
+Programa Académico; \
+Valoración; \
+Fecha fin Curso; \
+Finalidad; \
+Duración; \
+\n"]
 
     REL_GRUPO_PRODUCTO_CSV =["CODGP_PROD; \
 CODGP; \
