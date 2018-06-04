@@ -57,3 +57,11 @@ for item in init.GP_DATOS_INTEGRANTES_CSV:
     except UnicodeEncodeError:
         pass
 f.close()
+
+f = open ("./Resultados/REL_GRUPO_PRODUCTO.csv", "w")
+for item in init.REL_GRUPO_PRODUCTO_CSV:
+    try:
+        f.write(item)
+    except UnicodeEncodeError:
+        pass
+f.close()

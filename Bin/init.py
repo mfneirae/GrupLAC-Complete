@@ -28,12 +28,32 @@ def inicio():
     global GP_DATOS_SECTORES_CSV
     global GP_DATOS_INTEGRANTES
     global GP_DATOS_INTEGRANTES_CSV
+    global REL_GRUPO_PRODUCTO
+    global REL_GRUPO_PRODUCTO_CSV
 
     GP_DATOS_BASE = []
     GP_DATOS_INSTITUCIONES = []
     GP_DATOS_LINEAS = []
     GP_DATOS_SECTORES = []
     GP_DATOS_INTEGRANTES = []
+    REL_GRUPO_PRODUCTO = []
+
+    REL_GRUPO_PRODUCTO_CSV =["CODGP_PROD; \
+CODGP; \
+GP_TIPO_PROD; \
+Nombre Producto; \
+Lugar; \
+Año; \
+Idioma; \
+Páginas; \
+Volumen; \
+Editorial; \
+Ambito; \
+DOI; \
+Descripción; \
+Instituciones; \
+Tipo Vincula Institu; \
+Autores\n"]
 
     GP_DATOS_BASE_CSV = ["CODGP;\
 Año Formación;\

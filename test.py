@@ -32,18 +32,31 @@ for a in range(0,len(containers)):
 print(all)
 def clc(str):
     import re
-    str = re.sub(r'[^A-Za-z0-9:=_?ÁÀÉÈÍÌÓÒÚÙéèáàéñèíìúùóò .\-/+]',r'',re.sub(' +',' ',str.replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
+    str = re.sub(r'[^A-Za-z0-9:=_?ÁÀÉÈÍÌÓÒÚÙéèáàé,ñèíìúùóò .\-/+]',r'',re.sub(' +',' ',str.replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
     return str;
 
 containerb = containers[all]
 container = containerb.findAll("tr")
-
-cont = container[2]
-info_articulo = str(cont)
+cont = container[426]
+info_articulo = cont.text
 index1 = info_articulo.find("- ") + 2
 index2 = info_articulo.find(':')
 tipo = clc(info_articulo[index1:index2])
-index1 = index2
+#Tipo Artículo
+if tipo.strip() == "Publicado en revista especializada":
+    tipo = "8"
+elif tipo.strip() == "Corto Resumen":
+    tipo = "9"
+elif tipo.strip() == "Revisión Survey":
+    tipo = "10"
+elif tipo.strip() == "Caso clínico":
+    tipo = "11"
+else:
+    logging.critical('Añadir: ' + tipo)
+    print ("ALERTA: Revisar el archivo Artículos.log")
+
+
+index1 = index2 + 2
 index2 = info_articulo.find('\n', index1, len(info_articulo))
 nombreart = clc(info_articulo[index1:index2])
 index1 = index2 + 2
@@ -62,16 +75,17 @@ index1 = index2 + 5
 index2 = info_articulo.find('fasc:', index1, len(info_articulo))
 vol = clc(info_articulo[index1:index2])
 index1 = index2 + 6
-index2 = info_articulo.find('págs', index1, len(info_articulo))
+index2 = info_articulo.find('págs:', index1, len(info_articulo))
 fasc = clc(info_articulo[index1:index2])
 index1 = index2 + 6
 index2 = info_articulo.find(', DOI:', index1, len(info_articulo))
 pags = clc(info_articulo[index1:index2])
 index = pags.find("-")
 pagsini = clc(pags[0:index])
+pagsfin = clc(pags[index + 2:len(pags)])
 index1 = index2 + 7
 index2 = info_articulo.find('Autores:', index1, len(info_articulo))
 DOI = clc(info_articulo[index1:index2])
 index1 = index2 + 9
-index2 = len(info_articulo)
+index2 = info_articulo.find('/br', index1, len(info_articulo))
 autores = clc(info_articulo[index1:index2])

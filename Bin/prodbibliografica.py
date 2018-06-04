@@ -20,13 +20,13 @@
 
 def clc(str):
     import re
-    str = re.sub(r'[^A-Za-z0-9:=_?ÁÀÉÈÍÌÓÒÚÙéèáà,éñèíìúùóò .\-/+]',r'',re.sub(' +',' ',str.replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
+    str = re.sub(r'[^A-Za-z0-9:=_?ÁÀÉÈÍÌÓÒÚÙéèáà,éñèíìúñùóò .\-/+]',r'',re.sub(' +',' ',str.replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
     return str;
 
 def articulosextract():
-    from settings import my_url, coduapa, codhermes, codcolciencias, nombregi, dnilider, my_url
+    from settings import my_url, coduapa, codhermes, codcolciencias, nombregi, dnilider, my_url, COD_PRODUCTO
     import bs4, logging, sys, re, init
-    global contarticulos
+    global contarticulo
     LOG_FILENAME = './Logs/Registros.log'
     logging.basicConfig(filename=LOG_FILENAME,level=logging.DEBUG,
         format = "%(asctime)s:%(levelname)s:%(message)s")
@@ -55,81 +55,102 @@ def articulosextract():
         #print(buscaarticulos)
         try:
             if buscaarticulos.text == "Artículos publicados":
-                all = a + 1
+                all = a
                 #print(all)
                 break
         except AttributeError:
             pass
-if all != 0:
-    containerb = containers[all]
-    container = containerb.findAll("tr")
-    for x in range(1, len(container)):
-        cont = container[x]
-        info_articulos = cont.text
-        index1 = info_articulo.find("- ") + 2
-        index2 = info_articulo.find(':')
-        tipo = clc(info_articulo[index1:index2])
-        #Tipo Artículo
-        if tipo.strip() == "Publicado en revista especializada":
-            tipo = "8"
-        elif tipo.strip() == "Corto (Resumen)":
-            tipo = "9"
-        elif tipo.strip() == "Revisión (Survey)":
-            tipo = "10"
-        elif tipo.strip() == "Caso clínico":
-            tipo = "11"
-        else:
-            logging.critical('Añadir: ' + tipo)
-            print ("ALERTA: Revisar el archivo Artículos.log")
-        index1 = index2 + 2
-        index2 = info_articulo.find('\n', index1, len(info_articulo))
-        nombreart = clc(info_articulo[index1:index2])
-        index1 = index2 + 2
-        index2 = info_articulo.find(',', index1, len(info_articulo))
-        lugar = clc(info_articulo[index1:index2])
-        index1 = index2 + 2
-        index2 = info_articulo.find('ISSN:', index1, len(info_articulo))
-        revista = clc(info_articulo[index1:index2])
-        index1 = index2 + 6
-        index2 = info_articulo.find(',', index1, len(info_articulo))
-        ISSN = clc(info_articulo[index1:index2])
-        index1 = index2 + 2
-        index2 = info_articulo.find('vol:', index1, len(info_articulo))
-        anopub = clc(info_articulo[index1:index2])
-        index1 = index2 + 5
-        index2 = info_articulo.find('fasc:', index1, len(info_articulo))
-        vol = clc(info_articulo[index1:index2])
-        index1 = index2 + 6
-        index2 = info_articulo.find('págs:', index1, len(info_articulo))
-        fasc = clc(info_articulo[index1:index2])
-        index1 = index2 + 6
-        index2 = info_articulo.find(', DOI:', index1, len(info_articulo))
-        pags = clc(info_articulo[index1:index2])
-        index = pags.find("-")
-        pagsini = clc(pags[0:index])
-        pagsfin = clc(pags[index + 2]:len(pags))
-        index1 = index2 + 7
-        index2 = info_articulo.find('Autores:', index1, len(info_articulo))
-        DOI = clc(info_articulo[index1:index2])
-        index1 = index2 + 9
-        index2 = len(info_articulo)
-        autores = clc(info_articulo[index1:index2])
-        "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo Vincula Institu`,`Autores`) VALUES"
-        + "('" + str(codcolciencias) + "',"\
-        + anoinidatos + "," \
-        + mesinidatos + "," \
-        + "'" + Lugar + "'," \
-        + "'" + Lider + "'," \
-        + "'" + InfoCer + "'," \
-        + "'" + Paginaweb + "'," \
-        + "'" + Email + "'," \
-        + "'" + Clasisfica + "'," \
-        + "'" + Area + "'," \
-        + "'" + ProgramaNacional + "'," \
-        + "'" + ProgramaNacional2 + "'," \
-        + "'" + PlanTrabajo + "'," \
-        + "'" + EstadoArte + "'," \
-        + "'" + Objetivos + "'," \
-        + "'" + Retos + "'," \
-        + "'" + Vision + "'" \
-        + ");\n")
+    if all != 0:
+        containerb = containers[all]
+        container = containerb.findAll("tr")
+        for x in range(1, len(container)):
+            cont = container[x]
+            info_articulo = cont.text
+            index1 = info_articulo.find("- ") + 2
+            index2 = info_articulo.find(':')
+            tipo = clc(info_articulo[index1:index2])
+            #Tipo Artículo
+            if tipo.strip() == "Publicado en revista especializada":
+                tipo = "8"
+            elif tipo.strip() == "Corto Resumen":
+                tipo = "9"
+            elif tipo.strip() == "Revisión Survey":
+                tipo = "10"
+            elif tipo.strip() == "Caso clínico":
+                tipo = "11"
+            else:
+                logging.critical('Añadir: ' + tipo)
+                print ("ALERTA: Revisar el archivo Artículos.log")
+            index1 = index2 + 2
+            index2 = info_articulo.find('\n', index1, len(info_articulo))
+            nombreart = clc(info_articulo[index1:index2])
+            index1 = index2 + 2
+            index2 = info_articulo.find(',', index1, len(info_articulo))
+            lugar = clc(info_articulo[index1:index2])
+            index1 = index2 + 2
+            index2 = info_articulo.find('ISSN:', index1, len(info_articulo))
+            revista = clc(info_articulo[index1:index2])
+            index1 = index2 + 6
+            index2 = info_articulo.find(',', index1, len(info_articulo))
+            ISSN = clc(info_articulo[index1:index2])
+            index1 = index2 + 2
+            index2 = info_articulo.find('vol:', index1, len(info_articulo))
+            anopub = clc(info_articulo[index1:index2])
+            index1 = index2 + 4
+            index2 = info_articulo.find('fasc:', index1, len(info_articulo))
+            vol = clc(info_articulo[index1:index2])
+            index1 = index2 + 6
+            index2 = info_articulo.find('págs:', index1, len(info_articulo))
+            fasc = clc(info_articulo[index1:index2])
+            index1 = index2 + 6
+            index2 = info_articulo.find(', DOI:', index1, len(info_articulo))
+            pags = clc(info_articulo[index1:index2])
+            index = pags.find("-")
+            pagsini = clc(pags[0:index])
+            pagsfin = clc(pags[index + 2:len(pags)])
+            index1 = index2 + 6
+            index2 = info_articulo.find('Autores:', index1, len(info_articulo))
+            DOI = clc(info_articulo[index1:index2])
+            index1 = index2 + 9
+            index2 = info_articulo.find('/br', index1, len(info_articulo))
+            autores = clc(info_articulo[index1:index2])
+            init.REL_GRUPO_PRODUCTO.append( \
+            "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo Vincula Institu`,`Autores`) VALUES"
+            + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
+            + str(codcolciencias) + "," \
+            + tipo + "," \
+            + "'" + nombreart + "'," \
+            + "'" + lugar + "'," \
+            + anopub + "," \
+            + "null" + "," \
+            + "'" + pags + "'," \
+            + "'" + vol + "'," \
+            + "null" + "," \
+            + "null" + "," \
+            + "'" + DOI + "'," \
+            + "null" + "," \
+            + "null" + "," \
+            + "null" + "," \
+            + "'" + autores + "'" \
+            + ");\n")
+            init.REL_GRUPO_PRODUCTO_CSV.append(str(codcolciencias) + str(COD_PRODUCTO) +";" \
+            + str(codcolciencias) +";" \
+            + tipo +";" \
+            + nombreart +";" \
+            + lugar +";" \
+            + anopub +";" \
+            + "" +";" \
+            + pags +";" \
+            + vol +";" \
+            + "" +";" \
+            + "" +";" \
+            + DOI +";" \
+            + "" +";" \
+            + "" +";" \
+            + "" +";" \
+            + autores +";" \
+            + "\n")
+            COD_PRODUCTO += 1
+    else:
+        logging.info(' El Grupo: ' + nombregi + 'no tiene Artículos Asociados')
+    contarticulo = [COD_PRODUCTO]
