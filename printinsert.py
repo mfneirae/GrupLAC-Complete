@@ -128,3 +128,13 @@ for item in init.GP_ACTIVIDADES_FORM:
     except UnicodeEncodeError:
         pass
 f.close()
+
+f = open ("./Resultados/v_colciencias_tipo_producto.sql", "w")
+init.inv_colciencias_tipo_producto = [w.replace("''", 'null') for w in init.inv_colciencias_tipo_producto]
+init.inv_colciencias_tipo_producto = [w.replace(",,", ',null,') for w in init.inv_colciencias_tipo_producto]
+for item in init.inv_colciencias_tipo_producto:
+    try:
+        f.write(item)
+    except UnicodeEncodeError:
+        pass
+f.close()

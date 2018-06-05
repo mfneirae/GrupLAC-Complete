@@ -105,3 +105,11 @@ for item in init.GP_ACTIVIDADES_FORM_CSV:
     except UnicodeEncodeError:
         pass
 f.close()
+
+f = open ("./Resultados/v_colciencias_tipo_producto.csv", "w")
+for item in init.v_colciencias_tipo_producto:
+    try:
+        f.write(item)
+    except UnicodeEncodeError:
+        pass
+f.close()
