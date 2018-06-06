@@ -261,32 +261,9 @@ def librosextract():
             index1 = index2 + 5
             index2 = info_libros.find(', Ed.', index1, len(info_libros))
             pags = clc(info_libros[index1:index2])
-
-
-            index1 = index2 + 2
-            index2 = info_libros.find('ISSN:', index1, len(info_libros))
-            revista = clc(info_libros[index1:index2])
-            index1 = index2 + 6
-            index2 = info_libros.find(',', index1, len(info_libros))
-            ISSN = clc(info_libros[index1:index2])
-            index1 = index2 + 2
-            index2 = info_libros.find('vol:', index1, len(info_libros))
-            anopub = clc(info_libros[index1:index2])
-            index1 = index2 + 4
-            index2 = info_libros.find('fasc:', index1, len(info_libros))
-            vol = clc(info_libros[index1:index2])
-            index1 = index2 + 6
-            index2 = info_libros.find('págs:', index1, len(info_libros))
-            fasc = clc(info_libros[index1:index2])
-            index1 = index2 + 6
-            index2 = info_libros.find(', DOI:', index1, len(info_libros))
-            pags = clc(info_libros[index1:index2])
-            index = pags.find("-")
-            pagsini = clc(pags[0:index])
-            pagsfin = clc(pags[index + 2:len(pags)])
-            index1 = index2 + 6
+            index1 = index2 + 5
             index2 = info_libros.find('Autores:', index1, len(info_libros))
-            DOI = clc(info_libros[index1:index2])
+            editorial = clc(info_libros[index1:index2])
             index1 = index2 + 9
             index2 = info_libros.find('/br', index1, len(info_libros))
             autores = clc(info_libros[index1:index2])
@@ -299,11 +276,11 @@ def librosextract():
             + "'" + lugar + "'," \
             + anopub + "," \
             + "null" + "," \
-            + "'" + pags + "'," \
+            + "null" + "," \
             + "'" + vol + "'," \
+            + "'" + editorial + "'," \
             + "null" + "," \
             + "null" + "," \
-            + "'" + DOI + "'," \
             + "null" + "," \
             + "null" + "," \
             + "null" + "," \
@@ -316,11 +293,11 @@ def librosextract():
             + lugar +";" \
             + anopub +";" \
             + "" +";" \
-            + pags +";" \
+            + "" +";" \
             + vol +";" \
+            + editorial +";" \
             + "" +";" \
             + "" +";" \
-            + DOI +";" \
             + "" +";" \
             + "" +";" \
             + "" +";" \
@@ -329,34 +306,34 @@ def librosextract():
             init.GP_PROD_BIB.append( \
             "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD`,`Revista`,`Autor Original`,`Nombre Libro`,`ISBN/ISSN`,`Medio de Divulgación`,`URL`,`Fasciculos`,`Idioma Original`,`Idioma Traduccion`,`Edición`,`Serie`,`Página Inicial`,`Página Final`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
-            + "'" + revista + "'," \
-            + "null" + "," \
-            + "null" + "," \
-            + "'" + ISSN + "'," \
-            + "null" + "," \
-            + "null" + "," \
-            + "'" + fasc + "'," \
             + "null" + "," \
             + "null" + "," \
             + "null" + "," \
             + "null" + "," \
-            + pagsini + "," \
-            + pagsfin \
+            + "null" + "," \
+            + "null" + "," \
+            + "null" + "," \
+            + "null" + "," \
+            + "null" + "," \
+            + "null" + "," \
+            + "null" + "," \
+            + "null" + "," \
+            + "null" \
             + ");\n")
             init.GP_PROD_BIB_CSV.append(str(codcolciencias) + str(COD_PRODUCTO) +";" \
-            + revista +";" \
+            + "" +";" \
             + "" +";" \
             + "" +";" \
             + ISSN +";" \
             + "" +";" \
             + "" +";" \
-            + fasc +";" \
             + "" +";" \
             + "" +";" \
             + "" +";" \
             + "" +";" \
-            + pagsini +";" \
-            + pagsfin +";" \
+            + "" +";" \
+            + "" +";" \
+            + "" +";" \
             + "\n")
             COD_PRODUCTO += 1
     else:

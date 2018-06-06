@@ -70,6 +70,7 @@ elif tipo.strip() == "Libro pedagógico y/o de divulgación":
 else:
     logging.critical('Añadir: ' + tipo)
     print ("ALERTA: Revisar el archivo Libros.log")
+
 index1 = index2 + 2
 index2 = info_libros.find('\n', index1, len(info_libros))
 nombreart = clc(info_libros[index1:index2])
@@ -88,33 +89,9 @@ vol = clc(info_libros[index1:index2])
 index1 = index2 + 5
 index2 = info_libros.find(', Ed.', index1, len(info_libros))
 pags = clc(info_libros[index1:index2])
-
-
-
-index1 = index2 + 2
-index2 = info_libros.find('ISSN:', index1, len(info_libros))
-revista = clc(info_libros[index1:index2])
-index1 = index2 + 6
-index2 = info_libros.find(',', index1, len(info_libros))
-ISSN = clc(info_libros[index1:index2])
-index1 = index2 + 2
-index2 = info_libros.find('vol:', index1, len(info_libros))
-anopub = clc(info_libros[index1:index2])
 index1 = index2 + 5
-index2 = info_libros.find('fasc:', index1, len(info_libros))
-vol = clc(info_libros[index1:index2])
-index1 = index2 + 6
-index2 = info_libros.find('págs:', index1, len(info_libros))
-fasc = clc(info_libros[index1:index2])
-index1 = index2 + 6
-index2 = info_libros.find(', DOI:', index1, len(info_libros))
-pags = clc(info_libros[index1:index2])
-index = pags.find("-")
-pagsini = clc(pags[0:index])
-pagsfin = clc(pags[index + 2:len(pags)])
-index1 = index2 + 7
 index2 = info_libros.find('Autores:', index1, len(info_libros))
-DOI = clc(info_libros[index1:index2])
+editorial = clc(info_libros[index1:index2])
 index1 = index2 + 9
 index2 = info_libros.find('/br', index1, len(info_libros))
 autores = clc(info_libros[index1:index2])

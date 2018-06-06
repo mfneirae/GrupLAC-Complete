@@ -78,6 +78,9 @@ for q in range(2,total):
     prodbibliografica.articulosextract()
     from prodbibliografica import contarticulo
     COD_PRODUCTO = int("".join(str(x) for x in contarticulo))
+    prodbibliografica.librosextract()
+    from prodbibliografica import contlibros
+    COD_PRODUCTO = int("".join(str(x) for x in contlibros))
     print("El grupo: " + nombregi + " ha sido  procesado, Estado: " + str(q/(total-1)*100) + "%")
     # from datosbasicos import conteventos
     # COD_PRODUCTO = int("".join(str(x) for x in conteventos))
