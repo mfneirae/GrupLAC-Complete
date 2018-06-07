@@ -1,6 +1,6 @@
 import bs4, logging, sys, re
 global contdatoss
-my_url = "http://scienti.colciencias.gov.co:8085/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000001785"
+my_url = "http://scienti.colciencias.gov.co:8085/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000019540"
 from urllib.request import urlopen as uReq
 from bs4 import BeautifulSoup as soup
 uClient = uReq(my_url)
@@ -18,10 +18,10 @@ vinculain = ""
 page_soup = soup(page_html,"html.parser")
 containers = page_soup.findAll("table")
 for a in range(0,len(containers)):
-    buscalibross = containers[a].td
-    #print(buscalibross)
+    buscadoctra = containers[a].td
+    #print(buscadoctra)
     try:
-        if buscalibross.text == " Libros publicados ":
+        if buscadoctra.text == "Documentos de trabajo ":
             all = a
             #print(all)
             break
@@ -38,60 +38,52 @@ def clc(str):
 containerb = containers[all]
 container = containerb.findAll("tr")
 cont = container[2]
-info_libros = cont.text
-index1 = info_libros.find("- ") + 2
-index2 = info_libros.find(':')
-tipo = clc(info_libros[index1:index2])
+info_doctra = cont.text
+index1 = info_doctra.find("- ") + 2
+index2 = info_doctra.find(':')
+tipo = clc(info_doctra[index1:index2])
 #Tipo Artículo
-if tipo.strip() == "Libro resultado de investigación":
-    tipo = "17"
-elif tipo.strip() == "Otro libro publicado":
-    tipo = "18"
-elif tipo.strip() == "Libro pedagógico y/o de divulgación":
-    tipo = "19"
+if tipo.strip() == "Documento de trabajo Working Paper":
+    tipo = "27"
 else:
     logging.critical('Añadir: ' + tipo)
-    print ("ALERTA: Revisar el archivo Libros.log")
+    print ("ALERTA: Revisar el archivo Documentos.log")
 
 containerb = containers[all]
 container = containerb.findAll("tr")
-cont = container[1]
-info_libros = cont.text
-index1 = info_libros.find("- ") + 2
-index2 = info_libros.find(':')
-tipo = clc(info_libros[index1:index2])
+cont = container[2]
+info_doctra = cont.text
+#_________________________________________________________________________
+index1 = info_doctra.find("- ") + 2
+index2 = info_doctra.find(':')
+tipo = clc(info_doctra[index1:index2])
 #Tipo Artículo
-if tipo.strip() == "Libro resultado de investigación":
-    tipo = "17"
-elif tipo.strip() == "Otro libro publicado":
-    tipo = "18"
-elif tipo.strip() == "Libro pedagógico y/o de divulgación":
-    tipo = "19"
+if tipo == "Capítulo de libro":
+    tipo = "21"
+elif tipo == "Otro capítulo de libro publicado":
+    tipo = "20"
 else:
     logging.critical('Añadir: ' + tipo)
-    print ("ALERTA: Revisar el archivo Libros.log")
+    print ("ALERTA: Revisar el archivo Capítulos Libros.log")
 
 index1 = index2 + 2
-index2 = info_libros.find('\n', index1, len(info_libros))
-nombreart = clc(info_libros[index1:index2])
+index2 = info_doctra.find('\n', index1, len(info_doctra))
+nombreart = clc(info_doctra[index1:index2])
 index1 = index2 + 2
-index2 = info_libros.find(',', index1, len(info_libros))
-lugar = clc(info_libros[index1:index2])
-index1 = index2 + 1
-index2 = info_libros.find(', ISBN', index1, len(info_libros))
-anopub = clc(info_libros[index1:index2])
-index1 = index2 + 8
-index2 = info_libros.find('vol:', index1, len(info_libros))
-ISSN = clc(info_libros[index1:index2])
-index1 = index2 + 4
-index2 = info_libros.find('págs:', index1, len(info_libros))
-vol = clc(info_libros[index1:index2])
-index1 = index2 + 5
-index2 = info_libros.find(', Ed.', index1, len(info_libros))
-pags = clc(info_libros[index1:index2])
-index1 = index2 + 5
-index2 = info_libros.find('Autores:', index1, len(info_libros))
-editorial = clc(info_libros[index1:index2])
+index2 = info_doctra.find('Nro. Paginas:', index1, len(info_doctra))
+anopub = clc(info_doctra[index1:index2])
+index1 = index2 + 13
+index2 = info_doctra.find('Instituciones participantes:', index1, len(info_doctra)) - 19
+nro = clc(info_doctra[index1:index2])
+index1 = index2 + 47
+index2 = info_doctra.find('URL: ', index1, len(info_doctra)) - 18
+instituciones = clc(info_doctra[index1:index2])
+index1 = index2 + 23
+index2 = info_doctra.find('DOI:', index1, len(info_doctra)) -18
+URL = clc(info_doctra[index1:index2])
+index1 = index2 + 22
+index2 = info_doctra.find('Autores:', index1, len(info_doctra))
+DOI = clc(info_doctra[index1:index2])
 index1 = index2 + 9
-index2 = info_libros.find('/br', index1, len(info_libros))
-autores = clc(info_libros[index1:index2])
+index2 = info_doctra.find('/br', index1, len(info_doctra))
+autores = clc(info_doctra[index1:index2])
