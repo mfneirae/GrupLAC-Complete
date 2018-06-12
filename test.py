@@ -18,10 +18,10 @@ vinculain = ""
 page_soup = soup(page_html,"html.parser")
 containers = page_soup.findAll("table")
 for a in range(0,len(containers)):
-    buscadoctra = containers[a].td
-    #print(buscadoctra)
+    buscaotrosarticulos = containers[a].td
+    #print(buscaotrosarticulos)
     try:
-        if buscadoctra.text == "Documentos de trabajo ":
+        if buscaotrosarticulos.text == "Otros artículos publicados":
             all = a
             #print(all)
             break
@@ -38,52 +38,56 @@ def clc(str):
 containerb = containers[all]
 container = containerb.findAll("tr")
 cont = container[2]
-info_doctra = cont.text
-index1 = info_doctra.find("- ") + 2
-index2 = info_doctra.find(':')
-tipo = clc(info_doctra[index1:index2])
+info_otrosarticulos = cont.text
+index1 = info_otrosarticulos.find("- ") + 2
+index2 = info_otrosarticulos.find(':')
+tipo = clc(info_otrosarticulos[index1:index2])
 #Tipo Artículo
-if tipo.strip() == "Documento de trabajo Working Paper":
-    tipo = "27"
+if tipo.strip() == "Periódico de noticias":
+   tipo = "22"
+elif tipo.strip() == "Revista de divulgación":
+   tipo = "23"
+elif tipo.strip() == "Carta al editor":
+   tipo = "24"
+elif tipo.strip() == "Reseñas de libros":
+   tipo = "25"
+elif tipo.strip() == "Columna de opinión":
+   tipo = "26"
 else:
-    logging.critical('Añadir: ' + tipo)
-    print ("ALERTA: Revisar el archivo Documentos.log")
+   logging.critical('Añadir: ' + tipo)
+   print ("ALERTA: Revisar el archivo Textos No Cientificos.log")
 
-containerb = containers[all]
-container = containerb.findAll("tr")
-cont = container[2]
-info_doctra = cont.text
 #_________________________________________________________________________
-index1 = info_doctra.find("- ") + 2
-index2 = info_doctra.find(':')
-tipo = clc(info_doctra[index1:index2])
-#Tipo Artículo
-if tipo == "Capítulo de libro":
-    tipo = "21"
-elif tipo == "Otro capítulo de libro publicado":
-    tipo = "20"
-else:
-    logging.critical('Añadir: ' + tipo)
-    print ("ALERTA: Revisar el archivo Capítulos Libros.log")
-
+index1 = info_otrosarticulos.find("- ") + 2
+index2 = info_otrosarticulos.find(':')
+tipo = clc(info_otrosarticulos[index1:index2])
 index1 = index2 + 2
-index2 = info_doctra.find('\n', index1, len(info_doctra))
-nombreart = clc(info_doctra[index1:index2])
+index2 = info_otrosarticulos.find('\n', index1, len(info_otrosarticulos))
+nombreart = clc(info_otrosarticulos[index1:index2])
 index1 = index2 + 2
-index2 = info_doctra.find('Nro. Paginas:', index1, len(info_doctra))
-anopub = clc(info_doctra[index1:index2])
-index1 = index2 + 13
-index2 = info_doctra.find('Instituciones participantes:', index1, len(info_doctra)) - 19
-nro = clc(info_doctra[index1:index2])
-index1 = index2 + 47
-index2 = info_doctra.find('URL: ', index1, len(info_doctra)) - 18
-instituciones = clc(info_doctra[index1:index2])
-index1 = index2 + 23
-index2 = info_doctra.find('DOI:', index1, len(info_doctra)) -18
-URL = clc(info_doctra[index1:index2])
-index1 = index2 + 22
-index2 = info_doctra.find('Autores:', index1, len(info_doctra))
-DOI = clc(info_doctra[index1:index2])
-index1 = index2 + 9
-index2 = info_doctra.find('/br', index1, len(info_doctra))
-autores = clc(info_doctra[index1:index2])
+index2 = info_otrosarticulos.find(',', index1, len(info_otrosarticulos))
+lugar = clc(info_otrosarticulos[index1:index2])
+index1 = index2 + 1
+index2 = info_otrosarticulos.find('ISSN:', index1, len(info_otrosarticulos))
+revista = clc(info_otrosarticulos[index1:index2])
+index1 = index2 + 5
+index2 = info_otrosarticulos.find(',', index1, len(info_otrosarticulos))
+ISSN = clc(info_otrosarticulos[index1:index2])
+index1 = index2 + 2
+index2 = info_otrosarticulos.find('vol:', index1, len(info_otrosarticulos))
+anopub = clc(info_otrosarticulos[index1:index2])
+index1 = info_otrosarticulos.find('vol:') + 4
+index2 = info_otrosarticulos.find('fasc', index1, len(info_otrosarticulos))
+vol = clc(info_otrosarticulos[index1:index2])
+index1 = info_otrosarticulos.find('fasc:') + 5
+index2 = info_otrosarticulos.find('págs', index1, len(info_otrosarticulos))
+fasc = clc(info_otrosarticulos[index1:index2])
+index1 = info_otrosarticulos.find('págs:') + 5
+index2 = info_otrosarticulos.find('\n', index1, len(info_otrosarticulos))
+pags = clc(info_otrosarticulos[index1:index2])
+index = pags.find("-")
+pagsini = clc(pags[0:index])
+pagsfin = clc(pags[index + 2:len(pags)])
+index1 = info_otrosarticulos.find('Autores:', index2, len(info_otrosarticulos)) + 9
+index2 = info_otrosarticulos.find('/br', index1, len(info_otrosarticulos))
+autores = clc(info_otrosarticulos[index1:index2])

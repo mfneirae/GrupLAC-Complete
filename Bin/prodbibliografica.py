@@ -642,3 +642,324 @@ def doctraextract():
     else:
         logging.info(' El Grupo: ' + nombregi + 'no tiene doctra Asociados')
     contdoctra = [COD_PRODUCTO]
+
+def otrapubdivextract():
+    from settings import my_url, coduapa, codhermes, codcolciencias, nombregi, dnilider, my_url, COD_PRODUCTO
+    import bs4, logging, sys, re, init
+    global contotrapubdiv
+    LOG_FILENAME = './Logs/Registros.log'
+    logging.basicConfig(filename=LOG_FILENAME,level=logging.DEBUG,
+        format = "%(asctime)s:%(levelname)s:%(message)s")
+    LEVELS = {'debug': logging.DEBUG,
+              'info': logging.INFO,
+              'warning': logging.WARNING,
+              'error': logging.ERROR,
+              'critical': logging.CRITICAL}
+    if len(sys.argv) > 1:
+        level_name = sys.argv[1]
+        level = LEVELS.get(level_name, logging.NOTSET)
+        logging.basicConfig(level=level)
+    from urllib.request import urlopen as uReq
+    from bs4 import BeautifulSoup as soup
+    uClient = uReq(my_url)
+    page_html = uClient.read()
+    uClient.close()
+    all = 0
+    a = 0
+    x = 0
+    y = 0
+    page_soup = soup(page_html,"html.parser")
+    containers = page_soup.findAll("table")
+    for a in range(0,len(containers)):
+        buscaotrapubdiv = containers[a].td
+        #print(buscaotrapubdiv)
+        try:
+            if buscaotrapubdiv.text == "Otra publicación divulgativa":
+                all = a
+                #print(all)
+                break
+        except AttributeError:
+            pass
+    if all != 0:
+        containerb = containers[all]
+        container = containerb.findAll("tr")
+        for x in range(1, len(container)):
+            cont = container[x]
+            info_otrapubdiv = cont.text
+            index1 = info_otrapubdiv.find("- ") + 2
+            index2 = info_otrapubdiv.find(':')
+            tipo = clc(info_otrapubdiv[index1:index2])
+            #Tipo Artículo
+            if tipo.strip() == "Introducción":
+                tipo = "31"
+            elif tipo.strip() == "Prólogo":
+                tipo = "32"
+            elif tipo.strip() == "Epílogo":
+                tipo = "33"
+            elif tipo.strip() == "Otra":
+                tipo = "34"
+            else:
+                logging.critical('Añadir: ' + tipo)
+                print ("ALERTA: Revisar el archivo Eventos.log")
+            index1 = index2 + 2
+            index2 = info_otrapubdiv.find('\n', index1, len(info_otrapubdiv))
+            nombreart = clc(info_otrapubdiv[index1:index2])
+            index1 = index2 + 2
+            index2 = info_otrapubdiv.find(',', index1, len(info_otrapubdiv))
+            lugar = clc(info_otrapubdiv[index1:index2])
+            index1 = index2 + 1
+            index2 = info_otrapubdiv.find(',', index1, len(info_otrapubdiv))
+            anopub = clc(info_otrapubdiv[index1:index2])
+            index1 = info_otrapubdiv.find('vol. ') + 4
+            index2 = info_otrapubdiv.find(',', index1, len(info_otrapubdiv))
+            vol = clc(info_otrapubdiv[index1:index2])
+            index1 = info_otrapubdiv.find('págs:') + 5
+            index2 = info_otrapubdiv.find(',', index1, len(info_otrapubdiv))
+            pags = clc(info_otrapubdiv[index1:index2])
+            index1 = info_otrapubdiv.find('-', index2, len(info_otrapubdiv)) + 2
+            index2 = info_otrapubdiv.find(',', index1, len(info_otrapubdiv))
+            autorori = clc(info_otrapubdiv[index1:index2])
+            index1 = info_otrapubdiv.find('Ed.', index2, len(info_otrapubdiv)) + 3
+            index2 = info_otrapubdiv.find('Autores:', index1, len(info_otrapubdiv))
+            editorial = clc(info_otrapubdiv[index1:index2])
+            index1 = info_otrapubdiv.find('Autores:', index2, len(info_otrapubdiv)) + 9
+            index2 = info_otrapubdiv.find('/br', index1, len(info_otrapubdiv))
+            autores = clc(info_otrapubdiv[index1:index2])
+            init.REL_GRUPO_PRODUCTO.append( \
+            "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo Vincula Institu`,`Autores`) VALUES"
+            + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
+            + str(codcolciencias) + "," \
+            + tipo + "," \
+            + "'" + nombreart + "'," \
+            + "'" + lugar + "'," \
+            + anopub + "," \
+            + "null" + "," \
+            + "'" + pags + "'," \
+            + "'" + vol + "'," \
+            + "'" + editorial + "'," \
+            + "null" + "," \
+            + "null" + "," \
+            + "null" + "," \
+            + "null" + "," \
+            + "null" + "," \
+            + "'" + autores + "'" \
+            + ");\n")
+            init.REL_GRUPO_PRODUCTO_CSV.append(str(codcolciencias) + str(COD_PRODUCTO) +";" \
+            + str(codcolciencias) +";" \
+            + tipo +";" \
+            + nombreart +";" \
+            + lugar +";" \
+            + anopub +";" \
+            + "" +";" \
+            + pags +";" \
+            + vol +";" \
+            + editorial +";" \
+            + "" +";" \
+            + "" +";" \
+            + "" +";" \
+            + "" +";" \
+            + "" +";" \
+            + autores +";" \
+            + "\n")
+            init.GP_PROD_BIB.append( \
+            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD`,`Revista`,`Autor Original`,`Nombre Libro`,`ISBN/ISSN`,`Medio de Divulgación`,`URL`,`Fasciculos`,`Idioma Original`,`Idioma Traduccion`,`Edición`,`Serie`,`Página Inicial`,`Página Final`) VALUES"
+            + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
+            + "null" + "," \
+            + "'" + autorori + "'," \
+            + "null" + "," \
+            + "null" + "," \
+            + "null" + "," \
+            + "null" + "," \
+            + "null" + "," \
+            + "null" + "," \
+            + "null" + "," \
+            + "null" + "," \
+            + "null" + "," \
+            + "null" + "," \
+            + "null" \
+            + ");\n")
+            init.GP_PROD_BIB_CSV.append(str(codcolciencias) + str(COD_PRODUCTO) +";" \
+            + "" +";" \
+            + autorori +";" \
+            + "" +";" \
+            + "" +";" \
+            + "" +";" \
+            + "" +";" \
+            + "" +";" \
+            + "" +";" \
+            + "" +";" \
+            + "" +";" \
+            + "" +";" \
+            + "" +";" \
+            + "" +";" \
+            + "\n")
+            COD_PRODUCTO += 1
+    else:
+        logging.info(' El Grupo: ' + nombregi + 'no tiene otrapubdiv Asociados')
+    contotrapubdiv = [COD_PRODUCTO]
+
+def otrosarticulosextract():
+    from settings import my_url, coduapa, codhermes, codcolciencias, nombregi, dnilider, my_url, COD_PRODUCTO
+    import bs4, logging, sys, re, init
+    global contotrosarticulos
+    LOG_FILENAME = './Logs/Registros.log'
+    logging.basicConfig(filename=LOG_FILENAME,level=logging.DEBUG,
+        format = "%(asctime)s:%(levelname)s:%(message)s")
+    LEVELS = {'debug': logging.DEBUG,
+              'info': logging.INFO,
+              'warning': logging.WARNING,
+              'error': logging.ERROR,
+              'critical': logging.CRITICAL}
+    if len(sys.argv) > 1:
+        level_name = sys.argv[1]
+        level = LEVELS.get(level_name, logging.NOTSET)
+        logging.basicConfig(level=level)
+    from urllib.request import urlopen as uReq
+    from bs4 import BeautifulSoup as soup
+    uClient = uReq(my_url)
+    page_html = uClient.read()
+    uClient.close()
+    all = 0
+    a = 0
+    x = 0
+    y = 0
+    page_soup = soup(page_html,"html.parser")
+    containers = page_soup.findAll("table")
+    for a in range(0,len(containers)):
+        buscaotrosarticulos = containers[a].td
+        #print(buscaotrosarticulos)
+        try:
+            if buscaotrosarticulos.text == "Otros artículos publicados":
+                all = a
+                #print(all)
+                break
+        except AttributeError:
+            pass
+    if all != 0:
+        containerb = containers[all]
+        container = containerb.findAll("tr")
+        for x in range(1, len(container)):
+            cont = container[x]
+            info_otrosarticulos = cont.text
+            index1 = info_otrosarticulos.find("- ") + 2
+            index2 = info_otrosarticulos.find(':')
+            tipo = clc(info_otrosarticulos[index1:index2])
+            #Tipo Artículo
+            if tipo.strip() == "Periódico de noticias":
+               tipo = "22"
+           elif tipo.strip() == "Revista de divulgación":
+               tipo = "23"
+           elif tipo.strip() == "Carta al editor":
+               tipo = "24"
+           elif tipo.strip() == "Reseñas de libros":
+               tipo = "25"
+           elif tipo.strip() == "Columna de opinión":
+               tipo = "26"
+           else:
+               logging.critical('Añadir: ' + tipo)
+               print ("ALERTA: Revisar el archivo Textos No Cientificos.log")
+            index1 = info_otrosarticulos.find("- ") + 2
+            index2 = info_otrosarticulos.find(':')
+            tipo = clc(info_otrosarticulos[index1:index2])
+            index1 = index2 + 2
+            index2 = info_otrosarticulos.find('\n', index1, len(info_otrosarticulos))
+            nombreart = clc(info_otrosarticulos[index1:index2])
+            index1 = index2 + 2
+            index2 = info_otrosarticulos.find(',', index1, len(info_otrosarticulos))
+            lugar = clc(info_otrosarticulos[index1:index2])
+            index1 = index2 + 1
+            index2 = info_otrosarticulos.find('ISSN:', index1, len(info_otrosarticulos))
+            revista = clc(info_otrosarticulos[index1:index2])
+            index1 = index2 + 5
+            index2 = info_otrosarticulos.find(',', index1, len(info_otrosarticulos))
+            ISSN = clc(info_otrosarticulos[index1:index2])
+            index1 = index2 + 2
+            index2 = info_otrosarticulos.find('vol:', index1, len(info_otrosarticulos))
+            anopub = clc(info_otrosarticulos[index1:index2])
+            index1 = info_otrosarticulos.find('vol:') + 4
+            index2 = info_otrosarticulos.find('fasc', index1, len(info_otrosarticulos))
+            vol = clc(info_otrosarticulos[index1:index2])
+            index1 = info_otrosarticulos.find('fasc:') + 5
+            index2 = info_otrosarticulos.find('págs', index1, len(info_otrosarticulos))
+            fasc = clc(info_otrosarticulos[index1:index2])
+            index1 = info_otrosarticulos.find('págs:') + 5
+            index2 = info_otrosarticulos.find('\n', index1, len(info_otrosarticulos))
+            pags = clc(info_otrosarticulos[index1:index2])
+            index = pags.find("-")
+            pagsini = clc(pags[0:index])
+            pagsfin = clc(pags[index + 2:len(pags)])
+            index1 = info_otrosarticulos.find('Autores:', index2, len(info_otrosarticulos)) + 9
+            index2 = info_otrosarticulos.find('/br', index1, len(info_otrosarticulos))
+            autores = clc(info_otrosarticulos[index1:index2])
+            init.REL_GRUPO_PRODUCTO.append( \
+            "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo Vincula Institu`,`Autores`) VALUES"
+            + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
+            + str(codcolciencias) + "," \
+            + tipo + "," \
+            + "'" + nombreart + "'," \
+            + "'" + lugar + "'," \
+            + anopub + "," \
+            + "null" + "," \
+            + "'" + pags + "'," \
+            + "'" + vol + "'," \
+            + "null" + "," \
+            + "null" + "," \
+            + "null" + "," \
+            + "null" + "," \
+            + "null" + "," \
+            + "null" + "," \
+            + "'" + autores + "'" \
+            + ");\n")
+            init.REL_GRUPO_PRODUCTO_CSV.append(str(codcolciencias) + str(COD_PRODUCTO) +";" \
+            + str(codcolciencias) +";" \
+            + tipo +";" \
+            + nombreart +";" \
+            + lugar +";" \
+            + anopub +";" \
+            + "" +";" \
+            + pags +";" \
+            + vol +";" \
+            + "" +";" \
+            + "" +";" \
+            + "" +";" \
+            + "" +";" \
+            + "" +";" \
+            + "" +";" \
+            + autores +";" \
+            + "\n")
+            init.GP_PROD_BIB.append( \
+            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD`,`Revista`,`Autor Original`,`Nombre Libro`,`ISBN/ISSN`,`Medio de Divulgación`,`URL`,`Fasciculos`,`Idioma Original`,`Idioma Traduccion`,`Edición`,`Serie`,`Página Inicial`,`Página Final`) VALUES"
+            + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
+            + "'" + revista + "'," \
+            + "null" + "," \
+            + "null" + "," \
+            + "'" + ISSN + "'," \
+            + "null" + "," \
+            + "null" + "," \
+            + "'" + fasc + "'," \
+            + "null" + "," \
+            + "null" + "," \
+            + "null" + "," \
+            + "null" + "," \
+            + pagsini + "," \
+            + pagsfin \
+            + ");\n")
+            init.GP_PROD_BIB_CSV.append(str(codcolciencias) + str(COD_PRODUCTO) +";" \
+            + "" +";" \
+            + autorori +";" \
+            + "" +";" \
+            + "" +";" \
+            + "" +";" \
+            + "" +";" \
+            + "" +";" \
+            + "" +";" \
+            + "" +";" \
+            + "" +";" \
+            + "" +";" \
+            + "" +";" \
+            + "" +";" \
+            + "\n")
+            COD_PRODUCTO += 1
+    else:
+        logging.info(' El Grupo: ' + nombregi + 'no tiene otrosarticulos Asociados')
+    contotrosarticulos = [COD_PRODUCTO]

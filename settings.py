@@ -87,6 +87,9 @@ for q in range(2,total):
     prodbibliografica.doctraextract()
     from prodbibliografica import contdoctra
     COD_PRODUCTO = int("".join(str(x) for x in contdoctra))
+    prodbibliografica.otrapubdivextract()
+    from prodbibliografica import contotrapubdiv
+    COD_PRODUCTO = int("".join(str(x) for x in contotrapubdiv))
     print("El grupo: " + nombregi + " ha sido  procesado, Estado: " + str(q/(total-1)*100) + "%")
     # from datosbasicos import conteventos
     # COD_PRODUCTO = int("".join(str(x) for x in conteventos))
