@@ -90,6 +90,15 @@ for q in range(2,total):
     prodbibliografica.otrapubdivextract()
     from prodbibliografica import contotrapubdiv
     COD_PRODUCTO = int("".join(str(x) for x in contotrapubdiv))
+    prodbibliografica.otrosarticulosextract()
+    from prodbibliografica import contotrosarticulos
+    COD_PRODUCTO = int("".join(str(x) for x in contotrosarticulos))
+    prodbibliografica.otroslibrosextract()
+    from prodbibliografica import contotroslibros
+    COD_PRODUCTO = int("".join(str(x) for x in contotroslibros))
+    prodbibliografica.traduccionesextract()
+    from prodbibliografica import conttraducciones
+    COD_PRODUCTO = int("".join(str(x) for x in conttraducciones))
     print("El grupo: " + nombregi + " ha sido  procesado, Estado: " + str(q/(total-1)*100) + "%")
     # from datosbasicos import conteventos
     # COD_PRODUCTO = int("".join(str(x) for x in conteventos))
