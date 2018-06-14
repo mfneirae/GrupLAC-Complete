@@ -115,7 +115,7 @@ def articulosextract():
             index2 = info_articulo.find('/br', index1, len(info_articulo))
             autores = clc(info_articulo[index1:index2])
             init.REL_GRUPO_PRODUCTO.append( \
-            "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo Vincula Institu`,`Autores`) VALUES"
+            "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
             + str(codcolciencias) + "," \
             + tipo + "," \
@@ -151,7 +151,7 @@ def articulosextract():
             + autores +";" \
             + "\n")
             init.GP_PROD_BIB.append( \
-            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD`,`Revista`,`Autor Original`,`Nombre Libro`,`ISBN/ISSN`,`Medio de Divulgación`,`URL`,`Fasciculos`,`Idioma Original`,`Idioma Traduccion`,`Edición`,`Serie`,`Página Inicial`,`Página Final`) VALUES"
+            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD`,`Revista`,`Autor_Original`,`Nombre_Libro`,`ISBN/ISSN`,`Medio_de_Divulgación`,`URL`,`Fasciculos`,`Idioma_Original`,`Idioma_Traduccion`,`Edición`,`Serie`,`Página_Inicial`,`Página_Final`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
             + "'" + revista + "'," \
             + "null" + "," \
@@ -268,7 +268,7 @@ def librosextract():
             index2 = info_libros.find('/br', index1, len(info_libros))
             autores = clc(info_libros[index1:index2])
             init.REL_GRUPO_PRODUCTO.append( \
-            "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo Vincula Institu`,`Autores`) VALUES"
+            "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
             + str(codcolciencias) + "," \
             + tipo + "," \
@@ -304,7 +304,7 @@ def librosextract():
             + autores +";" \
             + "\n")
             init.GP_PROD_BIB.append( \
-            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD`,`Revista`,`Autor Original`,`Nombre Libro`,`ISBN/ISSN`,`Medio de Divulgación`,`URL`,`Fasciculos`,`Idioma Original`,`Idioma Traduccion`,`Edición`,`Serie`,`Página Inicial`,`Página Final`) VALUES"
+            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD`,`Revista`,`Autor_Original`,`Nombre_Libro`,`ISBN/ISSN`,`Medio_de_Divulgación`,`URL`,`Fasciculos`,`Idioma_Original`,`Idioma_Traduccion`,`Edición`,`Serie`,`Página_Inicial`,`Página_Final`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
             + "null" + "," \
             + "null" + "," \
@@ -425,7 +425,7 @@ def caplibrosextract():
             index2 = info_caplibros.find('/br', index1, len(info_caplibros))
             autores = clc(info_caplibros[index1:index2])
             init.REL_GRUPO_PRODUCTO.append( \
-            "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo Vincula Institu`,`Autores`) VALUES"
+            "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
             + str(codcolciencias) + "," \
             + tipo + "," \
@@ -461,7 +461,7 @@ def caplibrosextract():
             + autores +";" \
             + "\n")
             init.GP_PROD_BIB.append( \
-            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD`,`Revista`,`Autor Original`,`Nombre Libro`,`ISBN/ISSN`,`Medio de Divulgación`,`URL`,`Fasciculos`,`Idioma Original`,`Idioma Traduccion`,`Edición`,`Serie`,`Página Inicial`,`Página Final`) VALUES"
+            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD`,`Revista`,`Autor_Original`,`Nombre_Libro`,`ISBN/ISSN`,`Medio_de_Divulgación`,`URL`,`Fasciculos`,`Idioma_Original`,`Idioma_Traduccion`,`Edición`,`Serie`,`Página_Inicial`,`Página_Final`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
             + "null" + "," \
             + "null" + "," \
@@ -571,7 +571,7 @@ def doctraextract():
             index2 = info_doctra.find('/br', index1, len(info_doctra))
             autores = clc(info_doctra[index1:index2])
             init.REL_GRUPO_PRODUCTO.append( \
-            "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo Vincula Institu`,`Autores`) VALUES"
+            "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
             + str(codcolciencias) + "," \
             + tipo + "," \
@@ -607,7 +607,7 @@ def doctraextract():
             + autores +";" \
             + "\n")
             init.GP_PROD_BIB.append( \
-            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD`,`Revista`,`Autor Original`,`Nombre Libro`,`ISBN/ISSN`,`Medio de Divulgación`,`URL`,`Fasciculos`,`Idioma Original`,`Idioma Traduccion`,`Edición`,`Serie`,`Página Inicial`,`Página Final`) VALUES"
+            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD`,`Revista`,`Autor_Original`,`Nombre_Libro`,`ISBN/ISSN`,`Medio_de_Divulgación`,`URL`,`Fasciculos`,`Idioma_Original`,`Idioma_Traduccion`,`Edición`,`Serie`,`Página_Inicial`,`Página_Final`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
             + "null" + "," \
             + "null" + "," \
@@ -726,7 +726,7 @@ def otrapubdivextract():
             index2 = info_otrapubdiv.find('/br', index1, len(info_otrapubdiv))
             autores = clc(info_otrapubdiv[index1:index2])
             init.REL_GRUPO_PRODUCTO.append( \
-            "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo Vincula Institu`,`Autores`) VALUES"
+            "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
             + str(codcolciencias) + "," \
             + tipo + "," \
@@ -762,7 +762,7 @@ def otrapubdivextract():
             + autores +";" \
             + "\n")
             init.GP_PROD_BIB.append( \
-            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD`,`Revista`,`Autor Original`,`Nombre Libro`,`ISBN/ISSN`,`Medio de Divulgación`,`URL`,`Fasciculos`,`Idioma Original`,`Idioma Traduccion`,`Edición`,`Serie`,`Página Inicial`,`Página Final`) VALUES"
+            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD`,`Revista`,`Autor_Original`,`Nombre_Libro`,`ISBN/ISSN`,`Medio_de_Divulgación`,`URL`,`Fasciculos`,`Idioma_Original`,`Idioma_Traduccion`,`Edición`,`Serie`,`Página_Inicial`,`Página_Final`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
             + "null" + "," \
             + "'" + autorori + "'," \
@@ -892,7 +892,7 @@ def otrosarticulosextract():
             index2 = info_otrosarticulos.find('/br', index1, len(info_otrosarticulos))
             autores = clc(info_otrosarticulos[index1:index2])
             init.REL_GRUPO_PRODUCTO.append( \
-            "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo Vincula Institu`,`Autores`) VALUES"
+            "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
             + str(codcolciencias) + "," \
             + tipo + "," \
@@ -928,7 +928,7 @@ def otrosarticulosextract():
             + autores +";" \
             + "\n")
             init.GP_PROD_BIB.append( \
-            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD`,`Revista`,`Autor Original`,`Nombre Libro`,`ISBN/ISSN`,`Medio de Divulgación`,`URL`,`Fasciculos`,`Idioma Original`,`Idioma Traduccion`,`Edición`,`Serie`,`Página Inicial`,`Página Final`) VALUES"
+            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD`,`Revista`,`Autor_Original`,`Nombre_Libro`,`ISBN/ISSN`,`Medio_de_Divulgación`,`URL`,`Fasciculos`,`Idioma_Original`,`Idioma_Traduccion`,`Edición`,`Serie`,`Página_Inicial`,`Página_Final`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
             + "'" + revista + "'," \
             + "null" + "," \
@@ -1048,7 +1048,7 @@ def otroslibrosextract():
             index2 = info_otroslibros.find('/br', index1, len(info_otroslibros))
             autores = clc(info_otroslibros[index1:index2])
             init.REL_GRUPO_PRODUCTO.append( \
-            "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo Vincula Institu`,`Autores`) VALUES"
+            "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
             + str(codcolciencias) + "," \
             + tipo + "," \
@@ -1084,7 +1084,7 @@ def otroslibrosextract():
             + autores +";" \
             + "\n")
             init.GP_PROD_BIB.append( \
-            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD`,`Revista`,`Autor Original`,`Nombre Libro`,`ISBN/ISSN`,`Medio de Divulgación`,`URL`,`Fasciculos`,`Idioma Original`,`Idioma Traduccion`,`Edición`,`Serie`,`Página Inicial`,`Página Final`) VALUES"
+            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD`,`Revista`,`Autor_Original`,`Nombre_Libro`,`ISBN/ISSN`,`Medio_de_Divulgación`,`URL`,`Fasciculos`,`Idioma_Original`,`Idioma_Traduccion`,`Edición`,`Serie`,`Página_Inicial`,`Página_Final`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
             + "null" + "," \
             + "null" + "," \
@@ -1219,7 +1219,7 @@ def traduccionesextract():
             index2 = info_traducciones.find('/br', index1, len(info_traducciones))
             autores = clc(info_traducciones[index1:index2])
             init.REL_GRUPO_PRODUCTO.append( \
-            "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo Vincula Institu`,`Autores`) VALUES"
+            "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
             + str(codcolciencias) + "," \
             + tipo + "," \
@@ -1255,7 +1255,7 @@ def traduccionesextract():
             + autores +";" \
             + "\n")
             init.GP_PROD_BIB.append( \
-            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD`,`Revista`,`Autor Original`,`Nombre Libro`,`ISBN/ISSN`,`Medio de Divulgación`,`URL`,`Fasciculos`,`Idioma Original`,`Idioma Traduccion`,`Edición`,`Serie`,`Página Inicial`,`Página Final`) VALUES"
+            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD`,`Revista`,`Autor_Original`,`Nombre_Libro`,`ISBN/ISSN`,`Medio_de_Divulgación`,`URL`,`Fasciculos`,`Idioma_Original`,`Idioma_Traduccion`,`Edición`,`Serie`,`Página_Inicial`,`Página_Final`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
             + "null" + "," \
             + "'" + autorori + "'," \

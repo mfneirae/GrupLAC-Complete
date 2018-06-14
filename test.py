@@ -18,10 +18,10 @@ vinculain = ""
 page_soup = soup(page_html,"html.parser")
 containers = page_soup.findAll("table")
 for a in range(0,len(containers)):
-    buscatraducciones = containers[a].td
-    #print(buscatraducciones)
+    buscacartas = containers[a].td
+    #print(buscacartas)
     try:
-        if buscatraducciones.text == "Traducciones ":
+        if buscacartas.text == "Cartas, mapas o similares":
             all = a
             #print(all)
             break
@@ -38,59 +38,42 @@ def clc(str):
 
 containerb = containers[all]
 container = containerb.findAll("tr")
-cont = container[1]
-info_traducciones = cont.text
-index1 = info_traducciones.find("- ") + 2
-index2 = info_traducciones.find(':')
-tipo = clc(info_traducciones[index1:index2])
+cont = container[2]
+info_cartas = cont.text
+index1 = info_cartas.find("- ") + 2
+index2 = info_cartas.find(':')
+tipo = clc(info_cartas[index1:index2])
 #Tipo Artículo
-if tipo.strip() == "Artículo":
-    tipo = "28"
-elif tipo.strip() == "Libro":
-    tipo = "29"
+if tipo.strip() == "Aerofotograma":
+    tipo = "46"
+elif tipo.strip() == "Carta":
+    tipo = "47"
+elif tipo.strip() == "Fotograma":
+    tipo = "48"
+elif tipo.strip() == "Mapa":
+    tipo = "49"
 elif tipo.strip() == "Otra":
-    tipo = "30"
+    tipo = "50"
 else:
     logging.critical('Añadir: ' + tipo)
-    print ("ALERTA: Revisar el archivo Eventos.log")
+    print ("ALERTA: Revisar el archivo Registros.log")
 
 #_________________________________________________________________________
 index1 = index2 + 2
-index2 = info_traducciones.find('\n', index1, len(info_traducciones))
-nombreart = clc(info_traducciones[index1:index2])
+index2 = info_cartas.find('\n', index1, len(info_cartas))
+nombreart = clc(info_cartas[index1:index2])
 index1 = index2 + 2
-index2 = info_traducciones.find(', Revista:', index1, len(info_traducciones))
-anopub = clc(info_traducciones[index1:index2])
-index1 = index2 + 10
-index2 = info_traducciones.find('ISSN', index1, len(info_traducciones))
-revista = clc(info_traducciones[index1:index2])
-index1 = index2 + 4
-index2 = info_traducciones.find(',', index1, len(info_traducciones))
-ISSN = clc(info_traducciones[index1:index2])
-index1 = info_traducciones.find('Libro:') + 6
-index2 = info_traducciones.find('ISBN', index1, len(info_traducciones))
-libroorigen = clc(info_traducciones[index1:index2])
-index1 = index2 + 4
-index2 = info_traducciones.find(',', index1, len(info_traducciones))
-ISBN = clc(info_traducciones[index1:index2])
-index1 = info_traducciones.find(', Medio de divulgación:') + 23
-index2 = info_traducciones.find('\n', index1, len(info_traducciones))
-medio = clc(info_traducciones[index1:index2])
-index1 = info_traducciones.find('Idioma del documento original:') + 30
-index2 = info_traducciones.find(',', index1, len(info_traducciones))
-idiomaorigen = clc(info_traducciones[index1:index2])
-index1 = info_traducciones.find('Idioma de la traducción:') + 24
-index2 = info_traducciones.find('\n', index1, len(info_traducciones))
-idiomatraduccion = clc(info_traducciones[index1:index2])
-index1 = info_traducciones.find('Edición: ') + 9
-index2 = info_traducciones.find(',', index1, len(info_traducciones))
-edicion = clc(info_traducciones[index1:index2])
-index1 = info_traducciones.find('Serie: ') + 7
-index2 = info_traducciones.find(',', index1, len(info_traducciones))
-serie = clc(info_traducciones[index1:index2])
-index1 = info_traducciones.find('Autor del documento original:') + 29
-index2 = info_traducciones.find('\n', index1, len(info_traducciones))
-autorori = clc(info_traducciones[index1:index2])
-index1 = info_traducciones.find('Autores:', index2, len(info_traducciones)) + 9
-index2 = info_traducciones.find('/br', index1, len(info_traducciones))
-autores = clc(info_traducciones[index1:index2])
+index2 = info_cartas.find(',', index1, len(info_cartas))
+lugar = clc(info_cartas[index1:index2])
+index1 = index2 + 2
+index2 = info_cartas.find(',', index1, len(info_cartas))
+anopub = clc(info_cartas[index1:index2])
+index1 = info_cartas.find('Institución financiadora:') + 25
+index2 = info_cartas.find(', Tema:', index1, len(info_cartas))
+institucion = clc(info_cartas[index1:index2])
+index1 = info_cartas.find('Tema:') + 5
+index2 = info_cartas.find('Autores:', index1, len(info_cartas))
+tema = clc(info_cartas[index1:index2])
+index1 = info_cartas.find('Autores:', index2, len(info_cartas)) + 9
+index2 = info_cartas.find('/br', index1, len(info_cartas))
+autores = clc(info_cartas[index1:index2])

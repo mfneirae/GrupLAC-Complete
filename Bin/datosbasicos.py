@@ -202,7 +202,7 @@ def datosextract():
     + Vision + "\n")
     #Insert
     init.GP_DATOS_BASE.append( \
-    "REPLACE INTO `uapa_db`.`GP_DATOS_BASE`(`CODGP`,`Año Formación`,`Mes Formación`,`Lugar`,`Nombre Lider`,`Información Certificada`,`Página Web`,`Correo`,`Clasificación`,`Área del Conocimiento`,`Programa Nacional`,`Programa Nacional 2`,`Plan de trabajo`,`Estado del Arte`,`Objetivos`,`Retos`,`Visión`) VALUES"
+    "REPLACE INTO `uapa_db`.`GP_DATOS_BASE`(`CODGP`,`Año_Formación`,`Mes_Formación`,`Lugar`,`Nombre_Lider`,`Información_Certificada`,`Página_Web`,`Correo`,`Clasificación`,`Área_del_Conocimiento`,`Programa_Nacional`,`Programa_Nacional_2`,`Plan_de_trabajo`,`Estado_del_Arte`,`Objetivos`,`Retos`,`Visión`) VALUES"
     + "('" + str(codcolciencias) + "',"\
     + anoinidatos + "," \
     + mesinidatos + "," \
@@ -337,7 +337,7 @@ def lineasextract():
             + institucion + "\n")
             #Insert
             init.GP_DATOS_LINEAS.append( \
-            "REPLACE INTO `uapa_db`.`GP_DATOS_LINEAS`(`CODGP_LINEA`,`CODGP`,`Nombre Línea Inv`) VALUES"
+            "REPLACE INTO `uapa_db`.`GP_DATOS_LINEAS`(`CODGP_LINEA`,`CODGP`,`Nombre_Línea_Inv`) VALUES"
             + "('" + str(codcolciencias) + str(COD_LINEA) + "',"\
             + str(codcolciencias) + ","\
             + "'" + institucion + "'" \
@@ -399,7 +399,7 @@ def sectoresextract():
             + institucion + "\n")
             #Insert
             init.GP_DATOS_SECTORES.append( \
-            "REPLACE INTO `uapa_db`.`GP_DATOS_SECTORES`(`CODGP_SECTOR`,`CODGP`,`Sector de Aplicación`) VALUES"
+            "REPLACE INTO `uapa_db`.`GP_DATOS_SECTORES`(`CODGP_SECTOR`,`CODGP`,`Sector_de_Aplicación`) VALUES"
             + "('" + str(codcolciencias) + str(COD_SECTOR) + "',"\
             + str(codcolciencias) + ","\
             + "'" + institucion + "'" \
@@ -499,7 +499,7 @@ def integrantesextract():
             + str(duravinculafin) + "\n")
             #Insert
             init.GP_DATOS_INTEGRANTES.append( \
-            "REPLACE INTO `uapa_db`.`GP_DATOS_INTEGRANTES`('CODGP_INTEGRANTE','CODGP','COD_RG','CVLAC','NOMBRE COMPLETO','Tipo Vinculación','Horas de Dedicación','Duración Vinculación','Inicio Vinculación','Fin Vinculación','Fin Vinculación') VALUES"
+            "REPLACE INTO `uapa_db`.`GP_DATOS_INTEGRANTES`('CODGP_INTEGRANTE','CODGP','COD_RG','CVLAC','NOMBRE_COMPLETO','Tipo_Vinculación','Horas_de_Dedicación','Duración_Vinculación','Inicio_Vinculación','Fin_Vinculación','Fin_Vinculación') VALUES"
             + "('" + str(codcolciencias) + str(COD_INTEGRANTES) + "',"\
             + str(codcolciencias) + ","\
             + str(cod_rh) + ","\
