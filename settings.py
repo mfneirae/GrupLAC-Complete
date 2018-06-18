@@ -27,6 +27,7 @@ sys.path.append('../Bin/')
 import init
 import datosbasicos
 import prodbibliografica
+import prodtecnica
 #end of /bin files
 os.chdir(Dir)
 condition = 0;
@@ -99,6 +100,15 @@ for q in range(2,total):
     prodbibliografica.traduccionesextract()
     from prodbibliografica import conttraducciones
     COD_PRODUCTO = int("".join(str(x) for x in conttraducciones))
+    prodtecnica.cartasextract()
+    from prodtecnica import contcartas
+    COD_PRODUCTO = int("".join(str(x) for x in contcartas))
+    prodtecnica.consultoriasextract()
+    from prodtecnica import contconsultorias
+    COD_PRODUCTO = int("".join(str(x) for x in contconsultorias))
+    prodtecnica.disenosiextract()
+    from prodtecnica import contdisenosi
+    COD_PRODUCTO = int("".join(str(x) for x in contdisenosi))
     print("El grupo: " + nombregi + " ha sido  procesado, Estado: " + str(q/(total-1)*100) + "%")
     # from datosbasicos import conteventos
     # COD_PRODUCTO = int("".join(str(x) for x in conteventos))

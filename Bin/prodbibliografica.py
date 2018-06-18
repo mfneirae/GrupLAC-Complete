@@ -858,9 +858,6 @@ def otrosarticulosextract():
             else:
                logging.critical('Añadir: ' + tipo)
                print ("ALERTA: Revisar el archivo Textos No Cientificos.log")
-            index1 = info_otrosarticulos.find("- ") + 2
-            index2 = info_otrosarticulos.find(':')
-            tipo = clc(info_otrosarticulos[index1:index2])
             index1 = index2 + 2
             index2 = info_otrosarticulos.find('\n', index1, len(info_otrosarticulos))
             nombreart = clc(info_otrosarticulos[index1:index2])
@@ -1020,9 +1017,6 @@ def otroslibrosextract():
             else:
                 logging.critical('Añadir: ' + tipo)
                 print ("ALERTA: Revisar el archivo Libros.log")
-            index1 = info_otroslibros.find("- ") + 2
-            index2 = info_otroslibros.find(':')
-            tipo = clc(info_otroslibros[index1:index2])
             index1 = index2 + 2
             index2 = info_otroslibros.find('\n', index1, len(info_otroslibros))
             nombreart = clc(info_otroslibros[index1:index2])
@@ -1176,9 +1170,6 @@ def traduccionesextract():
             else:
                 logging.critical('Añadir: ' + tipo)
                 print ("ALERTA: Revisar el archivo Eventos.log")
-            index1 = info_traducciones.find("- ") + 2
-            index2 = info_traducciones.find(':')
-            tipo = clc(info_traducciones[index1:index2])
             index1 = index2 + 2
             index2 = info_traducciones.find('\n', index1, len(info_traducciones))
             nombreart = clc(info_traducciones[index1:index2])
