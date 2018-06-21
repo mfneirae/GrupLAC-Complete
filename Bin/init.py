@@ -88,7 +88,8 @@ Número de Contrato; \
 Acto Administrativo; \
 \n"]
 
-    GP_APROPIACION_CSV=["CODGP_PROD; \
+    GP_APROPIACION_CSV=["CODGP_PROD_APROPIACION; \
+CODGP_PROD; \
 Tipos de Participación; \
 Fecha Inicio; \
 Fecha Fin; \
@@ -98,7 +99,8 @@ Emisora; \
 Número de Participantes; \
 \n"]
 
-    GP_OBRAS_CSV=["CODGP_PROD; \
+    GP_OBRAS_CSV=["CODGP_PROD_OBRAS; \
+CODGP_PROD; \
 Fecha Creación; \
 Disiplina de origen; \
 Institución Licencia; \
@@ -109,7 +111,8 @@ Productos Asociados; \
 Número Derechos Autor/NIT; \
 \n"]
 
-    GP_ACTIVIDADES_FORM_CSV=["CODGP_PROD; \
+    GP_ACTIVIDADES_FORM_CSV=["CODGP_PROD_FORM; \
+CODGP_PROD; \
 Nombre de Ferias; \
 Fecha Inicio Curso; \
 Tipo Orientación; \
@@ -576,6 +579,14 @@ Marcas\n\
 Producción técnica - Signos Distintivos - Nombres comerciales; \
 Signos Distintivos - Nombres comerciales; \
 Nombres comerciales\n\
+97; \
+Apropiación social y circularción del conocimiento - Ediciones - Anales; \
+Ediciones - Anales; \
+Analess\n\
+98; \
+Apropiación social y circularción del conocimiento - Ediciones - Libro; \
+Ediciones - Libro; \
+Libro\n\
 92; \
 Producción técnica - Prototipo - Servicios; \
 Prototipo - Servicios; \

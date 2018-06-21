@@ -339,7 +339,7 @@ def lineasextract():
             init.GP_DATOS_LINEAS.append( \
             "REPLACE INTO `uapa_db`.`GP_DATOS_LINEAS`(`CODGP_LINEA`,`CODGP`,`Nombre_Línea_Inv`) VALUES"
             + "('" + str(codcolciencias) + str(COD_LINEA) + "',"\
-            + str(codcolciencias) + ","\
+            + "'" + str(codcolciencias) + "',"\
             + "'" + institucion + "'" \
             + ");\n")
             COD_LINEA = COD_LINEA + 1
@@ -401,7 +401,7 @@ def sectoresextract():
             init.GP_DATOS_SECTORES.append( \
             "REPLACE INTO `uapa_db`.`GP_DATOS_SECTORES`(`CODGP_SECTOR`,`CODGP`,`Sector_de_Aplicación`) VALUES"
             + "('" + str(codcolciencias) + str(COD_SECTOR) + "',"\
-            + str(codcolciencias) + ","\
+            + "'" + str(codcolciencias) + "',"\
             + "'" + institucion + "'" \
             + ");\n")
             COD_SECTOR = COD_SECTOR + 1
@@ -501,8 +501,8 @@ def integrantesextract():
             init.GP_DATOS_INTEGRANTES.append( \
             "REPLACE INTO `uapa_db`.`GP_DATOS_INTEGRANTES`('CODGP_INTEGRANTE','CODGP','COD_RG','CVLAC','NOMBRE_COMPLETO','Tipo_Vinculación','Horas_de_Dedicación','Duración_Vinculación','Inicio_Vinculación','Fin_Vinculación','Fin_Vinculación') VALUES"
             + "('" + str(codcolciencias) + str(COD_INTEGRANTES) + "',"\
-            + str(codcolciencias) + ","\
-            + str(cod_rh) + ","\
+            + "'" + str(codcolciencias) + "',"\
+            + "'" + str(cod_rh) + "',"\
             + "'" + linkcv + "'," \
             + "'" + nombre + "'," \
             + "'" + tipvincula + "'," \

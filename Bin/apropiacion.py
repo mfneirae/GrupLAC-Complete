@@ -1,3 +1,28 @@
+#
+#
+# #############################################################################
+#       Copyright (c) 2018 Universidad Nacional de Colombia All Rights Reserved.
+#
+#             This work was made as a development to improve data collection
+#       for self-assessment and accreditation processes in the Vicedeanship
+#       of academic affairs in the Engineering Faculty of the Universidad
+#       Nacional de Colombia and is licensed under a Creative Commons
+#       Attribution-NonCommercial - ShareAlike 4.0 International License
+#       and MIT Licence.
+#
+#       by Manuel Embus.
+#
+#       For more information write me to jai@mfneirae.com
+#       Or visit my webpage at https://mfneirae.com/
+# #############################################################################
+#
+#
+
+def clc(str):
+    import re
+    str = re.sub(r'[^A-Za-z0-9:=_?ÁÀÉÈÍÌÓÒÚÙéèáà,éñèíìńúùóò .\-/+]',r'',re.sub(' +',' ',str.replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
+    return str;
+
 def ediciones_apropiacionextract():
     from settings import my_url, coduapa, codhermes, codcolciencias, nombregi, dnilider, my_url, COD_PRODUCTO
     import bs4, logging, sys, re, init
@@ -119,7 +144,7 @@ def ediciones_apropiacionextract():
             + autores +";" \
             + "\n")
             init.GP_APROPIACION.append( \
-            "REPLACE INTO `uapa_db`.`GP_APROPIACION`(`CODGP_APROPIACION`,`CODGP_PROD`,`Tipos_de_Participación`,`Fecha_Inicio`,`Fecha_Fin`,`Proyecto_de_Inv`,`Medio_de_publicación`,`Emisora`,`Número_de_Participantes`) VALUES"
+            "REPLACE INTO `uapa_db`.`GP_APROPIACION`(`CODGP_PROD_APROPIACION`,`CODGP_PROD`,`Tipos_de_Participación`,`Fecha_Inicio`,`Fecha_Fin`,`Proyecto_de_Inv`,`Medio_de_publicación`,`Emisora`,`Número_de_Participantes`) VALUES"
             + "('" + str(codcolciencias) + "A" + str(COD_PRODUCTO) + "',"\
             + "'" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
             + "null" + "," \
