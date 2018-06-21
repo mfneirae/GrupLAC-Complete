@@ -117,7 +117,7 @@ def articulosextract():
             init.REL_GRUPO_PRODUCTO.append( \
             "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
-            + str(codcolciencias) + "," \
+            + "'" + str(codcolciencias) + "'," \
             + tipo + "," \
             + "'" + nombreart + "'," \
             + "'" + lugar + "'," \
@@ -272,7 +272,7 @@ def librosextract():
             init.REL_GRUPO_PRODUCTO.append( \
             "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
-            + str(codcolciencias) + "," \
+            + "'" + str(codcolciencias) + "'," \
             + tipo + "," \
             + "'" + nombreart + "'," \
             + "'" + lugar + "'," \
@@ -431,7 +431,7 @@ def caplibrosextract():
             init.REL_GRUPO_PRODUCTO.append( \
             "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
-            + str(codcolciencias) + "," \
+            + "'" + str(codcolciencias) + "'," \
             + tipo + "," \
             + "'" + nombreart + "'," \
             + "'" + lugar + "'," \
@@ -579,7 +579,7 @@ def doctraextract():
             init.REL_GRUPO_PRODUCTO.append( \
             "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
-            + str(codcolciencias) + "," \
+            + "'" + str(codcolciencias) + "'," \
             + tipo + "," \
             + "'" + nombreart + "'," \
             + "null" + "," \
@@ -736,7 +736,7 @@ def otrapubdivextract():
             init.REL_GRUPO_PRODUCTO.append( \
             "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
-            + str(codcolciencias) + "," \
+            + "'" + str(codcolciencias) + "'," \
             + tipo + "," \
             + "'" + nombreart + "'," \
             + "'" + lugar + "'," \
@@ -901,7 +901,7 @@ def otrosarticulosextract():
             init.REL_GRUPO_PRODUCTO.append( \
             "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
-            + str(codcolciencias) + "," \
+            + "'" + str(codcolciencias) + "'," \
             + tipo + "," \
             + "'" + nombreart + "'," \
             + "'" + lugar + "'," \
@@ -1056,7 +1056,7 @@ def otroslibrosextract():
             init.REL_GRUPO_PRODUCTO.append( \
             "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
-            + str(codcolciencias) + "," \
+            + "'" + str(codcolciencias) + "'," \
             + tipo + "," \
             + "'" + nombreart + "'," \
             + "'" + lugar + "'," \
@@ -1226,7 +1226,7 @@ def traduccionesextract():
             init.REL_GRUPO_PRODUCTO.append( \
             "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
-            + str(codcolciencias) + "," \
+            + "'" + str(codcolciencias) + "'," \
             + tipo + "," \
             + "'" + nombreart + "'," \
             + "null" + "," \

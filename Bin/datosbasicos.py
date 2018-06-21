@@ -277,7 +277,7 @@ def institucionesextract():
             init.GP_DATOS_INSTITUCIONES.append( \
             "REPLACE INTO `uapa_db`.`GP_DATOS_INSTITUCIONES`(`CODGP_INSTI`,`CODGP`,`INSTITUCIÓN`) VALUES"
             + "('" + str(codcolciencias) + str(COD_INSTI) + "',"\
-            + str(codcolciencias) + ","\
+            + "'" + str(codcolciencias) + "',"\
             + "'" + institucion + "'" \
             + ");\n")
             COD_INSTI = COD_INSTI + 1
@@ -499,8 +499,8 @@ def integrantesextract():
             + str(duravinculafin) + "\n")
             #Insert
             init.GP_DATOS_INTEGRANTES.append( \
-            "REPLACE INTO `uapa_db`.`GP_DATOS_INTEGRANTES`('CODGP_INTEGRANTE','CODGP','COD_RG','CVLAC','NOMBRE_COMPLETO','Tipo_Vinculación','Horas_de_Dedicación','Duración_Vinculación','Inicio_Vinculación','Fin_Vinculación','Fin_Vinculación') VALUES"
-            + "('" + str(codcolciencias) + str(COD_INTEGRANTES) + "',"\
+            "REPLACE INTO `uapa_db`.`GP_DATOS_INTEGRANTES`(`CODGP_INTEGRANTE`,`CODGP`,`COD_RG`,`CVLAC`,`NOMBRE_COMPLETO`,`Tipo_Vinculación`,`Horas_de_Dedicación`,`Duración_Vinculación`,`Inicio_Vinculación`,`Fin_Vinculación`,`Fin_Vinculación`) VALUES"
+            + "('" + str(codcolciencias) + str(COD_INTEGRANTES) + "`,"\
             + "'" + str(codcolciencias) + "',"\
             + "'" + str(cod_rh) + "',"\
             + "'" + linkcv + "'," \

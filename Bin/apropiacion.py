@@ -110,7 +110,7 @@ def ediciones_apropiacionextract():
             init.REL_GRUPO_PRODUCTO.append( \
             "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
-            + str(codcolciencias) + "," \
+            + "'" + str(codcolciencias) + "'," \
             + tipo + "," \
             + "'" + nombreart + "'," \
             + "'" + lugar + "'," \

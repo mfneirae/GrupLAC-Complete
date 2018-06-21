@@ -104,7 +104,7 @@ def cartasextract():
             init.REL_GRUPO_PRODUCTO.append( \
             "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
-            + str(codcolciencias) + "," \
+            + "'" + str(codcolciencias) + "'," \
             + tipo + "," \
             + "'" + nombreart + "'," \
             + "'" + lugar + "'," \
@@ -271,7 +271,7 @@ def consultoriasextract():
             init.REL_GRUPO_PRODUCTO.append( \
             "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
-            + str(codcolciencias) + "," \
+            + "'" + str(codcolciencias) + "'," \
             + tipo + "," \
             + "'" + nombreart + "'," \
             + "'" + lugar + "'," \
@@ -417,7 +417,7 @@ def disenosiextract():
             init.REL_GRUPO_PRODUCTO.append( \
             "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
-            + str(codcolciencias) + "," \
+            + "'" + str(codcolciencias) + "'," \
             + tipo + "," \
             + "'" + nombreart + "'," \
             + "'" + lugar + "'," \
@@ -560,7 +560,7 @@ def esquemas_trazadosextract():
             init.REL_GRUPO_PRODUCTO.append( \
             "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
-            + str(codcolciencias) + "," \
+            + "'" + str(codcolciencias) + "'," \
             + tipo + "," \
             + "'" + nombreart + "'," \
             + "'" + lugar + "'," \
@@ -705,7 +705,7 @@ def innovaciones_en_gestionextract():
             init.REL_GRUPO_PRODUCTO.append( \
             "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
-            + str(codcolciencias) + "," \
+            + "'" + str(codcolciencias) + "'," \
             + tipo + "," \
             + "'" + nombreart + "'," \
             + "'" + lugar + "'," \
@@ -848,7 +848,7 @@ def innovaciones_procedimientosextract():
             init.REL_GRUPO_PRODUCTO.append( \
             "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
-            + str(codcolciencias) + "," \
+            + "'" + str(codcolciencias) + "'," \
             + tipo + "," \
             + "'" + nombreart + "'," \
             + "null" + "," \
@@ -991,7 +991,7 @@ def variedad_animalextract():
             init.REL_GRUPO_PRODUCTO.append( \
             "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
-            + str(codcolciencias) + "," \
+            + "'" + str(codcolciencias) + "'," \
             + tipo + "," \
             + "'" + nombreart + "'," \
             + "'" + lugar + "'," \
@@ -1137,7 +1137,7 @@ def variedad_vegetalextract():
             init.REL_GRUPO_PRODUCTO.append( \
             "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
-            + str(codcolciencias) + "," \
+            + "'" + str(codcolciencias) + "'," \
             + tipo + "," \
             + "'" + nombreart + "'," \
             + "'" + lugar + "'," \
@@ -1283,7 +1283,7 @@ def planta_pilotoextract():
             init.REL_GRUPO_PRODUCTO.append( \
             "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
-            + str(codcolciencias) + "," \
+            + "'" + str(codcolciencias) + "'," \
             + tipo + "," \
             + "'" + nombreart + "'," \
             + "'" + lugar + "'," \
@@ -1435,7 +1435,7 @@ def otros_productos_tecnicosextract():
             init.REL_GRUPO_PRODUCTO.append( \
             "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
-            + str(codcolciencias) + "," \
+            + "'" + str(codcolciencias) + "'," \
             + tipo + "," \
             + "'" + nombreart + "'," \
             + "'" + lugar + "'," \
@@ -1603,7 +1603,7 @@ def regulaciones_normasextract():
             init.REL_GRUPO_PRODUCTO.append( \
             "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
-            + str(codcolciencias) + "," \
+            + "'" + str(codcolciencias) + "'," \
             + tipo + "," \
             + "'" + nombreart + "'," \
             + "'" + lugar + "'," \
@@ -1771,7 +1771,7 @@ def guias_clinicasextract():
             init.REL_GRUPO_PRODUCTO.append( \
             "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
-            + str(codcolciencias) + "," \
+            + "'" + str(codcolciencias) + "'," \
             + tipo + "," \
             + "'" + nombreart + "'," \
             + "'" + lugar + "'," \
@@ -1916,7 +1916,7 @@ def prototiposextract():
             init.REL_GRUPO_PRODUCTO.append( \
             "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
-            + str(codcolciencias) + "," \
+            + "'" + str(codcolciencias) + "'," \
             + tipo + "," \
             + "'" + nombreart + "'," \
             + "'" + lugar + "'," \
@@ -2071,7 +2071,7 @@ def reglamentos_tecnicosextract():
             init.REL_GRUPO_PRODUCTO.append( \
             "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
-            + str(codcolciencias) + "," \
+            + "'" + str(codcolciencias) + "'," \
             + tipo + "," \
             + "'" + nombreart + "'," \
             + "'" + lugar + "'," \
@@ -2233,7 +2233,7 @@ def signos_distintivosextract():
             init.REL_GRUPO_PRODUCTO.append( \
             "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
-            + str(codcolciencias) + "," \
+            + "'" + str(codcolciencias) + "'," \
             + tipo + "," \
             + "'" + nombreart + "'," \
             + "'" + lugar + "'," \
@@ -2411,7 +2411,7 @@ def empresas_base_tecextract():
             init.REL_GRUPO_PRODUCTO.append( \
             "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
-            + str(codcolciencias) + "," \
+            + "'" + str(codcolciencias) + "'," \
             + tipo + "," \
             + "'" + nombreart + "'," \
             + "null" + "," \
@@ -2585,7 +2585,7 @@ def software_registradoextract():
             init.REL_GRUPO_PRODUCTO.append( \
             "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
-            + str(codcolciencias) + "," \
+            + "'" + str(codcolciencias) + "'," \
             + tipo + "," \
             + "'" + nombreart + "'," \
             + "'" + lugar + "'," \
@@ -2771,7 +2771,7 @@ def proyectos_leyextract():
             init.REL_GRUPO_PRODUCTO.append( \
             "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
-            + str(codcolciencias) + "," \
+            + "'" + str(codcolciencias) + "'," \
             + tipo + "," \
             + "'" + nombreart + "'," \
             + "null" + "," \
