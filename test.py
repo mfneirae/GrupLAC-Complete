@@ -18,10 +18,10 @@ vinculain = ""
 page_soup = soup(page_html,"html.parser")
 containers = page_soup.findAll("table")
 for a in range(0,len(containers)):
-    buscaesquemas_trazados = containers[a].td
-    #print(buscaesquemas_trazados)
+    buscaempresas_base_tec = containers[a].td
+    #print(buscaempresas_base_tec)
     try:
-        if buscaesquemas_trazados.text == "Esquemas de trazados de circuito integrado":
+        if buscaempresas_base_tec.text == "Empresas de base tecnológica ":
             all = a
             #print(all)
             break
@@ -38,33 +38,70 @@ def clc(str):
 
 containerb = containers[all]
 container = containerb.findAll("tr")
-cont = container[1]
-info_esquemas_trazados = cont.text
-index1 = info_esquemas_trazados.find("- ") + 2
-index2 = info_esquemas_trazados.find(':')
-tipo = clc(info_esquemas_trazados[index1:index2])
+cont = container[2]
+info_empresas_base_tec = cont.text
+index1 = info_empresas_base_tec.find("- ") + 2
+index2 = info_empresas_base_tec.find(':')
+tipo = clc(info_empresas_base_tec[index1:index2])
 #Tipo Artículo
-if tipo.strip() == "Esquema de circuito integrado":
-    tipo = "41"
+if tipo.strip() == "Spin-off":
+   tipo = "68"
+elif tipo.strip() == "Start-up":
+   tipo = "69"
 else:
-    logging.critical('Añadir: ' + tipo)
+    logging.critical('Añadir: ' + tipo + ' a empresas_base_tec')
     print ("ALERTA: Revisar el archivo Registros.log")
+
+
 #_________________________________________________________________________
 index1 = index2 + 2
-index2 = info_esquemas_trazados.find('\n                ', index1, len(info_esquemas_trazados))
-nombreart = clc(info_esquemas_trazados[index1:index2])
+index2 = info_empresas_base_tec.find('\n                ', index1, len(info_empresas_base_tec))
+nombreart = clc(info_empresas_base_tec[index1:index2])
 index1 = index2 + 17
-index2 = info_esquemas_trazados.find(',', index1, len(info_esquemas_trazados))
-lugar = clc(info_esquemas_trazados[index1:index2])
-index1 = index2 + 2
-index2 = info_esquemas_trazados.find(',', index1, len(info_esquemas_trazados))
-anopub = clc(info_esquemas_trazados[index1:index2])
-index1 = info_esquemas_trazados.find('Disponibilidad:') + 15
-index2 = info_esquemas_trazados.find(',', index1, len(info_esquemas_trazados))
-disponibilidad = clc(info_esquemas_trazados[index1:index2])
-index1 = info_esquemas_trazados.find('Institución financiadora:') + 25
-index2 = info_esquemas_trazados.find('Autores:', index1, len(info_esquemas_trazados))
-institucion = clc(info_esquemas_trazados[index1:index2])
-index1 = info_esquemas_trazados.find('Autores:', index2, len(info_esquemas_trazados)) + 9
-index2 = info_esquemas_trazados.find('/br', index1, len(info_esquemas_trazados))
-autores = clc(info_esquemas_trazados[index1:index2])
+index2 = info_empresas_base_tec.find(',', index1, len(info_empresas_base_tec))
+fecha_publica = clc(info_empresas_base_tec[index1:index2])
+index1 = index2 - 5
+index2 = info_empresas_base_tec.find(',', index1, len(info_empresas_base_tec))
+anopub = clc(info_empresas_base_tec[index1:index2])
+index1 = info_empresas_base_tec.find('Ambito:') + 7
+index2 = info_empresas_base_tec.find(',', index1, len(info_empresas_base_tec))
+ambito = clc(info_empresas_base_tec[index1:index2])
+index1 = info_empresas_base_tec.find('NIT:') + 4
+index2 = info_empresas_base_tec.find(',', index1, len(info_empresas_base_tec))
+nit = clc(info_empresas_base_tec[index1:index2])
+index1 = info_empresas_base_tec.find('Fecha de registro ante cámara:') + 30
+index2 = info_empresas_base_tec.find('\n', index1, len(info_empresas_base_tec))
+registrocamara = clc(info_empresas_base_tec[index1:index2])
+index1 = index2 +2
+index2 = info_empresas_base_tec.find('\n', index1, len(info_empresas_base_tec))
+productos = clc(info_empresas_base_tec[index1:index2])
+index1 = info_empresas_base_tec.find('Sitio web:') + 10
+index2 = info_empresas_base_tec.find('Institución financiadora:', index1, len(info_empresas_base_tec))
+DOI = clc(info_empresas_base_tec[index1:index2])
+index1 = info_empresas_base_tec.find('Disponibilidad:') + 15
+index2 = info_empresas_base_tec.find(',', index1, len(info_empresas_base_tec))
+disponibilidad = clc(info_empresas_base_tec[index1:index2])
+index1 = info_empresas_base_tec.find('Objeto:') + 7
+index2 = info_empresas_base_tec.find('Institución financiadora:', index1, len(info_empresas_base_tec))
+objeto = clc(info_empresas_base_tec[index1:index2])
+index1 = info_empresas_base_tec.find('Institución financiadora:') + 25
+index2 = info_empresas_base_tec.find('Autores:', index1, len(info_empresas_base_tec))
+institucion = clc(info_empresas_base_tec[index1:index2])
+index1 = info_empresas_base_tec.find('Número del registro:') + 20
+index2 = info_empresas_base_tec.find(',', index1, len(info_empresas_base_tec))
+contrato = clc(info_empresas_base_tec[index1:index2])
+index1 = info_empresas_base_tec.find('Nombre del titular:') + 19
+index2 = info_empresas_base_tec.find('\n', index1, len(info_empresas_base_tec))
+titular = clc(info_empresas_base_tec[index1:index2])
+index1 = info_empresas_base_tec.find('Nombre del proyecto:') + 20
+index2 = info_empresas_base_tec.find('Institución financiadora:', index1, len(info_empresas_base_tec))
+proyecto = clc(info_empresas_base_tec[index1:index2])
+index1 = info_empresas_base_tec.find('Nombre comercial:') + 17
+index2 = info_empresas_base_tec.find('Nombre del proyecto:', index1, len(info_empresas_base_tec))
+comercial = clc(info_empresas_base_tec[index1:index2])
+index1 = info_empresas_base_tec.find('Sitio web:') + 10
+index2 = info_empresas_base_tec.find('Nombre comercial:', index1, len(info_empresas_base_tec))
+DOI = clc(info_empresas_base_tec[index1:index2])
+index1 = info_empresas_base_tec.find('Autores:') + 9
+index2 = info_empresas_base_tec.find('/n', index1, len(info_empresas_base_tec))
+autores = clc(info_empresas_base_tec[index1:index2])

@@ -1,7 +1,8 @@
-def esquemas_trazadosextract():
+
+def empresas_base_tecextract():
     from settings import my_url, coduapa, codhermes, codcolciencias, nombregi, dnilider, my_url, COD_PRODUCTO
     import bs4, logging, sys, re, init
-    global contesquemas_trazados
+    global contempresas_base_tec
     LOG_FILENAME = './Logs/Registros.log'
     logging.basicConfig(filename=LOG_FILENAME,level=logging.DEBUG,
         format = "%(asctime)s:%(levelname)s:%(message)s")
@@ -26,10 +27,10 @@ def esquemas_trazadosextract():
     page_soup = soup(page_html,"html.parser")
     containers = page_soup.findAll("table")
     for a in range(0,len(containers)):
-        buscaesquemas_trazados = containers[a].td
-        #print(buscaesquemas_trazados)
+        buscaempresas_base_tec = containers[a].td
+        #print(buscaempresas_base_tec)
         try:
-            if buscaesquemas_trazados.text == "Esquemas de trazados de circuito integrado":
+            if buscaempresas_base_tec.text == "Empresas de base tecnológica ":
                 all = a
                 #print(all)
                 break
@@ -40,34 +41,51 @@ def esquemas_trazadosextract():
         container = containerb.findAll("tr")
         for x in range(1, len(container)):
             cont = container[x]
-            info_esquemas_trazados = cont.text
-            index1 = info_esquemas_trazados.find("- ") + 2
-            index2 = info_esquemas_trazados.find(':')
-            tipo = clc(info_esquemas_trazados[index1:index2])
+            info_empresas_base_tec = cont.text
+            index1 = info_empresas_base_tec.find("- ") + 2
+            index2 = info_empresas_base_tec.find(':')
+            tipo = clc(info_empresas_base_tec[index1:index2])
             #Tipo Artículo
-            if tipo.strip() == "Esquema de circuito integrado":
-                tipo = "41"
-            else:
-                logging.critical('Añadir: ' + tipo)
+            if tipo.strip() == "Producción técnica - Empresa de base tecnológica - Spin-off":
+               tipo = "68"
+           elif tipo.strip() == "Producción técnica - Empresa de base tecnológica - Start-up":
+               tipo = "69"
+           else:
+                logging.critical('Añadir: ' + tipo + ' a empresas_base_tec')
                 print ("ALERTA: Revisar el archivo Registros.log")
             index1 = index2 + 2
-            index2 = info_esquemas_trazados.find('\n                ', index1, len(info_esquemas_trazados))
-            nombreart = clc(info_esquemas_trazados[index1:index2])
+            index2 = info_empresas_base_tec.find('\n                ', index1, len(info_empresas_base_tec))
+            nombreart = clc(info_empresas_base_tec[index1:index2])
             index1 = index2 + 17
-            index2 = info_esquemas_trazados.find(',', index1, len(info_esquemas_trazados))
-            lugar = clc(info_esquemas_trazados[index1:index2])
+            index2 = info_empresas_base_tec.find(',', index1, len(info_empresas_base_tec))
+            lugar = clc(info_empresas_base_tec[index1:index2])
             index1 = index2 + 2
-            index2 = info_esquemas_trazados.find(',', index1, len(info_esquemas_trazados))
-            anopub = clc(info_esquemas_trazados[index1:index2])
-            index1 = info_esquemas_trazados.find('Disponibilidad:') + 15
-            index2 = info_esquemas_trazados.find(',', index1, len(info_esquemas_trazados))
-            disponibilidad = clc(info_esquemas_trazados[index1:index2])
-            index1 = info_esquemas_trazados.find('Institución financiadora:') + 25
-            index2 = info_esquemas_trazados.find('Autores:', index1, len(info_esquemas_trazados))
-            institucion = clc(info_esquemas_trazados[index1:index2])
-            index1 = info_esquemas_trazados.find('Autores:', index2, len(info_esquemas_trazados)) + 9
-            index2 = info_esquemas_trazados.find('/br', index1, len(info_esquemas_trazados))
-            autores = clc(info_esquemas_trazados[index1:index2])
+            index2 = info_empresas_base_tec.find(',', index1, len(info_empresas_base_tec))
+            anopub = clc(info_empresas_base_tec[index1:index2])
+            index1 = info_empresas_base_tec.find('Ambito:') + 7
+            index2 = info_empresas_base_tec.find(',', index1, len(info_empresas_base_tec))
+            ambito = clc(info_empresas_base_tec[index1:index2])
+            index1 = info_empresas_base_tec.find('Sitio web:') + 10
+            index2 = info_empresas_base_tec.find('Institución financiadora:', index1, len(info_empresas_base_tec))
+            DOI = clc(info_empresas_base_tec[index1:index2])
+            index1 = info_empresas_base_tec.find('Disponibilidad:') + 15
+            index2 = info_empresas_base_tec.find(',', index1, len(info_empresas_base_tec))
+            disponibilidad = clc(info_empresas_base_tec[index1:index2])
+            index1 = info_empresas_base_tec.find('Objeto:') + 7
+            index2 = info_empresas_base_tec.find('Institución financiadora:', index1, len(info_empresas_base_tec))
+            objeto = clc(info_empresas_base_tec[index1:index2])
+            index1 = info_empresas_base_tec.find('Fecha de publicación:') + 21
+            index2 = info_empresas_base_tec.find(',', index1, len(info_empresas_base_tec))
+            fecha = clc(info_empresas_base_tec[index1:index2])
+            index1 = info_empresas_base_tec.find('Institución financiadora:') + 25
+            index2 = info_empresas_base_tec.find('Autores:', index1, len(info_empresas_base_tec))
+            institucion = clc(info_empresas_base_tec[index1:index2])
+            index1 = info_empresas_base_tec.find('Número del registro:') + 20
+            index2 = info_empresas_base_tec.find(',', index1, len(info_empresas_base_tec))
+            contrato = clc(info_empresas_base_tec[index1:index2])
+            index1 = info_empresas_base_tec.find('Nombre del titular:') + 19
+            index2 = info_empresas_base_tec.find('\n', index1, len(info_empresas_base_tec))
+            autores = clc(info_empresas_base_tec[index1:index2])
             init.REL_GRUPO_PRODUCTO.append( \
             "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
@@ -81,10 +99,10 @@ def esquemas_trazadosextract():
             + "null" + "," \
             + "null" + "," \
             + "null" + "," \
+            + "'" + DOI + "," \
             + "null" + "," \
             + "null" + "," \
-            + "'" + institucion + "'," \
-            + "'Financiadora'," \
+            + "null" + "," \
             + "'" + autores + "'" \
             + ");\n")
             init.REL_GRUPO_PRODUCTO_CSV.append(str(codcolciencias) + str(COD_PRODUCTO) +";" \
@@ -98,15 +116,16 @@ def esquemas_trazadosextract():
             + "" +";" \
             + "" +";" \
             + "" +";" \
+            + DOI +";" \
             + "" +";" \
             + "" +";" \
-            + institucion +";" \
-            + "Financiadora" +";" \
+            + "" +";" \
             + autores +";" \
             + "\n")
             init.GP_PROD_TEC.append( \
-            "REPLACE INTO `uapa_db`.`GP_PROD_TEC`(`CODGP_PROD`,`Tema`,`Nombre_Comerial`,`Nombre_Proyecto`,`Tipo_de_Ciclo`,`NIT`,`Fecha_de_Registro`,`Tiene_Productos`,`Disponibilidad`,`Objeto`,`Fecha_Publicación`,`Número_de_Contrato`,`Acto_Administrativo`) VALUES"
-            + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
+            "REPLACE INTO `uapa_db`.`GP_PROD_TEC`(`CODGP_PROD_TEC`,`CODGP_PROD`,`Tema`,`Nombre_Comerial`,`Nombre_Proyecto`,`Tipo_de_Ciclo`,`NIT`,`Fecha_de_Registro`,`Tiene_Productos`,`Disponibilidad`,`Objeto`,`Fecha_Publicación`,`Número_de_Contrato`,`Acto_Administrativo`) VALUES"
+            + "('" + str(codcolciencias) + "T" + str(COD_PRODUCTO) + "',"\
+            + "'" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
             + "null" + "," \
             + "null" + "," \
             + "null" + "," \
@@ -114,13 +133,14 @@ def esquemas_trazadosextract():
             + "null" + "," \
             + "null" + "," \
             + "null" + "," \
-            + "'" + disponibilidad + "'," \
             + "null" + "," \
             + "null" + "," \
             + "null" + "," \
+            + "'" + contrato + "'," \
             + "null" \
             + ");\n")
-            init.GP_PROD_TEC_CSV.append(str(codcolciencias) + str(COD_PRODUCTO) +";" \
+            init.GP_PROD_TEC_CSV.append(str(codcolciencias) + "T" + str(COD_PRODUCTO) +";" \
+            + str(codcolciencias) + str(COD_PRODUCTO) +";" \
             + "" +";" \
             + "" +";" \
             + "" +";" \
@@ -128,13 +148,13 @@ def esquemas_trazadosextract():
             + "" +";" \
             + "" +";" \
             + "" +";" \
-            + disponibilidad +";" \
             + "" +";" \
             + "" +";" \
             + "" +";" \
+            + contrato +";" \
             + "" +";" \
             + "\n")
             COD_PRODUCTO += 1
     else:
         logging.info(' El Grupo: ' + nombregi + 'no tiene Esquemas de Cirduitos Trazados Asociados')
-    contesquemas_trazados = [COD_PRODUCTO]
+    contempresas_base_tec = [COD_PRODUCTO]

@@ -151,8 +151,9 @@ def articulosextract():
             + autores +";" \
             + "\n")
             init.GP_PROD_BIB.append( \
-            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD`,`Revista`,`Autor_Original`,`Nombre_Libro`,`ISBN/ISSN`,`Medio_de_Divulgación`,`URL`,`Fasciculos`,`Idioma_Original`,`Idioma_Traduccion`,`Edición`,`Serie`,`Página_Inicial`,`Página_Final`) VALUES"
-            + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
+            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD_BIB`,`CODGP_PROD`,`Revista`,`Autor_Original`,`Nombre_Libro`,`ISBN/ISSN`,`Medio_de_Divulgación`,`URL`,`Fasciculos`,`Idioma_Original`,`Idioma_Traduccion`,`Edición`,`Serie`,`Página_Inicial`,`Página_Final`) VALUES"
+            + "('" + str(codcolciencias) + "B" + str(COD_PRODUCTO) + "',"\
+            + "'" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
             + "'" + revista + "'," \
             + "null" + "," \
             + "null" + "," \
@@ -167,7 +168,8 @@ def articulosextract():
             + pagsini + "," \
             + pagsfin \
             + ");\n")
-            init.GP_PROD_BIB_CSV.append(str(codcolciencias) + str(COD_PRODUCTO) +";" \
+            init.GP_PROD_BIB_CSV.append(str(codcolciencias) + "B" + str(COD_PRODUCTO) +";" \
+            + str(codcolciencias) + str(COD_PRODUCTO) +";" \
             + revista +";" \
             + "" +";" \
             + "" +";" \
@@ -304,8 +306,9 @@ def librosextract():
             + autores +";" \
             + "\n")
             init.GP_PROD_BIB.append( \
-            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD`,`Revista`,`Autor_Original`,`Nombre_Libro`,`ISBN/ISSN`,`Medio_de_Divulgación`,`URL`,`Fasciculos`,`Idioma_Original`,`Idioma_Traduccion`,`Edición`,`Serie`,`Página_Inicial`,`Página_Final`) VALUES"
-            + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
+            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD_BIB`,`CODGP_PROD`,`Revista`,`Autor_Original`,`Nombre_Libro`,`ISBN/ISSN`,`Medio_de_Divulgación`,`URL`,`Fasciculos`,`Idioma_Original`,`Idioma_Traduccion`,`Edición`,`Serie`,`Página_Inicial`,`Página_Final`) VALUES"
+            + "('" + str(codcolciencias) + "B" + str(COD_PRODUCTO) + "',"\
+            + "'" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
             + "null" + "," \
             + "null" + "," \
             + "null" + "," \
@@ -320,7 +323,8 @@ def librosextract():
             + "null" + "," \
             + "null" \
             + ");\n")
-            init.GP_PROD_BIB_CSV.append(str(codcolciencias) + str(COD_PRODUCTO) +";" \
+            init.GP_PROD_BIB_CSV.append(str(codcolciencias) + "B" + str(COD_PRODUCTO) +";" \
+            + str(codcolciencias) + str(COD_PRODUCTO) +";" \
             + "" +";" \
             + "" +";" \
             + "" +";" \
@@ -461,8 +465,9 @@ def caplibrosextract():
             + autores +";" \
             + "\n")
             init.GP_PROD_BIB.append( \
-            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD`,`Revista`,`Autor_Original`,`Nombre_Libro`,`ISBN/ISSN`,`Medio_de_Divulgación`,`URL`,`Fasciculos`,`Idioma_Original`,`Idioma_Traduccion`,`Edición`,`Serie`,`Página_Inicial`,`Página_Final`) VALUES"
-            + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
+            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD_BIB`,`CODGP_PROD`,`Revista`,`Autor_Original`,`Nombre_Libro`,`ISBN/ISSN`,`Medio_de_Divulgación`,`URL`,`Fasciculos`,`Idioma_Original`,`Idioma_Traduccion`,`Edición`,`Serie`,`Página_Inicial`,`Página_Final`) VALUES"
+            + "('" + str(codcolciencias) + "B" + str(COD_PRODUCTO) + "',"\
+            + "'" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
             + "null" + "," \
             + "null" + "," \
             + "'" + libroorigen + "'," \
@@ -477,7 +482,8 @@ def caplibrosextract():
             + pagsini + "," \
             + pagsfin \
             + ");\n")
-            init.GP_PROD_BIB_CSV.append(str(codcolciencias) + str(COD_PRODUCTO) +";" \
+            init.GP_PROD_BIB_CSV.append(str(codcolciencias) + "B" + str(COD_PRODUCTO) +";" \
+            + str(codcolciencias) + str(COD_PRODUCTO) +";" \
             + "" +";" \
             + "" +";" \
             + libroorigen +";" \
@@ -607,8 +613,9 @@ def doctraextract():
             + autores +";" \
             + "\n")
             init.GP_PROD_BIB.append( \
-            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD`,`Revista`,`Autor_Original`,`Nombre_Libro`,`ISBN/ISSN`,`Medio_de_Divulgación`,`URL`,`Fasciculos`,`Idioma_Original`,`Idioma_Traduccion`,`Edición`,`Serie`,`Página_Inicial`,`Página_Final`) VALUES"
-            + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
+            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD_BIB`,`CODGP_PROD`,`Revista`,`Autor_Original`,`Nombre_Libro`,`ISBN/ISSN`,`Medio_de_Divulgación`,`URL`,`Fasciculos`,`Idioma_Original`,`Idioma_Traduccion`,`Edición`,`Serie`,`Página_Inicial`,`Página_Final`) VALUES"
+            + "('" + str(codcolciencias) + "B" + str(COD_PRODUCTO) + "',"\
+            + "'" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
             + "null" + "," \
             + "null" + "," \
             + "null" + "," \
@@ -623,7 +630,8 @@ def doctraextract():
             + "null" + "," \
             + "null" \
             + ");\n")
-            init.GP_PROD_BIB_CSV.append(str(codcolciencias) + str(COD_PRODUCTO) +";" \
+            init.GP_PROD_BIB_CSV.append(str(codcolciencias) + "B" + str(COD_PRODUCTO) +";" \
+            + str(codcolciencias) + str(COD_PRODUCTO) +";" \
             + "" +";" \
             + "" +";" \
             + "" +";" \
@@ -762,8 +770,9 @@ def otrapubdivextract():
             + autores +";" \
             + "\n")
             init.GP_PROD_BIB.append( \
-            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD`,`Revista`,`Autor_Original`,`Nombre_Libro`,`ISBN/ISSN`,`Medio_de_Divulgación`,`URL`,`Fasciculos`,`Idioma_Original`,`Idioma_Traduccion`,`Edición`,`Serie`,`Página_Inicial`,`Página_Final`) VALUES"
-            + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
+            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD_BIB`,`CODGP_PROD`,`Revista`,`Autor_Original`,`Nombre_Libro`,`ISBN/ISSN`,`Medio_de_Divulgación`,`URL`,`Fasciculos`,`Idioma_Original`,`Idioma_Traduccion`,`Edición`,`Serie`,`Página_Inicial`,`Página_Final`) VALUES"
+            + "('" + str(codcolciencias) + "B" + str(COD_PRODUCTO) + "',"\
+            + "'" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
             + "null" + "," \
             + "'" + autorori + "'," \
             + "null" + "," \
@@ -778,7 +787,8 @@ def otrapubdivextract():
             + "null" + "," \
             + "null" \
             + ");\n")
-            init.GP_PROD_BIB_CSV.append(str(codcolciencias) + str(COD_PRODUCTO) +";" \
+            init.GP_PROD_BIB_CSV.append(str(codcolciencias) + "B" + str(COD_PRODUCTO) +";" \
+            + str(codcolciencias) + str(COD_PRODUCTO) +";" \
             + "" +";" \
             + autorori +";" \
             + "" +";" \
@@ -925,8 +935,9 @@ def otrosarticulosextract():
             + autores +";" \
             + "\n")
             init.GP_PROD_BIB.append( \
-            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD`,`Revista`,`Autor_Original`,`Nombre_Libro`,`ISBN/ISSN`,`Medio_de_Divulgación`,`URL`,`Fasciculos`,`Idioma_Original`,`Idioma_Traduccion`,`Edición`,`Serie`,`Página_Inicial`,`Página_Final`) VALUES"
-            + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
+            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD_BIB`,`CODGP_PROD`,`Revista`,`Autor_Original`,`Nombre_Libro`,`ISBN/ISSN`,`Medio_de_Divulgación`,`URL`,`Fasciculos`,`Idioma_Original`,`Idioma_Traduccion`,`Edición`,`Serie`,`Página_Inicial`,`Página_Final`) VALUES"
+            + "('" + str(codcolciencias) + "B" + str(COD_PRODUCTO) + "',"\
+            + "'" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
             + "'" + revista + "'," \
             + "null" + "," \
             + "null" + "," \
@@ -941,7 +952,8 @@ def otrosarticulosextract():
             + pagsini + "," \
             + pagsfin \
             + ");\n")
-            init.GP_PROD_BIB_CSV.append(str(codcolciencias) + str(COD_PRODUCTO) +";" \
+            init.GP_PROD_BIB_CSV.append(str(codcolciencias) + "B" + str(COD_PRODUCTO) +";" \
+            + str(codcolciencias) + str(COD_PRODUCTO) +";" \
             + revista +";" \
             + "" +";" \
             + "" +";" \
@@ -1078,8 +1090,9 @@ def otroslibrosextract():
             + autores +";" \
             + "\n")
             init.GP_PROD_BIB.append( \
-            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD`,`Revista`,`Autor_Original`,`Nombre_Libro`,`ISBN/ISSN`,`Medio_de_Divulgación`,`URL`,`Fasciculos`,`Idioma_Original`,`Idioma_Traduccion`,`Edición`,`Serie`,`Página_Inicial`,`Página_Final`) VALUES"
-            + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
+            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD_BIB`,`CODGP_PROD`,`Revista`,`Autor_Original`,`Nombre_Libro`,`ISBN/ISSN`,`Medio_de_Divulgación`,`URL`,`Fasciculos`,`Idioma_Original`,`Idioma_Traduccion`,`Edición`,`Serie`,`Página_Inicial`,`Página_Final`) VALUES"
+            + "('" + str(codcolciencias) + "B" + str(COD_PRODUCTO) + "',"\
+            + "'" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
             + "null" + "," \
             + "null" + "," \
             + "null" + "," \
@@ -1094,7 +1107,8 @@ def otroslibrosextract():
             + "null" + "," \
             + "null" \
             + ");\n")
-            init.GP_PROD_BIB_CSV.append(str(codcolciencias) + str(COD_PRODUCTO) +";" \
+            init.GP_PROD_BIB_CSV.append(str(codcolciencias) + "B" + str(COD_PRODUCTO) +";" \
+            + str(codcolciencias) + str(COD_PRODUCTO) +";" \
             + "" +";" \
             + "" +";" \
             + "" +";" \
@@ -1246,8 +1260,9 @@ def traduccionesextract():
             + autores +";" \
             + "\n")
             init.GP_PROD_BIB.append( \
-            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD`,`Revista`,`Autor_Original`,`Nombre_Libro`,`ISBN/ISSN`,`Medio_de_Divulgación`,`URL`,`Fasciculos`,`Idioma_Original`,`Idioma_Traduccion`,`Edición`,`Serie`,`Página_Inicial`,`Página_Final`) VALUES"
-            + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
+            "REPLACE INTO `uapa_db`.`GP_PROD_BIB`(`CODGP_PROD_BIB`,`CODGP_PROD`,`Revista`,`Autor_Original`,`Nombre_Libro`,`ISBN/ISSN`,`Medio_de_Divulgación`,`URL`,`Fasciculos`,`Idioma_Original`,`Idioma_Traduccion`,`Edición`,`Serie`,`Página_Inicial`,`Página_Final`) VALUES"
+            + "('" + str(codcolciencias) + "B" + str(COD_PRODUCTO) + "',"\
+            + "'" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
             + "null" + "," \
             + "'" + autorori + "'," \
             + "'" + libroorigen + "'," \
@@ -1262,7 +1277,8 @@ def traduccionesextract():
             + "null" + "," \
             + "null" \
             + ");\n")
-            init.GP_PROD_BIB_CSV.append(str(codcolciencias) + str(COD_PRODUCTO) +";" \
+            init.GP_PROD_BIB_CSV.append(str(codcolciencias) + "B" + str(COD_PRODUCTO) +";" \
+            + str(codcolciencias) + str(COD_PRODUCTO) +";" \
             + "" +";" \
             + autorori +";" \
             + libroorigen +";" \

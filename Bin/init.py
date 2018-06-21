@@ -55,7 +55,8 @@ def inicio():
     GP_OBRAS = []
     GP_ACTIVIDADES_FORM = []
 
-    GP_PROD_BIB_CSV=["CODGP_PROD; \
+    GP_PROD_BIB_CSV=["CODGP_PROD_BIB; \
+CODGP_PROD:\
 Revista; \
 Autor Original; \
 Nombre Libro; \
@@ -71,7 +72,8 @@ Página Inicial; \
 Página Final    ; \
 \n"]
 
-    GP_PROD_TEC_CSV=["CODGP_PROD; \
+    GP_PROD_TEC_CSV=["CODGP_PROD_TEC; \
+CODGP_PROD; \
 Tema; \
 Nombre Comerial; \
 Nombre Proyecto; \
@@ -549,7 +551,35 @@ Comités\n\
 91; \
 Datos complementarios - Jurado/Comisiones evaluadoras de trabajo de grado - Curso de perfeccionamiento/especialización; \
 Jurado Especializaciones; \
-Comités\n"]
+Comités\n\
+96; \
+Producción técnica - Signos Distintivos - Nombres comerciales; \
+Signos Distintivos - Nombres comerciales; \
+Nombres comerciales\n\
+92; \
+Datos complementarios - Jurado/Comisiones evaluadoras de trabajo de grado - Curso de perfeccionamiento/especialización; \
+Jurado Especializaciones; \
+Comités\n\
+93; \
+Producción técnica - Plantas piloto - Planta piloto; \
+Plantas piloto - Planta piloto; \
+Planta piloto\n\
+94; \
+Producción técnica - Prototipo - Industrial; \
+Prototipo - Industrial; \
+Industrial\n\
+95; \
+Producción técnica - Signos Distintivos - Marcas; \
+Signos Distintivos - Marcas; \
+Marcas\n\
+96; \
+Producción técnica - Signos Distintivos - Nombres comerciales; \
+Signos Distintivos - Nombres comerciales; \
+Nombres comerciales\n\
+92; \
+Producción técnica - Prototipo - Servicios; \
+Prototipo - Servicios; \
+Servicios\n"]
 
 #***************************************************************************
 #Insert
@@ -1373,6 +1403,51 @@ REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
 'Datos complementarios - Jurado/Comisiones evaluadoras de trabajo de grado - Otra',\
 'Jurado Otra',\
 'Comités');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+92, \
+'Producción técnica - Prototipo - Servicios',\
+'Prototipo - Servicios',\
+'Servicios');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+93, \
+'Producción técnica - Plantas piloto - Planta piloto',\
+'Plantas piloto - Planta piloto',\
+'Planta piloto');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+94, \
+'Producción técnica - Prototipo - Industrial',\
+'Prototipo - Industrial',\
+'Industrial');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+95, \
+'Producción técnica - Signos Distintivos - Marcas',\
+'Signos Distintivos - Marcas',\
+'Marcas');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+96, \
+'Producción técnica - Signos Distintivos - Nombres comerciales',\
+'Signos Distintivos - Nombres comerciales',\
+'Nombres comerciales');\n\
 REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
 `COD_TIPO_PRODUCTO`,\
 `TIPO_PRODUCTO_COL`,\

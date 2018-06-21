@@ -109,6 +109,51 @@ for q in range(2,total):
     prodtecnica.disenosiextract()
     from prodtecnica import contdisenosi
     COD_PRODUCTO = int("".join(str(x) for x in contdisenosi))
+    prodtecnica.esquemas_trazadosextract()
+    from prodtecnica import contesquemas_trazados
+    COD_PRODUCTO = int("".join(str(x) for x in contesquemas_trazados))
+    prodtecnica.innovaciones_en_gestionextract()
+    from prodtecnica import continnovaciones_en_gestion
+    COD_PRODUCTO = int("".join(str(x) for x in continnovaciones_en_gestion))
+    prodtecnica.innovaciones_procedimientosextract()
+    from prodtecnica import continnovaciones_procedimientos
+    COD_PRODUCTO = int("".join(str(x) for x in continnovaciones_procedimientos))
+    prodtecnica.variedad_animalextract()
+    from prodtecnica import contvariedad_animal
+    COD_PRODUCTO = int("".join(str(x) for x in contvariedad_animal))
+    prodtecnica.variedad_vegetalextract()
+    from prodtecnica import contvariedad_vegetal
+    COD_PRODUCTO = int("".join(str(x) for x in contvariedad_vegetal))
+    prodtecnica.planta_pilotoextract()
+    from prodtecnica import contplanta_piloto
+    COD_PRODUCTO = int("".join(str(x) for x in contplanta_piloto))
+    prodtecnica.otros_productos_tecnicosextract()
+    from prodtecnica import contotros_productos_tecnicos
+    COD_PRODUCTO = int("".join(str(x) for x in contotros_productos_tecnicos))
+    prodtecnica.regulaciones_normasextract()
+    from prodtecnica import contregulaciones_normas
+    COD_PRODUCTO = int("".join(str(x) for x in contregulaciones_normas))
+    prodtecnica.guias_clinicasextract()
+    from prodtecnica import contguias_clinicas
+    COD_PRODUCTO = int("".join(str(x) for x in contguias_clinicas))
+    prodtecnica.prototiposextract()
+    from prodtecnica import contprototipos
+    COD_PRODUCTO = int("".join(str(x) for x in contprototipos))
+    prodtecnica.reglamentos_tecnicosextract()
+    from prodtecnica import contreglamentos_tecnicos
+    COD_PRODUCTO = int("".join(str(x) for x in contreglamentos_tecnicos))
+    prodtecnica.signos_distintivosextract()
+    from prodtecnica import contsignos_distintivos
+    COD_PRODUCTO = int("".join(str(x) for x in contsignos_distintivos))
+    prodtecnica.software_registradoextract()
+    from prodtecnica import contsoftware_registrado
+    COD_PRODUCTO = int("".join(str(x) for x in contsoftware_registrado))
+    prodtecnica.proyectos_leyextract()
+    from prodtecnica import contproyectos_ley
+    COD_PRODUCTO = int("".join(str(x) for x in contproyectos_ley))
+    prodtecnica.empresas_base_tecextract()
+    from prodtecnica import contempresas_base_tec
+    COD_PRODUCTO = int("".join(str(x) for x in contempresas_base_tec))
     print("El grupo: " + nombregi + " ha sido  procesado, Estado: " + str(q/(total-1)*100) + "%")
     # from datosbasicos import conteventos
     # COD_PRODUCTO = int("".join(str(x) for x in conteventos))
