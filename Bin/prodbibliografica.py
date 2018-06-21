@@ -21,6 +21,8 @@
 def clc(str):
     import re
     str = re.sub(r'[^A-Za-z0-9:=_?ÁÀÉÈÍÌÓÒÚÙéèáà,éñèíìńúùóò .\-/+]',r'',re.sub(' +',' ',str.replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
+    if str == ",":
+        str = "-"
     return str;
 
 def articulosextract():
@@ -165,8 +167,8 @@ def articulosextract():
             + "null" + "," \
             + "null" + "," \
             + "null" + "," \
-            + pagsini + "," \
-            + pagsfin \
+            + "'" + pagsini + "'," \
+            + "'" + pagsfin + "'"\
             + ");\n")
             init.GP_PROD_BIB_CSV.append(str(codcolciencias) + "B" + str(COD_PRODUCTO) +";" \
             + str(codcolciencias) + str(COD_PRODUCTO) +";" \
@@ -479,8 +481,8 @@ def caplibrosextract():
             + "null" + "," \
             + "null" + "," \
             + "null" + "," \
-            + pagsini + "," \
-            + pagsfin \
+            + "'" + pagsini + "'," \
+            + "'" + pagsfin + "'"\
             + ");\n")
             init.GP_PROD_BIB_CSV.append(str(codcolciencias) + "B" + str(COD_PRODUCTO) +";" \
             + str(codcolciencias) + str(COD_PRODUCTO) +";" \
@@ -559,7 +561,7 @@ def doctraextract():
             index2 = info_doctra.find('\n', index1, len(info_doctra))
             nombreart = clc(info_doctra[index1:index2])
             index1 = index2 + 2
-            index2 = info_doctra.find('Nro. Paginas:', index1, len(info_doctra))
+            index2 = info_doctra.find(',', index1, len(info_doctra))
             anopub = clc(info_doctra[index1:index2])
             index1 = index2 + 13
             index2 = info_doctra.find('Instituciones participantes:', index1, len(info_doctra)) - 19
@@ -949,8 +951,8 @@ def otrosarticulosextract():
             + "null" + "," \
             + "null" + "," \
             + "null" + "," \
-            + pagsini + "," \
-            + pagsfin \
+            + "'" + pagsini + "'," \
+            + "'" + pagsfin + "'"\
             + ");\n")
             init.GP_PROD_BIB_CSV.append(str(codcolciencias) + "B" + str(COD_PRODUCTO) +";" \
             + str(codcolciencias) + str(COD_PRODUCTO) +";" \

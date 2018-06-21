@@ -6,7 +6,7 @@ REPLACE INTO `uapa_db`.`GP_DATOS_LINEAS`(`CODGP_LINEA`,`CODGP`,`Nombre_Línea_In
 REPLACE INTO `uapa_db`.`GP_DATOS_LINEAS`(`CODGP_LINEA`,`CODGP`,`Nombre_Línea_Inv`) VALUES('COL00000012','COL0000001','Linea de prueba 1');
 REPLACE INTO `uapa_db`.`GP_DATOS_LINEAS`(`CODGP_LINEA`,`CODGP`,`Nombre_Línea_Inv`) VALUES('asd1','asd','Control Gestión');
 REPLACE INTO `uapa_db`.`GP_DATOS_LINEAS`(`CODGP_LINEA`,`CODGP`,`Nombre_Línea_Inv`) VALUES('asd2','asd','Estrategia y Organizaciones');
-REPLACE INTO `uapa_db`.`GP_DATOS_LINEAS`(`CODGP_LINEA`,`CODGP`,`Nombre_Línea_Inv`) VALUES('asd3','asd','Estudios de la Ciencia Tecnología e innovación');
+REPLACE INTO `uapa_db`.`GP_DATOS_LINEAS`(`CODGP_LINEA`,`CODGP`,`Nombre_Línea_Inv`) VALUES('asd3','asd','Estudios de la Ciencia, Tecnología e innovación');
 REPLACE INTO `uapa_db`.`GP_DATOS_LINEAS`(`CODGP_LINEA`,`CODGP`,`Nombre_Línea_Inv`) VALUES('asd4','asd','Marketing');
 REPLACE INTO `uapa_db`.`GP_DATOS_LINEAS`(`CODGP_LINEA`,`CODGP`,`Nombre_Línea_Inv`) VALUES('asd5','asd','Prospectiva / Vigilancia tecnologica / Inteligencia Competitiva');
 REPLACE INTO `uapa_db`.`GP_DATOS_LINEAS`(`CODGP_LINEA`,`CODGP`,`Nombre_Línea_Inv`) VALUES('asd6','asd','Sistemas de Información Organizacionales');

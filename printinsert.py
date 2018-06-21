@@ -82,6 +82,8 @@ f.close()
 f = open ("./Resultados/GP_PROD_BIB.sql", "w")
 init.GP_PROD_BIB = [w.replace("''", 'null') for w in init.GP_PROD_BIB]
 init.GP_PROD_BIB = [w.replace(",,", ',null,') for w in init.GP_PROD_BIB]
+init.GP_PROD_BIB = [w.replace(",)", ',null)') for w in init.GP_PROD_BIB]
+init.GP_PROD_BIB = [w.replace("-)", ',null)') for w in init.GP_PROD_BIB]
 for item in init.GP_PROD_BIB:
     try:
         f.write(item)

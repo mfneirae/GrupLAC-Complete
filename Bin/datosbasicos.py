@@ -20,7 +20,9 @@
 
 def clc(str):
     import re
-    str = re.sub(r'[^A-Za-z0-9:=_?ÁÀÉÈÍÌÓñÒÚÙéèáàéñèíìúùóò .\-/+]',r'',re.sub(' +',' ',str.replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
+    str = re.sub(r'[^A-Za-z0-9:=_?ÁÀÉÈÍÌÓÒÚÙéèáà,éñèíìńúùóò .\-/+]',r'',re.sub(' +',' ',str.replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
+    if str == ",":
+        str = "-"
     return str;
 
 def datosextract():
@@ -499,8 +501,8 @@ def integrantesextract():
             + str(duravinculafin) + "\n")
             #Insert
             init.GP_DATOS_INTEGRANTES.append( \
-            "REPLACE INTO `uapa_db`.`GP_DATOS_INTEGRANTES`(`CODGP_INTEGRANTE`,`CODGP`,`COD_RG`,`CVLAC`,`NOMBRE_COMPLETO`,`Tipo_Vinculación`,`Horas_de_Dedicación`,`Duración_Vinculación`,`Inicio_Vinculación`,`Fin_Vinculación`,`Fin_Vinculación`) VALUES"
-            + "('" + str(codcolciencias) + str(COD_INTEGRANTES) + "`,"\
+            "REPLACE INTO `uapa_db`.`GP_DATOS_INTEGRANTES`(`CODGP_INTEGRANTE`,`CODGP`,`COD_RH`,`CVLAC`,`NOMBRE_COMPLETO`,`Tipo_Vinculación`,`Horas_de_Dedicación`,`Duración_Vinculación`,`Inicio_Vinculación`,`Fin_Vinculación`) VALUES"
+            + "('" + str(codcolciencias) + str(COD_INTEGRANTES) + "',"\
             + "'" + str(codcolciencias) + "',"\
             + "'" + str(cod_rh) + "',"\
             + "'" + linkcv + "'," \

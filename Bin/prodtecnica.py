@@ -21,6 +21,8 @@
 def clc(str):
     import re
     str = re.sub(r'[^A-Za-z0-9:=_?ÁÀÉÈÍÌÓÒÚÙéèáà,éñèíìńúùóò .\-/+]',r'',re.sub(' +',' ',str.replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
+    if str == ",":
+        str = "-"
     return str;
 
 def cartasextract():
@@ -2081,7 +2083,7 @@ def reglamentos_tecnicosextract():
             + "null" + "," \
             + "null" + "," \
             + "null" + "," \
-            + "'" + DOI + "," \
+            + "'" + DOI + "'," \
             + "null" + "," \
             + "'" + institucion + "'," \
             + "'Financiadora'," \
@@ -2243,7 +2245,7 @@ def signos_distintivosextract():
             + "null" + "," \
             + "null" + "," \
             + "null" + "," \
-            + "'" + DOI + "," \
+            + "null" + "," \
             + "null" + "," \
             + "null" + "," \
             + "null" + "," \
@@ -2260,7 +2262,7 @@ def signos_distintivosextract():
             + "" +";" \
             + "" +";" \
             + "" +";" \
-            + DOI +";" \
+            + "" +";" \
             + "" +";" \
             + "" +";" \
             + "" +";" \
@@ -2595,7 +2597,7 @@ def software_registradoextract():
             + "null" + "," \
             + "null" + "," \
             + "null" + "," \
-            + "'" + DOI + "," \
+            + "'" + DOI + "'," \
             + "null" + "," \
             + "'" + institucion + "'," \
             + "'Financiadora'," \

@@ -21,6 +21,8 @@
 def clc(str):
     import re
     str = re.sub(r'[^A-Za-z0-9:=_?ÁÀÉÈÍÌÓÒÚÙéèáà,éñèíìńúùóò .\-/+]',r'',re.sub(' +',' ',str.replace('"',"").replace("'","").strip().replace(";" , "|").replace("\r\n","").replace("\n","").replace("\r","")))
+    if str == ",":
+        str = "-"
     return str;
 
 def ediciones_apropiacionextract():
