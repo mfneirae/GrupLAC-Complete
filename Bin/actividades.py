@@ -207,6 +207,8 @@ def cursos_corta_duracionextract():
                 tipo = "115"
             elif tipo.strip() == "Extensión extracurricular":
                 tipo = "116"
+            elif tipo.strip() == "Especialización":
+                tipo = "122"
             elif tipo.strip() == "Otro":
                 tipo = "118"
             else:

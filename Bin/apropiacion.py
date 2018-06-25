@@ -76,6 +76,8 @@ def ediciones_apropiacionextract():
                 tipo = "97"
             elif tipo.strip() == "Libro":
                 tipo = "98"
+            elif tipo.strip() == "Revista":
+                tipo = "120"
             else:
                 logging.critical('Añadir: ' + tipo + ' a ediciones_apropiacion')
                 print ("ALERTA: Revisar el archivo Registros.log")
@@ -518,6 +520,8 @@ def redes_conocimientosextract():
             index1 = info_redes_conocimientos.find(' Número de participantes:',index2,len(info_redes_conocimientos)) + 25
             index2 = info_redes_conocimientos.find('\n', index1, len(info_redes_conocimientos))
             participantes = clc(info_redes_conocimientos[index1:index2])
+            if len(participantes) > 10:
+                participantes = "";
             init.REL_GRUPO_PRODUCTO.append( \
             "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
@@ -632,6 +636,8 @@ def contenidos_impresosextract():
                 tipo = "104"
             elif tipo.strip() == "Boletín":
                 tipo = "105"
+            elif tipo.strip() == "Cartilla":
+                tipo = "121"
             else:
                 logging.critical('Añadir: ' + tipo + ' a contenidos_impresos')
                 print ("ALERTA: Revisar el archivo Registros.log")
@@ -775,6 +781,8 @@ def contenidos_multimediaextract():
                 tipo = "106"
             elif tipo.strip() == "Entrevista":
                 tipo = "107"
+            elif tipo.strip() == "Otro":
+                tipo = "123"
             else:
                 logging.critical('Añadir: ' + tipo + ' a contenidos_multimedia')
                 print ("ALERTA: Revisar el archivo Registros.log")
@@ -921,6 +929,10 @@ def contenido_virtualextract():
             #Tipo Artículo
             if tipo.strip() == "Página web":
                 tipo = "108"
+            elif tipo.strip() == "Blog":
+                tipo = "124"
+            elif tipo.strip() == "Aplicativo":
+                tipo = "125"
             else:
                 logging.critical('Añadir: ' + tipo + ' a contenido_virtual')
                 print ("ALERTA: Revisar el archivo Registros.log")

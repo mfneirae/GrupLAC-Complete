@@ -1671,6 +1671,60 @@ REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
 `TIPO_PRODUCTO_COL`,\
 `SUB_TIPO_PRODUCTO_COL`,\
 `TIPO_UAPA`) VALUES (\
+120, \
+'Apropiación social y circularción del conocimiento - Revista',\
+'Investigación, desarrollo e innovación - Revista',\
+'Revista');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+121, \
+'Apropiación social y circularción del conocimiento - Cartilla',\
+'Contenidos Impresos - Cartilla',\
+'Cartilla');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+122, \
+'Actividades de Formación - Cursos de Corta Duración - Especialización',\
+'Cursos de Corta Duración - Especialización',\
+'Especialización');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+123, \
+'Apropiación - Contenidos Multimedia - Otro',\
+'Contenidos Multimedia - Otro',\
+'Otro');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+124, \
+'Apropiación - Contenidos Virtuales - Blog',\
+'Contenidos Virtuales - Blog',\
+'Blog');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+125, \
+'Apropiación - Contenidos Virtuales - Aplicativo',\
+'Contenidos Virtuales - Aplicativo',\
+'Aplicativo');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
 91, \
 'Datos complementarios - Jurado/Comisiones evaluadoras de trabajo de grado - Curso de perfeccionamiento/especialización',\
 'Jurado Especial',\

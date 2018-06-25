@@ -1566,11 +1566,11 @@ def regulaciones_normasextract():
                 tipo = "65"
             elif tipo.strip() == "Proyecto de ley":
                 tipo = "66"
-            elif tipo.strip() == "Técnica - Básica":
+            elif tipo.strip() == "Básica":
                 tipo = "74"
-            elif tipo.strip() == "Técnica - Ensayo":
+            elif tipo.strip() == "Ensayo":
                 tipo = "75"
-            elif tipo.strip() == "Técnica - Proceso":
+            elif tipo.strip() == "Proceso":
                 tipo = "77"
             else:
                 logging.critical('Añadir: ' + tipo + ' a regulaciones_normas')
