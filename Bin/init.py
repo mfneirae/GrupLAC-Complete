@@ -38,8 +38,8 @@ def inicio():
     global GP_APROPIACION_CSV
     global GP_OBRAS
     global GP_OBRAS_CSV
-    global GP_ACTIVIDADES_FORM
-    global GP_ACTIVIDADES_FORM_CSV
+    global GP_ACTIVIDADES
+    global GP_ACTIVIDADES_CSV
     global v_colciencias_tipo_producto
     global inv_colciencias_tipo_producto
 
@@ -53,7 +53,7 @@ def inicio():
     GP_PROD_TEC = []
     GP_APROPIACION = []
     GP_OBRAS = []
-    GP_ACTIVIDADES_FORM = []
+    GP_ACTIVIDADES = []
 
     GP_PROD_BIB_CSV=["CODGP_PROD_BIB; \
 CODGP_PROD:\
@@ -111,7 +111,7 @@ Productos Asociados; \
 Número Derechos Autor/NIT; \
 \n"]
 
-    GP_ACTIVIDADES_FORM_CSV=["CODGP_PROD_FORM; \
+    GP_ACTIVIDADES_CSV=["CODGP_PROD_FORM; \
 CODGP_PROD; \
 Nombre de Ferias; \
 Fecha Inicio Curso; \
@@ -1459,6 +1459,213 @@ REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
 'Producción técnica - Signos Distintivos - Nombres comerciales',\
 'Signos Distintivos - Nombres comerciales',\
 'Nombres comerciales');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+97, \
+'Apropiación - Eventos Cientificos - Otro',\
+'Eventos Cientificos -  Otro',\
+'Otro');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+98, \
+'Apropiación - Eventos Cientificos - Taller',\
+'Eventos Cientificos -  Taller',\
+'Taller');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+99, \
+'Apropiación - Eventos Cientificos - Congreso',\
+'Eventos Cientificos -  Congreso',\
+'Congreso');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+100, \
+'Apropiación - Eventos Cientificos - Encuentro',\
+'Eventos Cientificos -  Encuentro',\
+'Encuentro');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+101, \
+'Apropiación - Eventos Cientificos - Seminario',\
+'Eventos Cientificos -  Seminario',\
+'Seminario');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+102, \
+'Apropiación - Eventos Cientificos - Simposio',\
+'Eventos Cientificos -  Simposio',\
+'Simposio');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+103, \
+'Apropiación - Eventos Cientificos - Informes de investigación',\
+'Eventos Cientificos -  Informes de investigación',\
+'Informes de investigación');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+104, \
+'Apropiación - Impresos - Manual',\
+'Impresos - Manual',\
+'Manual');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+105, \
+'Apropiación - Impresos - Boletín',\
+'Impresos - Boletín',\
+'Boletín');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+106, \
+'Apropiación - Contenido Multimedia - Comentario',\
+'Contenido Multimedia - Comentario',\
+'Comentario');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+107, \
+'Apropiación - Contenido Multimedia - Entrevista',\
+'Contenido Multimedia - Entrevista',\
+'Entrevista');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+108, \
+'Apropiación - Contenido Virtual - Página Web',\
+'Contenido Virtual - Página Web',\
+'Página Web');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+109, \
+'Apropiación - Estrategias de Comunicación - Estrategias de Comunicación',\
+'Estrategias de Comunicación - Estrategias de Comunicación',\
+'Estrategias de Comunicación');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+110, \
+'Apropiación - Estrategias Pedagógicas - Estrategias Pedagógicas para el fomento a la CTI',\
+'Estrategias Pedagógicas - Estrategias Pedagógicas para el fomento a la CTI',\
+'Estrategias Pedagógicas para el fomento a la CTI');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+111, \
+'Apropiación - Participación Ciudadana - Participación Ciudadana en Proyectos de CTI',\
+'Participación Ciudadana - Participación Ciudadana en Proyectos de CTI',\
+'Participación Ciudadana en Proyectos de CTI');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+112, \
+'Apropiación - Participación Ciudadana - Espacios de Participación Ciudadana',\
+'Participación Ciudadana - Espacios de Participación Ciudadana',\
+'Espacios de Participación Ciudadana');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+113, \
+'Producción en arte, arquitectura y diseño - Obras o productos - Obras o productos',\
+'Obras o productos - Obras o productos',\
+'Obras o productos');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+114, \
+'Actividades de Formación - Actividades de Formación - Asesorías al Programa Ondas',\
+'Actividades de Formación - Asesorías al Programa Ondas',\
+'Asesorías al Programa Ondas');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+115, \
+'Actividades de Formación - Curso de Corta Duración Dictados - Perfeccionamiento',\
+'Curso de Corta Duración Dictados - Perfeccionamiento',\
+'Perfeccionamiento');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+116, \
+'Actividades de Formación - Curso de Corta Duración Dictados - Extensión Extracurricular',\
+'Curso de Corta Duración Dictados - Extensión Extracurricular',\
+'Extensión Extracurricular');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+117, \
+'Actividades de Formación - Trabajos dirigidos/turorías - Monografía de conclusión de curso',\
+'Trabajos dirigidos/turorías - Monografía de conclusión de curso',\
+'Monografía de conclusión de curso');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+118, \
+'Actividades de Formación - Curso de Corta Duración Dictados - Otro',\
+'Curso de Corta Duración Dictados - Otro',\
+'Otro');\n\
+REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
+`COD_TIPO_PRODUCTO`,\
+`TIPO_PRODUCTO_COL`,\
+`SUB_TIPO_PRODUCTO_COL`,\
+`TIPO_UAPA`) VALUES (\
+119, \
+'Proyectos - Investigación, desarrollo e innovación - Proyectos',\
+'Investigación, desarrollo e innovación - Proyectos',\
+'Proyectos');\n\
 REPLACE INTO `uapa_db`.`v_colciencias_tipo_producto` ( \
 `COD_TIPO_PRODUCTO`,\
 `TIPO_PRODUCTO_COL`,\

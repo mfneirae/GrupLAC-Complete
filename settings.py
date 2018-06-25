@@ -28,6 +28,9 @@ import init
 import datosbasicos
 import prodbibliografica
 import prodtecnica
+import apropiacion
+import obras
+import actividades
 #end of /bin files
 os.chdir(Dir)
 condition = 0;
@@ -154,6 +157,63 @@ for q in range(2,total):
     prodtecnica.empresas_base_tecextract()
     from prodtecnica import contempresas_base_tec
     COD_PRODUCTO = int("".join(str(x) for x in contempresas_base_tec))
+    apropiacion.ediciones_apropiacionextract()
+    from apropiacion import contediciones_apropiacion
+    COD_PRODUCTO = int("".join(str(x) for x in contediciones_apropiacion))
+    apropiacion.eventos_cientificosextract()
+    from apropiacion import conteventos_cientificos
+    COD_PRODUCTO = int("".join(str(x) for x in conteventos_cientificos))
+    apropiacion.informes_investigacionextract()
+    from apropiacion import continformes_investigacion
+    COD_PRODUCTO = int("".join(str(x) for x in continformes_investigacion))
+    apropiacion.redes_conocimientosextract()
+    from apropiacion import contredes_conocimientos
+    COD_PRODUCTO = int("".join(str(x) for x in contredes_conocimientos))
+    apropiacion.contenidos_impresosextract()
+    from apropiacion import contcontenidos_impresos
+    COD_PRODUCTO = int("".join(str(x) for x in contcontenidos_impresos))
+    apropiacion.contenidos_multimediaextract()
+    from apropiacion import contcontenidos_multimedia
+    COD_PRODUCTO = int("".join(str(x) for x in contcontenidos_multimedia))
+    apropiacion.contenido_virtualextract()
+    from apropiacion import contcontenido_virtual
+    COD_PRODUCTO = int("".join(str(x) for x in contcontenido_virtual))
+    apropiacion.estrategias_comunicacionextract()
+    from apropiacion import contestrategias_comunicacion
+    COD_PRODUCTO = int("".join(str(x) for x in contestrategias_comunicacion))
+    apropiacion.estrategias_pedagogicasextract()
+    from apropiacion import contestrategias_pedagogicas
+    COD_PRODUCTO = int("".join(str(x) for x in contestrategias_pedagogicas))
+    apropiacion.participacion_ciudadana_proyectosextract()
+    from apropiacion import contparticipacion_ciudadana_proyectos
+    COD_PRODUCTO = int("".join(str(x) for x in contparticipacion_ciudadana_proyectos))
+    apropiacion.participacion_ciudadana_espaciosextract()
+    from apropiacion import contparticipacion_ciudadana_espacios
+    COD_PRODUCTO = int("".join(str(x) for x in contparticipacion_ciudadana_espacios))
+    obras.obras_productosextract()
+    from obras import contobras_productos
+    COD_PRODUCTO = int("".join(str(x) for x in contobras_productos))
+    actividades.asesorias_programaextract()
+    from actividades import contasesorias_programa
+    COD_PRODUCTO = int("".join(str(x) for x in contasesorias_programa))
+    actividades.cursos_corta_duracionextract()
+    from actividades import contcursos_corta_duracion
+    COD_PRODUCTO = int("".join(str(x) for x in contcursos_corta_duracion))
+    actividades.trabajos_dirigidosextract()
+    from actividades import conttrabajos_dirigidos
+    COD_PRODUCTO = int("".join(str(x) for x in conttrabajos_dirigidos))
+    actividades.jurado_comisionesextract()
+    from actividades import contjurado_comisiones
+    COD_PRODUCTO = int("".join(str(x) for x in contjurado_comisiones))
+    actividades.comites_evaluacionextract()
+    from actividades import contcomites_evaluacion
+    COD_PRODUCTO = int("".join(str(x) for x in contcomites_evaluacion))
+    actividades.demas_trabajosextract()
+    from actividades import contdemas_trabajos
+    COD_PRODUCTO = int("".join(str(x) for x in contdemas_trabajos))
+    actividades.proyectos_grupoextract()
+    from actividades import contproyectos_grupo
+    COD_PRODUCTO = int("".join(str(x) for x in contproyectos_grupo))
     print("El grupo: " + nombregi + " ha sido  procesado, Estado: " + str(q/(total-1)*100) + "%")
     # from datosbasicos import conteventos
     # COD_PRODUCTO = int("".join(str(x) for x in conteventos))

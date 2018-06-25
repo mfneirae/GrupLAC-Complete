@@ -18,10 +18,10 @@ vinculain = ""
 page_soup = soup(page_html,"html.parser")
 containers = page_soup.findAll("table")
 for a in range(0,len(containers)):
-    buscaediciones_apropiacion = containers[a].td
-    #print(buscaediciones_apropiacion)
+    buscajurado_comisiones = containers[a].td
+    #print(buscajurado_comisiones)
     try:
-        if buscaediciones_apropiacion.text == "Ediciones":
+        if buscajurado_comisiones.text == "Proyectos":
             all = a
             #print(all)
             break
@@ -38,70 +38,45 @@ def clc(str):
 
 containerb = containers[all]
 container = containerb.findAll("tr")
-cont = container[2]
-info_ediciones_apropiacion = cont.text
-index1 = info_ediciones_apropiacion.find("- ") + 2
-index2 = info_ediciones_apropiacion.find(':')
-tipo = clc(info_ediciones_apropiacion[index1:index2])
+cont = container[1]
+info_proyectos_grupo = cont.text
+index1 = info_proyectos_grupo.find("- ") + 2
+index2 = info_proyectos_grupo.find(':')
+tipo = clc(info_proyectos_grupo[index1:index2])
+
 #Tipo Artículo
-if tipo.strip() == "Anales":
-    tipo = "97"
-elif tipo.strip() == "Libro":
-    tipo = "98"
+if tipo.strip() == "Profesor titular":
+    tipo = "78"
+elif tipo.strip() == "Concurso docente":
+    tipo = "79"
+elif tipo.strip() == "Jefe de cátedra":
+    tipo = "80"
+elif tipo.strip() == "Evaluación de cursos":
+    tipo = "81"
+elif tipo.strip() == "Acreditación de programas":
+    tipo = "82"
+elif tipo.strip() == "Asignación de becas":
+    tipo = "83"
+elif tipo.strip() == "Otra":
+    tipo = "84"
 else:
-    logging.critical('Añadir: ' + tipo + ' a ediciones_apropiacion')
+    logging.critical('Añadir: ' + tipo + ' a comites_evaluacion')
     print ("ALERTA: Revisar el archivo Registros.log")
 
 
 #_________________________________________________________________________
 index1 = index2 + 2
-index2 = info_ediciones_apropiacion.find('\n                ', index1, len(info_ediciones_apropiacion))
-nombreart = clc(info_ediciones_apropiacion[index1:index2])
-index1 = index2 + 17
-index2 = info_ediciones_apropiacion.find(',', index1, len(info_ediciones_apropiacion))
-fecha_publica = clc(info_ediciones_apropiacion[index1:index2])
-index1 = index2 - 5
-index2 = info_ediciones_apropiacion.find(',', index1, len(info_ediciones_apropiacion))
-anopub = clc(info_ediciones_apropiacion[index1:index2])
-index1 = info_ediciones_apropiacion.find('Ambito:') + 7
-index2 = info_ediciones_apropiacion.find(',', index1, len(info_ediciones_apropiacion))
-ambito = clc(info_ediciones_apropiacion[index1:index2])
-index1 = info_ediciones_apropiacion.find('NIT:') + 4
-index2 = info_ediciones_apropiacion.find(',', index1, len(info_ediciones_apropiacion))
-nit = clc(info_ediciones_apropiacion[index1:index2])
-index1 = info_ediciones_apropiacion.find('Fecha de registro ante cámara:') + 30
-index2 = info_ediciones_apropiacion.find('\n', index1, len(info_ediciones_apropiacion))
-registrocamara = clc(info_ediciones_apropiacion[index1:index2])
-index1 = index2 +2
-index2 = info_ediciones_apropiacion.find('\n', index1, len(info_ediciones_apropiacion))
-productos = clc(info_ediciones_apropiacion[index1:index2])
-index1 = info_ediciones_apropiacion.find('Sitio web:') + 10
-index2 = info_ediciones_apropiacion.find('Institución financiadora:', index1, len(info_ediciones_apropiacion))
-DOI = clc(info_ediciones_apropiacion[index1:index2])
-index1 = info_ediciones_apropiacion.find('Disponibilidad:') + 15
-index2 = info_ediciones_apropiacion.find(',', index1, len(info_ediciones_apropiacion))
-disponibilidad = clc(info_ediciones_apropiacion[index1:index2])
-index1 = info_ediciones_apropiacion.find('Objeto:') + 7
-index2 = info_ediciones_apropiacion.find('Institución financiadora:', index1, len(info_ediciones_apropiacion))
-objeto = clc(info_ediciones_apropiacion[index1:index2])
-index1 = info_ediciones_apropiacion.find('Institución financiadora:') + 25
-index2 = info_ediciones_apropiacion.find('Autores:', index1, len(info_ediciones_apropiacion))
-institucion = clc(info_ediciones_apropiacion[index1:index2])
-index1 = info_ediciones_apropiacion.find('Número del registro:') + 20
-index2 = info_ediciones_apropiacion.find(',', index1, len(info_ediciones_apropiacion))
-contrato = clc(info_ediciones_apropiacion[index1:index2])
-index1 = info_ediciones_apropiacion.find('Nombre del titular:') + 19
-index2 = info_ediciones_apropiacion.find('\n', index1, len(info_ediciones_apropiacion))
-titular = clc(info_ediciones_apropiacion[index1:index2])
-index1 = info_ediciones_apropiacion.find('Nombre del proyecto:') + 20
-index2 = info_ediciones_apropiacion.find('Institución financiadora:', index1, len(info_ediciones_apropiacion))
-proyecto = clc(info_ediciones_apropiacion[index1:index2])
-index1 = info_ediciones_apropiacion.find('Nombre comercial:') + 17
-index2 = info_ediciones_apropiacion.find('Nombre del proyecto:', index1, len(info_ediciones_apropiacion))
-comercial = clc(info_ediciones_apropiacion[index1:index2])
-index1 = info_ediciones_apropiacion.find('Sitio web:') + 10
-index2 = info_ediciones_apropiacion.find('Nombre comercial:', index1, len(info_ediciones_apropiacion))
-DOI = clc(info_ediciones_apropiacion[index1:index2])
-index1 = info_ediciones_apropiacion.find('Autores:') + 9
-index2 = info_ediciones_apropiacion.find('/n', index1, len(info_ediciones_apropiacion))
-autores = clc(info_ediciones_apropiacion[index1:index2])
+index2 = info_proyectos_grupo.find('\n', index1, len(info_proyectos_grupo))
+nombreart = clc(info_proyectos_grupo[index1:index2])
+index1 = index2 + 2
+index2 = info_proyectos_grupo.find(' - \n', index1, len(info_proyectos_grupo))
+desde = clc(info_proyectos_grupo[index1:index2])
+anopub = clc(desde[0:4])
+try:
+    ano = int(anopub)
+except ValueError:
+    anopub = ""
+
+index1 = index2 + 2
+index2 = len(info_proyectos_grupo)
+hasta = clc(info_proyectos_grupo[index1:index2])

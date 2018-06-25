@@ -94,6 +94,8 @@ f.close()
 f = open ("./Resultados/GP_PROD_TEC.sql", "w")
 init.GP_PROD_TEC = [w.replace("''", 'null') for w in init.GP_PROD_TEC]
 init.GP_PROD_TEC = [w.replace(",,", ',null,') for w in init.GP_PROD_TEC]
+init.GP_PROD_TEC = [w.replace(",)", ',null)') for w in init.GP_PROD_TEC]
+init.GP_PROD_TEC = [w.replace("-)", ',null)') for w in init.GP_PROD_TEC]
 for item in init.GP_PROD_TEC:
     try:
         f.write(item)
@@ -104,6 +106,8 @@ f.close()
 f = open ("./Resultados/GP_APROPIACION.sql", "w")
 init.GP_APROPIACION = [w.replace("''", 'null') for w in init.GP_APROPIACION]
 init.GP_APROPIACION = [w.replace(",,", ',null,') for w in init.GP_APROPIACION]
+init.GP_APROPIACION = [w.replace(",)", ',null)') for w in init.GP_APROPIACION]
+init.GP_APROPIACION = [w.replace("-)", ',null)') for w in init.GP_APROPIACION]
 for item in init.GP_APROPIACION:
     try:
         f.write(item)
@@ -121,10 +125,10 @@ for item in init.GP_OBRAS:
         pass
 f.close()
 
-f = open ("./Resultados/GP_ACTIVIDADES_FORM.sql", "w")
-init.GP_ACTIVIDADES_FORM = [w.replace("''", 'null') for w in init.GP_ACTIVIDADES_FORM]
-init.GP_ACTIVIDADES_FORM = [w.replace(",,", ',null,') for w in init.GP_ACTIVIDADES_FORM]
-for item in init.GP_ACTIVIDADES_FORM:
+f = open ("./Resultados/GP_ACTIVIDADES.sql", "w")
+init.GP_ACTIVIDADES = [w.replace("''", 'null') for w in init.GP_ACTIVIDADES]
+init.GP_ACTIVIDADES = [w.replace(",,", ',null,') for w in init.GP_ACTIVIDADES]
+for item in init.GP_ACTIVIDADES:
     try:
         f.write(item)
     except UnicodeEncodeError:

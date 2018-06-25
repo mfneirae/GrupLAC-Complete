@@ -1,7 +1,7 @@
-def ediciones_apropiacionextract():
+def proyectos_grupoextract():
     from settings import my_url, coduapa, codhermes, codcolciencias, nombregi, dnilider, my_url, COD_PRODUCTO
     import bs4, logging, sys, re, init
-    global contediciones_apropiacion
+    global contproyectos_grupo
     LOG_FILENAME = './Logs/Registros.log'
     logging.basicConfig(filename=LOG_FILENAME,level=logging.DEBUG,
         format = "%(asctime)s:%(levelname)s:%(message)s")
@@ -26,10 +26,10 @@ def ediciones_apropiacionextract():
     page_soup = soup(page_html,"html.parser")
     containers = page_soup.findAll("table")
     for a in range(0,len(containers)):
-        buscaediciones_apropiacion = containers[a].td
-        #print(buscaediciones_apropiacion)
+        buscaproyectos_grupo = containers[a].td
+        #print(buscaproyectos_grupo)
         try:
-            if buscaediciones_apropiacion.text == "Ediciones":
+            if buscaproyectos_grupo.text == "Proyectos":
                 all = a
                 #print(all)
                 break
@@ -40,65 +40,52 @@ def ediciones_apropiacionextract():
         container = containerb.findAll("tr")
         for x in range(1, len(container)):
             cont = container[x]
-            info_ediciones_apropiacion = cont.text
-            index1 = info_ediciones_apropiacion.find("- ") + 2
-            index2 = info_ediciones_apropiacion.find(':')
-            tipo = clc(info_ediciones_apropiacion[index1:index2])
-            #Tipo Artículo
-            if tipo.strip() == "Anales":
-                tipo = "97"
-            elif tipo.strip() == "Libro":
-                tipo = "98"
-            else:
-                logging.critical('Añadir: ' + tipo + ' a ediciones_apropiacion')
-                print ("ALERTA: Revisar el archivo Registros.log")
+            info_proyectos_grupo = cont.text
+            index1 = info_proyectos_grupo.find("- ") + 2
+            index2 = info_proyectos_grupo.find(':')
+            tipo = "119"
             index1 = index2 + 2
-            index2 = info_ediciones_apropiacion.find('\n                ', index1, len(info_ediciones_apropiacion))
-            nombreart = clc(info_ediciones_apropiacion[index1:index2])
-            index1 = index2 + 17
-            index2 = info_ediciones_apropiacion.find(',', index1, len(info_ediciones_apropiacion))
-            lugar = clc(info_ediciones_apropiacion[index1:index2])
+            index2 = info_proyectos_grupo.find('\n', index1, len(info_proyectos_grupo))
+            nombreart = clc(info_proyectos_grupo[index1:index2])
             index1 = index2 + 2
-            index2 = info_ediciones_apropiacion.find(',', index1, len(info_ediciones_apropiacion))
-            anopub = clc(info_ediciones_apropiacion[index1:index2])
-            index1 = info_ediciones_apropiacion.find('Ambito:') + 7
-            index2 = info_ediciones_apropiacion.find(',', index1, len(info_ediciones_apropiacion))
-            ambito = clc(info_ediciones_apropiacion[index1:index2])
-            index1 = info_ediciones_apropiacion.find('Sitio web:') + 10
-            index2 = info_ediciones_apropiacion.find('Institución financiadora:', index1, len(info_ediciones_apropiacion))
-            DOI = clc(info_ediciones_apropiacion[index1:index2])
-            index1 = info_ediciones_apropiacion.find('Disponibilidad:') + 15
-            index2 = info_ediciones_apropiacion.find(',', index1, len(info_ediciones_apropiacion))
-            disponibilidad = clc(info_ediciones_apropiacion[index1:index2])
-            index1 = info_ediciones_apropiacion.find('Objeto:') + 7
-            index2 = info_ediciones_apropiacion.find('Institución financiadora:', index1, len(info_ediciones_apropiacion))
-            objeto = clc(info_ediciones_apropiacion[index1:index2])
-            index1 = info_ediciones_apropiacion.find('Fecha de publicación:') + 21
-            index2 = info_ediciones_apropiacion.find(',', index1, len(info_ediciones_apropiacion))
-            fecha = clc(info_ediciones_apropiacion[index1:index2])
-            index1 = info_ediciones_apropiacion.find('Institución financiadora:') + 25
-            index2 = info_ediciones_apropiacion.find('Autores:', index1, len(info_ediciones_apropiacion))
-            institucion = clc(info_ediciones_apropiacion[index1:index2])
-            index1 = info_ediciones_apropiacion.find('Autores:', index2, len(info_ediciones_apropiacion)) + 9
-            index2 = info_ediciones_apropiacion.find('/br', index1, len(info_ediciones_apropiacion))
-            autores = clc(info_ediciones_apropiacion[index1:index2])
+            index2 = info_proyectos_grupo.find(',', index1, len(info_proyectos_grupo))
+            lugar = clc(info_proyectos_grupo[index1:index2])
+            index1 = index2 + 2
+            index2 = info_proyectos_grupo.find(',', index1, len(info_proyectos_grupo))
+            anopub = clc(info_proyectos_grupo[index1:index2])
+            try:
+                ano = int(anopub)
+            except ValueError:
+                anopub = ""
+
+
+
+            index1 = info_proyectos_grupo.find('Idioma:', index2, len(info_proyectos_grupo)) + 7
+            index2 = info_proyectos_grupo.find(',', index1, len(info_proyectos_grupo))
+            idioma = clc(info_proyectos_grupo[index1:index2])
+            index1 = info_proyectos_grupo.find('Medio de divulgación:', index2, len(info_proyectos_grupo)) + 21
+            index2 = info_proyectos_grupo.find('\n', index1, len(info_proyectos_grupo))
+            divulgacion = clc(info_proyectos_grupo[index1:index2])
+            index1 = info_proyectos_grupo.find('Autores:') + 8
+            index2 = info_proyectos_grupo.find('\n', index1, len(info_proyectos_grupo))
+            autores = clc(info_proyectos_grupo[index1:index2])
             init.REL_GRUPO_PRODUCTO.append( \
             "REPLACE INTO `uapa_db`.`REL_GRUPO_PRODUCTO`(`CODGP_PROD`,`CODGP`,`GP_TIPO_PROD`,`Nombre_Producto`,`Lugar`,`Año`,`Idioma`,`Páginas`,`Volumen`,`Editorial`,`Ambito`,`DOI`,`Descripción`,`Instituciones`,`Tipo_Vincula_Institu`,`Autores`) VALUES"
             + "('" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
-            + str(codcolciencias) + "," \
+            + "'" + str(codcolciencias) + "'," \
             + tipo + "," \
             + "'" + nombreart + "'," \
             + "'" + lugar + "'," \
             + anopub + "," \
+            + "'" + idioma + "'," \
             + "null" + "," \
             + "null" + "," \
             + "null" + "," \
             + "null" + "," \
             + "null" + "," \
-            + "'" + DOI + "," \
             + "null" + "," \
-            + "'" + institucion + "'," \
-            + "'Financiadora'," \
+            + "null" + "," \
+            + "null" + "," \
             + "'" + autores + "'" \
             + ");\n")
             init.REL_GRUPO_PRODUCTO_CSV.append(str(codcolciencias) + str(COD_PRODUCTO) +";" \
@@ -107,34 +94,40 @@ def ediciones_apropiacionextract():
             + nombreart +";" \
             + lugar +";" \
             + anopub +";" \
+            + idioma +";" \
             + "" +";" \
             + "" +";" \
             + "" +";" \
             + "" +";" \
             + "" +";" \
-            + DOI +";" \
             + "" +";" \
-            + institucion +";" \
-            + "Financiadora" +";" \
+            + "" +";" \
+            + "" +";" \
             + autores +";" \
             + "\n")
-            init.GP_APROPIACION.append( \
-            "REPLACE INTO `uapa_db`.`GP_APROPIACION`(`CODGP_APROPIACION`,`CODGP_PROD`,`Tipos_de_Participación`,`Fecha_Inicio`,`Fecha_Fin`,`Proyecto_de_Inv`,`Medio_de_publicación`,`Emisora`,`Número_de_Participantes`) VALUES"
-            + "('" + str(codcolciencias) + "A" + str(COD_PRODUCTO) + "',"\
+            init.GP_ACTIVIDADES.append( \
+            "REPLACE INTO `uapa_db`.`GP_ACTIVIDADES`(`CODGP_PROD_ACT`,`CODGP_PROD`,`Nombre_de_Ferias`,`Fecha_Inicio_Curso`,`Tipo_Orientación`,`Nombre_Estudiante`,`Programa_Académico`,`Divulgacion`,`Valoración`,`Fecha_fin_Curso`,`Finalidad`,`Duración`) VALUES"
+            + "('" + str(codcolciencias) + "X" + str(COD_PRODUCTO) + "',"\
             + "'" + str(codcolciencias) + str(COD_PRODUCTO) + "',"\
             + "null" + "," \
             + "null" + "," \
             + "null" + "," \
             + "null" + "," \
             + "null" + "," \
+            + "'" + divulgacion + "'," \
             + "null" + "," \
-            + "null" \
+            + "null" + "," \
+            + "null" + "," \
+            + "null"\
             + ");\n")
-            init.GP_APROPIACION_CSV.append(str(codcolciencias) + "A" + str(COD_PRODUCTO) +";" \
+            init.GP_ACTIVIDADES_CSV.append(str(codcolciencias) + "X" + str(COD_PRODUCTO) +";" \
             + str(codcolciencias) + str(COD_PRODUCTO) +";" \
             + "" +";" \
             + "" +";" \
             + "" +";" \
+            + "" +";" \
+            + "" +";" \
+            + divulgacion +";" \
             + "" +";" \
             + "" +";" \
             + "" +";" \
@@ -143,4 +136,4 @@ def ediciones_apropiacionextract():
             COD_PRODUCTO += 1
     else:
         logging.info(' El Grupo: ' + nombregi + 'no tiene Esquemas de Cirduitos Trazados Asociados')
-    contediciones_apropiacion = [COD_PRODUCTO]
+    contproyectos_grupo = [COD_PRODUCTO]

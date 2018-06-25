@@ -98,8 +98,8 @@ for item in init.GP_OBRAS_CSV:
         pass
 f.close()
 
-f = open ("./Resultados/GP_ACTIVIDADES_FORM.csv", "w")
-for item in init.GP_ACTIVIDADES_FORM_CSV:
+f = open ("./Resultados/GP_ACTIVIDADES.csv", "w")
+for item in init.GP_ACTIVIDADES_CSV:
     try:
         f.write(item)
     except UnicodeEncodeError:
